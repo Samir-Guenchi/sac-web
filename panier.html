@@ -65,74 +65,98 @@
           
           <!-- Left Column -->
           <div class="panier-left-col">
-            <div class="panier-heading" id="panier-count-header">
-              VOUS AVEZ 0 OBJET DANS VOTRE PANIER.
+            
+            <!-- Empty Cart Placeholder (Hermès Design) -->
+            <div class="empty-cart-card" id="empty-cart-view">
+              <div class="empty-cart-icon">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+              <p class="empty-cart-text">Votre panier est vide</p>
+              <a href="index.html" class="btn-continue-shopping">CONTINUEZ VOS ACHATS</a>
             </div>
 
-            <!-- Cart Items Dynamic List -->
-            <div class="panier-items-list" id="panier-items-container"></div>
+            <!-- Non-Empty Cart Content -->
+            <div id="filled-cart-view" style="display: none;">
+              <div class="panier-heading" id="panier-count-header">
+                VOUS AVEZ 0 OBJET DANS VOTRE PANIER.
+              </div>
 
-            <!-- Empty Cart Placeholder -->
-            <div class="empty-cart-view" id="empty-cart-view" style="display: none; text-align: center; padding: 40px 0;">
-              <p style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 20px; color: var(--color-charcoal-muted);">Votre panier est actuellement vide.</p>
-              <a href="index.html#collection-section" class="btn-hermes-black" style="display: inline-flex; width: auto; padding: 14px 28px;">DÉCOUVRIR LA COLLECTION</a>
+              <!-- Cart Items Dynamic List -->
+              <div class="panier-items-list" id="panier-items-container"></div>
+
+              <!-- Totals & Price Calculation -->
+              <div class="panier-totals-box" id="panier-totals-box">
+                <div class="panier-total-row">
+                  <span>Sous-total</span>
+                  <span id="panier-subtotal-val">0 DZD</span>
+                </div>
+                <div class="panier-total-row">
+                  <span>Livraison</span>
+                  <span id="panier-shipping-val">Les frais de port seront calculés au moment du paiement</span>
+                </div>
+                <div class="panier-total-row grand-total">
+                  <span>TOTAL</span>
+                  <span id="panier-grandtotal-val">0 DZD</span>
+                </div>
+              </div>
+
+              <!-- Gift Option (Hermès Style) -->
+              <div class="panier-gift-box">
+                <label class="panier-gift-header">
+                  <input type="checkbox" id="gift-checkbox">
+                  <span>OFFRIR UN CADEAU</span>
+                </label>
+                <div id="gift-msg-container" style="display: none;">
+                  <textarea class="panier-gift-msg-field" placeholder="Rédigez votre mot d'accompagnement calligraphié (offert)..."></textarea>
+                </div>
+              </div>
+
+              <!-- Checkout Primary Action -->
+              <button type="button" class="btn-hermes-black" id="btn-goto-step-2">
+                COMMANDER
+              </button>
             </div>
 
-            <!-- Totals & Price Calculation -->
-            <div class="panier-totals-box" id="panier-totals-box">
-              <div class="panier-total-row">
-                <span>Sous-total</span>
-                <span id="panier-subtotal-val">0 DZD</span>
-              </div>
-              <div class="panier-total-row">
-                <span>Livraison</span>
-                <span id="panier-shipping-val">Calculée à l'étape suivante</span>
-              </div>
-              <div class="panier-total-row grand-total">
-                <span>TOTAL</span>
-                <span id="panier-grandtotal-val">0 DZD</span>
-              </div>
-            </div>
-
-            <!-- Gift Option (Hermès Style) -->
-            <div class="panier-gift-box">
-              <label class="panier-gift-header">
-                <input type="checkbox" id="gift-checkbox">
-                <span>OFFRIR UN CADEAU</span>
-              </label>
-              <div id="gift-msg-container" style="display: none;">
-                <textarea class="panier-gift-msg-field" placeholder="Rédigez votre mot d'accompagnement calligraphié (offert)..."></textarea>
-              </div>
-            </div>
-
-            <!-- Checkout Primary Action -->
-            <button type="button" class="btn-hermes-black" id="btn-goto-step-2">
-              COMMANDER
-            </button>
           </div>
 
           <!-- Right Column: Atelier Box & Concierge -->
           <div class="panier-sidebar">
             
-            <!-- Box Card -->
+            <!-- La Boîte Orange Card -->
             <div class="panier-sidebar-card">
-              <div class="panier-sidebar-title">L'ÉCRIN ZAPHIRA</div>
+              <div class="panier-sidebar-title">LA BOÎTE ORANGE</div>
               <div class="panier-box-content">
-                <img src="assets/images/journal-1.jpg" alt="Écrin Zaphira" class="panier-box-img">
+                <img src="assets/images/boite-orange.jpg" alt="La Boîte Orange" class="panier-box-img">
                 <p class="panier-box-text">
-                  Toutes les commandes sont confectionnées avec soin et livrées dans un écrin d'art orné d'un ruban de soie brodé.
+                  Toutes les commandes sont livrées dans une boîte orange enveloppée d'un ruban Bolduc à l'exception de <a href="#" class="panier-inline-link">certains objets</a>
                 </p>
               </div>
             </div>
 
-            <!-- Concierge Card -->
+            <!-- Service Client Card -->
             <div class="panier-sidebar-card">
-              <div class="panier-sidebar-title">SERVICE CLIENT & CONCIERGERIE</div>
-              <p class="panier-service-text">
-                WhatsApp Algérie : <a href="tel:+213550000000" class="panier-service-link">+213 (0) 550 00 00 00</a><br>
-                Service International : <a href="tel:+33140000000" class="panier-service-link">+33 (0) 1 40 00 00 00</a><br>
-                Du lundi au samedi de 9h à 19h.
-              </p>
+              <div class="panier-sidebar-title">SERVICE CLIENT</div>
+              
+              <div class="panier-service-block">
+                <p class="panier-service-text">
+                  Whatsapp France : <a href="tel:+33140174700" class="panier-service-link">+33 1 40 17 47 00</a><br>
+                  Du lundi au samedi de 9h à 18h30.
+                </p>
+
+                <p class="panier-service-text">
+                  Magasins et commandes en ligne du lundi au samedi 10h - 19h :<br>
+                  <a href="tel:+33140174700" class="panier-service-link">+33 (0) 1 40 17 47 00</a>
+                </p>
+
+                <p class="panier-service-text">
+                  Pour les demandes d'information au Siège, contactez notre Standard général du lundi au vendredi 8h30 - 18h :<br>
+                  <a href="tel:+33140174717" class="panier-service-link">+33 (0) 1 40 17 47 17</a>
+                </p>
+              </div>
 
               <div class="panier-trust-badges">
                 <div class="panier-trust-badge">

@@ -35,17 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
       countHeader.textContent = `VOUS AVEZ ${count} OBJET${count > 1 ? 'S' : ''} DANS VOTRE PANIER.`;
     }
 
+    const filledView = document.getElementById('filled-cart-view');
+
     if (items.length === 0) {
       if (container) container.innerHTML = '';
-      if (emptyView) emptyView.style.display = 'block';
-      if (totalsBox) totalsBox.style.display = 'none';
-      if (btnGotoStep2) btnGotoStep2.style.display = 'none';
+      if (emptyView) emptyView.style.display = 'flex';
+      if (filledView) filledView.style.display = 'none';
       return;
     }
 
     if (emptyView) emptyView.style.display = 'none';
-    if (totalsBox) totalsBox.style.display = 'block';
-    if (btnGotoStep2) btnGotoStep2.style.display = 'inline-flex';
+    if (filledView) filledView.style.display = 'block';
 
     if (container) {
       container.innerHTML = items.map((item, idx) => {

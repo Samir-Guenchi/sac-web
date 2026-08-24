@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -65,10 +65,10 @@
   content: '';
   position: absolute;
   top: 5px;
-  left: 10%;
-  right: 10%;
+  left: 12%;
+  right: 12%;
   height: 1px;
-  background-color: var(--border-medium);
+  background-color: #D9D2C5;
   z-index: 1;
 }
 
@@ -83,30 +83,32 @@
 }
 
 .step-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background-color: var(--border-medium);
-  margin-bottom: 8px;
+  background-color: #FAF6EE;
+  border: 1.5px solid #C4BDB0;
+  margin-bottom: 10px;
   transition: all 0.3s ease;
 }
 
 .step-item.is-active .step-dot {
   background-color: #000000;
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+  border-color: #000000;
 }
 
 .step-item.is-completed .step-dot {
   background-color: #000000;
+  border-color: #000000;
 }
 
 .step-label {
   font-family: var(--font-sans);
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-charcoal-muted);
+  color: #767069;
   transition: color 0.3s ease;
 }
 
@@ -123,12 +125,62 @@
 
 .panier-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: var(--space-12);
+  grid-template-columns: 1fr 410px;
+  gap: var(--space-10);
   align-items: start;
 }
 
-/* Left Column: Cart Overview */
+/* Left Column: Empty Cart Card (Hermès Style) */
+.empty-cart-card {
+  background-color: #FFFFFF;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.empty-cart-icon {
+  margin-bottom: 22px;
+  color: #191817;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-cart-text {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: #191817;
+  margin-bottom: 26px;
+  letter-spacing: -0.01em;
+}
+
+.btn-continue-shopping {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 32px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.btn-continue-shopping:hover {
+  background-color: #222222;
+  transform: translateY(-1px);
+}
+
+/* Left Column: Non-Empty Cart Overview */
 .panier-heading {
   font-family: var(--font-sans);
   font-size: 0.875rem;
@@ -316,47 +368,59 @@
 
 .panier-sidebar-card {
   background-color: #FFFFFF;
-  border: 1px solid var(--border-subtle);
-  padding: var(--space-6);
+  padding: var(--space-6) var(--space-7);
 }
 
 .panier-sidebar-title {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: #191817;
   margin-bottom: var(--space-4);
 }
 
 .panier-box-content {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-5);
   align-items: center;
 }
 
 .panier-box-img {
-  width: 70px;
-  height: 70px;
+  width: 76px;
+  height: 76px;
   object-fit: cover;
-  border-radius: var(--radius-xs);
+  flex-shrink: 0;
 }
 
 .panier-box-text {
   font-size: 0.8125rem;
-  color: var(--color-charcoal-muted);
+  color: #4A4641;
   line-height: 1.5;
+}
+
+.panier-inline-link {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.panier-service-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .panier-service-text {
   font-size: 0.8125rem;
-  color: var(--color-charcoal-muted);
+  color: #4A4641;
   line-height: 1.6;
+  margin-bottom: 0;
 }
 
 .panier-service-link {
   font-weight: 600;
-  color: var(--color-charcoal);
+  color: #191817;
   text-decoration: underline;
 }
 
@@ -364,9 +428,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  margin-top: var(--space-4);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid #EFEAE0;
 }
 
 .panier-trust-badge {
@@ -375,6 +439,7 @@
   gap: var(--space-2);
   font-size: 0.75rem;
   font-weight: 500;
+  color: #191817;
 }
 
 /* Step 2 Form (Livraison & Compte) */
