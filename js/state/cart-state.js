@@ -97,6 +97,9 @@ class CartStore {
     }
 
     this.saveCart();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('cart:item-added', { detail: { product } }));
+    }
   }
 
   removeItem(index) {

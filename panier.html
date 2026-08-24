@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier & Commande — ZAPHIRA Maison de Haute Couture</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/panier.css">
+</head>
+<body class="panier-page">
+
+  <!-- Header Stepper -->
+  <header class="panier-header">
+    <div class="container">
+      <div class="panier-top-nav">
+        <a href="index.html" class="panier-back-btn" id="panier-back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span id="panier-back-label">Retour</span>
+        </a>
+
+        <a href="index.html" class="panier-logo-link" aria-label="Accueil ZAPHIRA">
+          <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" class="panier-logo-img">
+        </a>
+
+        <div></div>
+      </div>
+
+      <!-- Stepper Progress -->
+      <div class="panier-stepper">
+        <div class="step-item is-active" id="step-node-1">
+          <div class="step-dot"></div>
+          <span class="step-label">PANIER</span>
+        </div>
+        <div class="step-item" id="step-node-2">
+          <div class="step-dot"></div>
+          <span class="step-label">LIVRAISON & PAIEMENT</span>
+        </div>
+        <div class="step-item" id="step-node-3">
+          <div class="step-dot"></div>
+          <span class="step-label">CONFIRMATION</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="panier-main">
+    <div class="container">
+
+      <!-- STEP 1: PANIER VIEW (Screenshot 2) -->
+      <div class="step-view" id="step-view-1">
+        <div class="panier-layout-grid">
+          
+          <!-- Left Column -->
+          <div class="panier-left-col">
+            <div class="panier-heading" id="panier-count-header">
+              VOUS AVEZ 0 OBJET DANS VOTRE PANIER.
+            </div>
+
+            <!-- Cart Items Dynamic List -->
+            <div class="panier-items-list" id="panier-items-container"></div>
+
+            <!-- Empty Cart Placeholder -->
+            <div class="empty-cart-view" id="empty-cart-view" style="display: none; text-align: center; padding: 40px 0;">
+              <p style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 20px; color: var(--color-charcoal-muted);">Votre panier est actuellement vide.</p>
+              <a href="index.html#collection-section" class="btn-hermes-black" style="display: inline-flex; width: auto; padding: 14px 28px;">DÉCOUVRIR LA COLLECTION</a>
+            </div>
+
+            <!-- Totals & Price Calculation -->
+            <div class="panier-totals-box" id="panier-totals-box">
+              <div class="panier-total-row">
+                <span>Sous-total</span>
+                <span id="panier-subtotal-val">0 DZD</span>
+              </div>
+              <div class="panier-total-row">
+                <span>Livraison</span>
+                <span id="panier-shipping-val">Calculée à l'étape suivante</span>
+              </div>
+              <div class="panier-total-row grand-total">
+                <span>TOTAL</span>
+                <span id="panier-grandtotal-val">0 DZD</span>
+              </div>
+            </div>
+
+            <!-- Gift Option (Hermès Style) -->
+            <div class="panier-gift-box">
+              <label class="panier-gift-header">
+                <input type="checkbox" id="gift-checkbox">
+                <span>OFFRIR UN CADEAU</span>
+              </label>
+              <div id="gift-msg-container" style="display: none;">
+                <textarea class="panier-gift-msg-field" placeholder="Rédigez votre mot d'accompagnement calligraphié (offert)..."></textarea>
+              </div>
+            </div>
+
+            <!-- Checkout Primary Action -->
+            <button type="button" class="btn-hermes-black" id="btn-goto-step-2">
+              COMMANDER
+            </button>
+          </div>
+
+          <!-- Right Column: Atelier Box & Concierge -->
+          <div class="panier-sidebar">
+            
+            <!-- Box Card -->
+            <div class="panier-sidebar-card">
+              <div class="panier-sidebar-title">L'ÉCRIN ZAPHIRA</div>
+              <div class="panier-box-content">
+                <img src="assets/images/journal-1.jpg" alt="Écrin Zaphira" class="panier-box-img">
+                <p class="panier-box-text">
+                  Toutes les commandes sont confectionnées avec soin et livrées dans un écrin d'art orné d'un ruban de soie brodé.
+                </p>
+              </div>
+            </div>
+
+            <!-- Concierge Card -->
+            <div class="panier-sidebar-card">
+              <div class="panier-sidebar-title">SERVICE CLIENT & CONCIERGERIE</div>
+              <p class="panier-service-text">
+                WhatsApp Algérie : <a href="tel:+213550000000" class="panier-service-link">+213 (0) 550 00 00 00</a><br>
+                Service International : <a href="tel:+33140000000" class="panier-service-link">+33 (0) 1 40 00 00 00</a><br>
+                Du lundi au samedi de 9h à 19h.
+              </p>
+
+              <div class="panier-trust-badges">
+                <div class="panier-trust-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                  <span>Retours & échanges</span>
+                </div>
+                <div class="panier-trust-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>Paiement sécurisé</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 2: LIVRAISON & PAIEMENT VIEW (Screenshot 3 & 4) -->
+      <div class="step-view" id="step-view-2" style="display: none;">
+        <div class="panier-layout-grid">
+          
+          <!-- Left Column: Checkout Forms -->
+          <div class="panier-left-col">
+            
+            <!-- Compte Section -->
+            <div class="checkout-section-box">
+              <div class="checkout-section-title">VOTRE COMPTE & COORDONNÉES</div>
+              <div class="checkout-form-grid">
+                <div class="hermes-form-group full-width">
+                  <label class="hermes-form-label" for="checkout-email">E-mail *</label>
+                  <input type="email" class="hermes-form-input" id="checkout-email" placeholder="nomprenom@domaine.com" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Livraison Section -->
+            <div class="checkout-section-box">
+              <div class="checkout-section-title">ADRESSE DE LIVRAISON</div>
+              <div class="checkout-form-grid">
+                <div class="hermes-form-group">
+                  <label class="hermes-form-label" for="checkout-prenom">Prénom *</label>
+                  <input type="text" class="hermes-form-input" id="checkout-prenom" placeholder="Prénom" required>
+                </div>
+                <div class="hermes-form-group">
+                  <label class="hermes-form-label" for="checkout-nom">Nom *</label>
+                  <input type="text" class="hermes-form-input" id="checkout-nom" placeholder="Nom" required>
+                </div>
+                <div class="hermes-form-group">
+                  <label class="hermes-form-label" for="checkout-phone">Numéro de téléphone (Algérie / Intl) *</label>
+                  <input type="tel" class="hermes-form-input" id="checkout-phone" placeholder="05XX XX XX XX" required>
+                </div>
+                <div class="hermes-form-group">
+                  <label class="hermes-form-label" for="checkout-wilaya">Wilaya (Algérie) *</label>
+                  <select class="hermes-form-select" id="checkout-wilaya" required>
+                    <option value="">Sélectionner votre wilaya</option>
+                    <option value="16">16 - Alger</option>
+                    <option value="31">31 - Oran</option>
+                    <option value="25">25 - Constantine</option>
+                    <option value="19">19 - Sétif</option>
+                    <option value="06">06 - Béjaïa</option>
+                    <option value="15">15 - Tizi Ouzou</option>
+                    <option value="09">09 - Blida</option>
+                    <option value="13">13 - Tlemcen</option>
+                    <option value="23">23 - Annaba</option>
+                    <option value="35">35 - Boumerdès</option>
+                    <option value="42">42 - Tipaza</option>
+                    <option value="all">Autres Wilayas (1 à 58)</option>
+                  </select>
+                </div>
+                <div class="hermes-form-group full-width">
+                  <label class="hermes-form-label" for="checkout-address">Adresse de livraison complète *</label>
+                  <input type="text" class="hermes-form-input" id="checkout-address" placeholder="Numéro, rue, bâtiment, quartier" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mode de Paiement Section -->
+            <div class="checkout-section-box">
+              <div class="checkout-section-title">MODE DE PAIEMENT</div>
+              <div class="payment-methods-list">
+                <label class="payment-method-item is-selected">
+                  <input type="radio" name="payment-method" value="cod" checked>
+                  <div>
+                    <strong>Paiement à la livraison (Cash on Delivery)</strong>
+                    <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Réglez votre commande directement auprès du livreur à réception.</div>
+                  </div>
+                </label>
+
+                <label class="payment-method-item">
+                  <input type="radio" name="payment-method" value="cib">
+                  <div>
+                    <strong>Carte CIB / Edahabia (Algérie)</strong>
+                    <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Paiement sécurisé par carte bancaire nationale algérienne.</div>
+                  </div>
+                </label>
+
+                <label class="payment-method-item">
+                  <input type="radio" name="payment-method" value="card">
+                  <div>
+                    <strong>Carte Bancaire Internationale (Visa / Mastercard)</strong>
+                    <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Pour les règlements en Euros (€) ou Dollars ($).</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <button type="button" class="btn-hermes-black" id="btn-submit-order">
+              CONFIRMER LA COMMANDE
+            </button>
+          </div>
+
+          <!-- Right Column: Order Summary -->
+          <div class="panier-sidebar">
+            <div class="panier-sidebar-card">
+              <div class="panier-sidebar-title">RÉCAPITULATIF DE VOTRE COMMANDE</div>
+              <div class="panier-totals-box">
+                <div class="panier-total-row">
+                  <span>Sous-total</span>
+                  <span id="checkout-subtotal-val">0 DZD</span>
+                </div>
+                <div class="panier-total-row">
+                  <span>Livraison express (58 Wilayas)</span>
+                  <span style="color: var(--color-champagne-dark); font-weight: 600;">Offerte</span>
+                </div>
+                <div class="panier-total-row grand-total">
+                  <span>TOTAL À PAYER</span>
+                  <span id="checkout-grandtotal-val">0 DZD</span>
+                </div>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--color-charcoal-muted); line-height: 1.5;">
+                En confirmant votre commande, vous acceptez les conditions générales de vente de la Maison ZAPHIRA.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 3: CONFIRMATION VIEW -->
+      <div class="step-view" id="step-view-3" style="display: none;">
+        <div class="order-success-card">
+          <div class="order-success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h2 class="order-success-title">Merci pour votre commande</h2>
+          <p class="order-success-desc">
+            Votre commande <strong id="confirmed-order-id">#ZPH-8942</strong> a été enregistrée avec succès.<br>
+            Nos maîtres artisans préparent votre création dans notre atelier d'Alger.
+          </p>
+
+          <div style="background-color: #FAF6EE; padding: 20px; border-radius: 4px; margin-bottom: 30px; text-align: left;">
+            <div style="font-size: 0.8125rem; font-weight: 700; margin-bottom: 8px;">DÉTAILS DE LIVRAISON</div>
+            <div id="confirmed-order-details" style="font-size: 0.8125rem; color: var(--color-charcoal-muted); line-height: 1.6;"></div>
+          </div>
+
+          <a href="index.html" class="btn-hermes-black" style="display: inline-flex; width: auto; padding: 14px 36px;">
+            RETOURNER À L'ACCUEIL
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="js/panier.js"></script>
+</body>
+</html>

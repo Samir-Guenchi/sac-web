@@ -39,12 +39,7 @@ export function initNavbar() {
   cartStore.subscribe(updateBadge);
   updateBadge();
 
-  // Open Cart Drawer
-  if (bagBtn) {
-    bagBtn.addEventListener('click', () => {
-      document.dispatchEvent(new CustomEvent('cart:open'));
-    });
-  }
+  // Cart button links directly to panier.html
 
   // Open Search Modal on button or input interaction
   const searchInput = document.getElementById('hermes-search-field');

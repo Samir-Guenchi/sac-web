@@ -1,0 +1,508 @@
+/**
+ * ZAPHIRA — Hermès-Style Panier & Checkout Styles
+ */
+
+.panier-page {
+  background-color: #FAF6EE;
+  color: var(--color-charcoal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Stepper */
+.panier-header {
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: #FAF6EE;
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.panier-top-nav {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.panier-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.panier-back-btn:hover {
+  opacity: 0.6;
+}
+
+.panier-logo-link {
+  display: flex;
+  justify-content: center;
+}
+
+.panier-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Stepper Progress Bar */
+.panier-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.panier-stepper::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background-color: var(--border-medium);
+  z-index: 1;
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--border-medium);
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.step-item.is-active .step-dot {
+  background-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+}
+
+.step-item.is-completed .step-dot {
+  background-color: #000000;
+}
+
+.step-label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-charcoal-muted);
+  transition: color 0.3s ease;
+}
+
+.step-item.is-active .step-label {
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Main Container */
+.panier-main {
+  flex: 1;
+  padding: var(--space-10) 0 var(--space-16);
+}
+
+.panier-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* Left Column: Cart Overview */
+.panier-heading {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.panier-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.panier-item-card {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.panier-item-image {
+  aspect-ratio: 1;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.panier-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.panier-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panier-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-2);
+}
+
+.panier-item-meta {
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.panier-item-remove-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-charcoal);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+
+.panier-item-remove-btn:hover {
+  opacity: 0.6;
+}
+
+.panier-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.panier-qty-box {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-medium);
+  background-color: #FFFFFF;
+}
+
+.panier-qty-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panier-qty-btn:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+.panier-qty-val {
+  width: 32px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.panier-item-price {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Totals Summary */
+.panier-totals-box {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-6);
+}
+
+.panier-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+  font-size: 0.875rem;
+}
+
+.panier-total-row.grand-total {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Gift Option */
+.panier-gift-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.panier-gift-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.panier-gift-msg-field {
+  margin-top: var(--space-4);
+  width: 100%;
+  border: 1px solid var(--border-medium);
+  padding: var(--space-3);
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  background-color: var(--color-ivory);
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Right Column: Hermes Box & Concierge */
+.panier-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.panier-sidebar-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-6);
+}
+
+.panier-sidebar-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.panier-box-content {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.panier-box-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+}
+
+.panier-box-text {
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.5;
+}
+
+.panier-service-text {
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.6;
+}
+
+.panier-service-link {
+  font-weight: 600;
+  color: var(--color-charcoal);
+  text-decoration: underline;
+}
+
+.panier-trust-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.panier-trust-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Step 2 Form (Livraison & Compte) */
+.checkout-section-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.checkout-section-title {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.checkout-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.checkout-form-grid.full-width {
+  grid-column: 1 / -1;
+}
+
+.hermes-form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
+}
+
+.hermes-form-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-charcoal);
+}
+
+.hermes-form-input, .hermes-form-select {
+  border: 1px solid var(--border-medium);
+  background-color: #FAF6EE;
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  border-radius: var(--radius-xs);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.hermes-form-input:focus, .hermes-form-select:focus {
+  border-color: #000000;
+  background-color: #FFFFFF;
+}
+
+/* Payment Methods List */
+.payment-methods-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.payment-method-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--border-medium);
+  padding: var(--space-4);
+  cursor: pointer;
+  background-color: #FAF6EE;
+  transition: all 0.2s ease;
+}
+
+.payment-method-item.is-selected {
+  border-color: #000000;
+  background-color: #FFFFFF;
+}
+
+/* Step 3 Confirmation */
+.order-success-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-12) var(--space-8);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.order-success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-ivory);
+  border: 1px solid var(--color-champagne);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-6);
+  color: var(--color-champagne-dark);
+}
+
+.order-success-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.order-success-desc {
+  font-size: 0.9375rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .panier-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .checkout-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Compte — ZAPHIRA Maison de Haute Couture</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/compte.css">
+</head>
+<body class="compte-page">
+
+  <!-- Hermes Navigation Header -->
+  <header class="site-header site-header-hermes" id="site-header">
+    <div class="header-top-bar">
+      <div class="container header-top-container">
+        <!-- Search Left -->
+        <div class="header-top-left">
+          <form class="hermes-search-bar" id="header-search-form" action="index.html">
+            <button type="submit" class="hermes-search-btn-icon" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <input type="text" class="hermes-search-input" placeholder="Rechercher" aria-label="Search">
+          </form>
+        </div>
+
+        <!-- Center Logo -->
+        <div class="header-top-center">
+          <a href="index.html" class="brand-logo-link" aria-label="Zaphira Homepage">
+            <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" class="brand-logo-img">
+          </a>
+        </div>
+
+        <!-- Utilities Right -->
+        <div class="header-top-right">
+          <a href="compte.html" class="hermes-utility-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="utility-label">Compte</span>
+          </a>
+
+          <a href="panier.html" class="hermes-utility-link bag-badge-container">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="utility-label">Panier</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Bar -->
+    <div class="header-nav-bar">
+      <div class="container header-categories-container">
+        <nav class="nav-menu-hermes" aria-label="Main Navigation">
+          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes">MAROQUINERIE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#customizer-section" class="nav-link-hermes">SUR-MESURE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#craftsmanship-section" class="nav-link-hermes">SAVOIR-FAIRE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#journal-section" class="nav-link-hermes">JOURNAL</a></div>
+          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes">CADEAUX</a></div>
+          <div class="nav-item-hermes"><a href="index.html#heritage-section" class="nav-link-hermes">A PROPOS DE ZAPHIRA</a></div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="compte-main">
+    <div class="compte-container">
+
+      <!-- SCREEN 1: STEP 1 (Screenshot 4) -->
+      <div class="compte-step-1-view" id="compte-view-step-1">
+        <div class="compte-step-1-card">
+          <div class="compte-heading-title">VOTRE COMPTE</div>
+
+          <p class="compte-intro-text">
+            Veuillez ajouter votre e-mail ci-dessous pour accéder à votre compte ou créer un compte
+          </p>
+
+          <form id="compte-step-1-form">
+            <div class="hermes-underline-group">
+              <label class="hermes-underline-label" for="compte-initial-email">E-mail *</label>
+              <input type="email" class="hermes-underline-input" id="compte-initial-email" placeholder="nomprenom@domaine.com" required>
+              <span class="hermes-input-hint">Format attendu : nomprenom@domaine.com</span>
+            </div>
+
+            <button type="submit" class="btn-hermes-black" style="margin-top: 10px;">
+              CONTINUER
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- SCREEN 2: STEP 2 (Screenshot 5) -->
+      <div class="compte-step-2-view" id="compte-view-step-2">
+        <div class="compte-header-note">* Informations requises</div>
+
+        <form id="compte-step-2-form">
+          <div class="compte-two-columns-grid">
+            
+            <!-- Left Column: Informations de connexion -->
+            <div class="compte-col-left">
+              <div class="compte-col-title">INFORMATIONS DE CONNEXION</div>
+
+              <div class="email-send-code-box">
+                <div class="hermes-underline-group" style="margin-bottom: 0;">
+                  <label class="hermes-underline-label">E-mail *</label>
+                  <input type="email" class="hermes-underline-input" id="compte-display-email" readonly>
+                  <span class="hermes-input-hint">Format attendu : nomprenom@domaine.com</span>
+                </div>
+                <button type="button" class="btn-send-code" id="btn-send-verification-code">
+                  ENVOYER LE CODE
+                </button>
+              </div>
+
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label" for="compte-code">Code de vérification *</label>
+                <input type="text" class="hermes-underline-input" id="compte-code" placeholder="123456" maxlength="6">
+                <span class="hermes-input-hint">Format attendu: 123456</span>
+              </div>
+
+              <div class="hermes-underline-group" style="margin-bottom: 0;">
+                <label class="hermes-underline-label" for="compte-password">Mot de passe *</label>
+                <input type="password" class="hermes-underline-input" id="compte-password" placeholder="••••••••••" required>
+              </div>
+
+              <!-- Password Security Criteria Checklist -->
+              <div class="pwd-criteria-box">
+                <div class="pwd-criteria-title">Pour votre sécurité, nous vous invitons à saisir votre mot de passe en respectant les critères suivants :</div>
+                <div class="pwd-criteria-grid">
+                  <div class="pwd-criterion" id="crit-len">• Au moins 10 caractères</div>
+                  <div class="pwd-criterion" id="crit-num">• Au moins 1 chiffre</div>
+                  <div class="pwd-criterion" id="crit-maj">• Au moins 1 lettre majuscule</div>
+                  <div class="pwd-criterion" id="crit-min">• Au moins 1 lettre minuscule</div>
+                  <div class="pwd-criterion" id="crit-spe">• Au moins 1 caractère spécial</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Informations personnelles -->
+            <div class="compte-col-right">
+              <div class="compte-col-title">INFORMATIONS PERSONNELLES</div>
+
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label" for="compte-civility">Civilité *</label>
+                <select class="hermes-select-input" id="compte-civility" required>
+                  <option value="Mme">Madame</option>
+                  <option value="M.">Monsieur</option>
+                </select>
+              </div>
+
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label" for="compte-firstname">Prénom *</label>
+                <input type="text" class="hermes-underline-input" id="compte-firstname" placeholder="Votre prénom" required>
+              </div>
+
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label" for="compte-lastname">Nom *</label>
+                <input type="text" class="hermes-underline-input" id="compte-lastname" placeholder="Votre nom" required>
+              </div>
+
+              <!-- Phone with Country Code -->
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label">Numéro de téléphone *</label>
+                <div style="display: grid; grid-template-columns: 130px 1fr; gap: 12px;">
+                  <select class="hermes-select-input" id="compte-phone-prefix">
+                    <option value="+213">🇩🇿 DZ +213</option>
+                    <option value="+33">🇫🇷 FR +33</option>
+                    <option value="+971">🇦🇪 AE +971</option>
+                    <option value="+44">🇬🇧 GB +44</option>
+                  </select>
+                  <input type="tel" class="hermes-underline-input" id="compte-phone-number" placeholder="0550 12 34 56" required>
+                </div>
+                <span class="hermes-input-hint">Format attendu : numéro de téléphone avec au moins 8 chiffres</span>
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="hermes-underline-group">
+                <label class="hermes-underline-label">Date de naissance</label>
+                <div class="birth-date-row">
+                  <select class="hermes-select-input" id="birth-day">
+                    <option value="">Jour</option>
+                    <!-- Generated 1 to 31 -->
+                  </select>
+                  <select class="hermes-select-input" id="birth-month">
+                    <option value="">Mois</option>
+                    <option value="1">Janvier</option>
+                    <option value="2">Février</option>
+                    <option value="3">Mars</option>
+                    <option value="4">Avril</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Juin</option>
+                    <option value="7">Juillet</option>
+                    <option value="8">Août</option>
+                    <option value="9">Septembre</option>
+                    <option value="10">Octobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Décembre</option>
+                  </select>
+                  <select class="hermes-select-input" id="birth-year">
+                    <option value="">Année</option>
+                    <!-- Generated 2008 down to 1940 -->
+                  </select>
+                </div>
+                <span class="hermes-input-hint">Veuillez entrer une date de naissance valide qui confirme que vous avez au moins 18 ans</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="compte-consent-row">
+            <input type="checkbox" id="compte-newsletter-optin" checked>
+            <label for="compte-newsletter-optin">
+              J'accepte de recevoir des informations par email concernant les créations, offres, services et événements de la Maison ZAPHIRA, conformément à notre politique de confidentialité.
+            </label>
+          </div>
+
+          <button type="submit" class="btn-hermes-black" style="max-width: 320px; margin: 0 auto; display: block;">
+            ENREGISTRER ET CRÉER MON COMPTE
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Hermes Directory Footer -->
+  <footer class="compte-footer">
+    <div class="container">
+      <div class="compte-footer-grid">
+        <div class="compte-footer-col">
+          <h4>SERVICES</h4>
+          <a href="index.html#newsletter-section">Nous contacter</a>
+          <a href="index.html#newsletter-section">Questions fréquentes</a>
+          <a href="index.html#customizer-section">Sur-mesure</a>
+        </div>
+        <div class="compte-footer-col">
+          <h4>COMMANDES</h4>
+          <a href="panier.html">Paiement</a>
+          <a href="panier.html">Livraison 58 Wilayas</a>
+          <a href="panier.html">Suivi de commande</a>
+        </div>
+        <div class="compte-footer-col">
+          <h4>LA MAISON ZAPHIRA</h4>
+          <a href="index.html#heritage-section">L'Histoire de la Princesse Zaphira</a>
+          <a href="index.html#craftsmanship-section">L'Atelier d'Alger</a>
+          <a href="index.html#journal-section">Le Journal</a>
+        </div>
+        <div class="compte-footer-col">
+          <h4>MENTIONS LÉGALES</h4>
+          <a href="#">Conditions générales de vente</a>
+          <a href="#">Données personnelles</a>
+          <a href="#">© Zaphira 2026. Tous droits réservés</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/compte.js"></script>
+</body>
+</html>

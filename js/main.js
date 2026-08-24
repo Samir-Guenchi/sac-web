@@ -9,6 +9,7 @@ import { initCollection } from './components/collection.js';
 import { initQuickViewModal } from './components/quickview-modal.js';
 import { initCartDrawer } from './components/cart-drawer.js';
 import { initCheckoutModal } from './components/checkout-modal.js';
+import { initCartAddedModal } from './components/cart-added-modal.js';
 import { initSearchModal } from './components/search-modal.js';
 import { initStoryModal } from './components/story-modal.js';
 import { showToast } from './components/toast.js';
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCollection();
   initQuickViewModal();
   initCartDrawer();
+  initCartAddedModal();
   initCheckoutModal();
   initSearchModal();
   initStoryModal();
