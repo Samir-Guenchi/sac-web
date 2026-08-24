@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaphira — Handcrafted Luxury Handbags Made in Algeria</title>
+  <meta name="description" content="Discover Zaphira, modern feminine luxury handbags handcrafted in Algeria and personalized to your style with pearls, organza and timeless details.">
+  <meta name="keywords" content="Zaphira, luxury handbags, handcrafted in Algeria, Princess Zaphira, pearl handbag, organza bag, custom luxury bag, Algerian haute couture">
+  <meta name="author" content="Maison Zaphira">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zaphira — Handcrafted Luxury Handbags Made in Algeria">
+  <meta property="og:description" content="Modern feminine luxury handcrafted in Algeria. Customized pearl & organza handbags made personal through bespoke craftsmanship.">
+  <meta property="og:image" content="assets/images/hero-bag.jpg">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Zaphira — Handcrafted Luxury Handbags">
+  <meta property="twitter:description" content="Modern feminine luxury handcrafted in Algeria.">
+  <meta property="twitter:image" content="assets/images/hero-bag.jpg">
+
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/customizer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SECTION 01 — PREMIUM NAVIGATION
+       ========================================================================== -->
+  <!-- ==========================================================================
+       SECTION 01 — LUXURY TWO-TIER NAVIGATION (HERMES STYLE)
+       ========================================================================== -->
+  <header class="site-header site-header-hermes" id="site-header">
+    
+    <!-- Upper Bar (Search, Center Logo, Account, Bag, Currencies) -->
+    <div class="header-top-bar">
+      <div class="container header-top-container">
+        
+        <!-- Left: Hermès Inline Search -->
+        <div class="header-top-left">
+          <form class="hermes-search-bar" id="header-search-form">
+            <button type="button" class="hermes-search-btn-icon" id="nav-search-btn" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <input type="text" class="hermes-search-input" id="hermes-search-field" placeholder="Rechercher" data-i18n-placeholder="nav.searchPlaceholder" aria-label="Search">
+          </form>
+        </div>
+
+        <!-- Center: Official Brand Logo -->
+        <div class="header-top-center">
+          <a href="#hero-section" class="brand-logo-link" aria-label="Zaphira Homepage">
+            <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" class="brand-logo-img">
+          </a>
+        </div>
+
+        <!-- Right: Utility Actions (Account, Bag, Currency/Lang) -->
+        <div class="header-top-right">
+          <!-- Currency & Language Switchers -->
+          <div class="currency-lang-group">
+            <select id="currency-select" class="nav-select-pill" aria-label="Select Currency">
+              <option value="DZD">DZD</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="USD">USD ($)</option>
+            </select>
+            <span style="color: var(--border-medium);">|</span>
+            <select id="lang-select" class="nav-select-pill" aria-label="Select Language">
+              <option value="en">EN</option>
+              <option value="fr" selected>FR</option>
+              <option value="ar">العربية</option>
+            </select>
+          </div>
+
+          <!-- Account with label -->
+          <a href="#newsletter-section" class="hermes-utility-link" id="nav-account-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="utility-label" data-i18n="nav.account">Compte</span>
+          </a>
+
+          <!-- Bag with label and badge counter -->
+          <button type="button" class="hermes-utility-link bag-badge-container" id="nav-bag-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="utility-label" data-i18n="nav.bag">Panier</span>
+            <span class="bag-badge" id="bag-count-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- Mobile Menu Toggle Button -->
+          <button type="button" class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Lower Category Bar (Hermès Category Row with Dropdown Mega-Menu) -->
+    <div class="header-nav-bar">
+      <div class="container header-categories-container">
+        <nav class="nav-menu-hermes" aria-label="Main Navigation">
+          
+          <!-- Category: SACS & MAROQUINERIE -->
+          <div class="nav-item-hermes">
+            <a href="#collection-section" class="nav-link-hermes" data-i18n="nav.catLeather">MAROQUINERIE</a>
+            <div class="mega-menu-drawer">
+              <div class="container mega-menu-container">
+                <div class="mega-menu-featured">
+                  <img src="assets/images/product-pearl-ivory.jpg" alt="Sacs Zaphira">
+                  <span class="mega-featured-label">NOUVELLE COLLECTION 2026</span>
+                </div>
+                <div class="mega-menu-links">
+                  <a href="#collection-section" class="mega-link-item">TOUS LES SACS EN PERLES & ORGANZA</a>
+                  <a href="#collection-section" class="mega-link-item">PEARL IVORY SIGNATURE</a>
+                  <a href="#collection-section" class="mega-link-item">NOIR PRESTIGE SOIRÉE</a>
+                  <a href="#collection-section" class="mega-link-item">BLUSH ORGANZA COUTURE</a>
+                  <a href="#collection-section" class="mega-link-item">TAUPE ÉLÉGANCE CALFSKIN</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: SUR-MESURE -->
+          <div class="nav-item-hermes">
+            <a href="#customizer-section" class="nav-link-hermes" data-i18n="nav.catCustom">SUR-MESURE</a>
+            <div class="mega-menu-drawer">
+              <div class="container mega-menu-container">
+                <div class="mega-menu-featured">
+                  <img src="assets/images/journal-3.jpg" alt="Atelier Sur-Mesure">
+                  <span class="mega-featured-label">STUDIO DE CRÉATION</span>
+                </div>
+                <div class="mega-menu-links">
+                  <a href="#customizer-section" class="mega-link-item">PERSONNALISER VOTRE SAC</a>
+                  <a href="#customizer-section" class="mega-link-item">CHOIX DES NUANCES & TISSUS NOBLES</a>
+                  <a href="#customizer-section" class="mega-link-item">PERLES D'EAU DOUCE & CHAÎNES</a>
+                  <a href="#customizer-section" class="mega-link-item">GRAVURE D'INITIALES À L'OR FIN</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: SAVOIR-FAIRE & ATELIER -->
+          <div class="nav-item-hermes">
+            <a href="#craftsmanship-section" class="nav-link-hermes" data-i18n="nav.catCraft">SAVOIR-FAIRE</a>
+            <div class="mega-menu-drawer">
+              <div class="container mega-menu-container">
+                <div class="mega-menu-featured">
+                  <img src="assets/images/craftsmanship-macro.jpg" alt="Savoir-Faire Zaphira">
+                  <span class="mega-featured-label">ATELIER ALGER HAUTE COUTURE</span>
+                </div>
+                <div class="mega-menu-links">
+                  <a href="#craftsmanship-section" class="mega-link-item">L'ART DU FAIT MAIN</a>
+                  <a href="#craftsmanship-section" class="mega-link-item">PLISSAGE D'ORGANZA DE SOIE</a>
+                  <a href="#craftsmanship-section" class="mega-link-item">SÉLECTION DES PERLES BAROQUES</a>
+                  <a href="#heritage-section" class="mega-link-item">L'HÉRITAGE DE LA PRINCESSE ZAPHIRA</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: JOURNAL -->
+          <div class="nav-item-hermes">
+            <a href="#journal-section" class="nav-link-hermes" data-i18n="nav.catJournal">JOURNAL</a>
+            <div class="mega-menu-drawer">
+              <div class="container mega-menu-container">
+                <div class="mega-menu-featured">
+                  <img src="assets/images/journal-4.jpg" alt="Journal Éditorial">
+                  <span class="mega-featured-label">ÉDITORIAL & STYLE</span>
+                </div>
+                <div class="mega-menu-links">
+                  <a href="#journal-section" class="mega-link-item">TOUS LES ARTICLES DU JOURNAL</a>
+                  <a href="#journal-section" class="mega-link-item">STYLING PARIS & ALGER</a>
+                  <a href="#journal-section" class="mega-link-item">HISTOIRE DES PERLES DE CULTURE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: CADEAUX & ÉCRINS -->
+          <div class="nav-item-hermes">
+            <a href="#collection-section" class="nav-link-hermes" data-i18n="nav.catGifts">CADEAUX</a>
+            <div class="mega-menu-drawer">
+              <div class="container mega-menu-container">
+                <div class="mega-menu-featured">
+                  <img src="assets/images/journal-1.jpg" alt="Écrins Cadeaux">
+                  <span class="mega-featured-label">CADEAUX D'EXCEPTION</span>
+                </div>
+                <div class="mega-menu-links">
+                  <a href="#collection-section" class="mega-link-item">CADEAUX POUR FEMME</a>
+                  <a href="#customizer-section" class="mega-link-item">SACS PERSONNALISÉS ÉDITION CADEAU</a>
+                  <a href="#newsletter-section" class="mega-link-item">ÉCRIN ATELIER & LIVRAISON SÉCURISÉE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category: A PROPOS DE ZAPHIRA -->
+          <div class="nav-item-hermes">
+            <a href="#heritage-section" class="nav-link-hermes" data-i18n="nav.catAbout">A PROPOS DE ZAPHIRA</a>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="drawer-backdrop" id="mobile-nav-backdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile menu">
+    <div class="mobile-nav-header">
+      <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" style="height: 72px; width: auto; object-fit: contain;">
+      <button type="button" class="modal-close-btn" id="mobile-nav-close" aria-label="Close menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#hero-section" class="mobile-nav-link" data-i18n="nav.home">Home</a>
+      <a href="#collection-section" class="mobile-nav-link" data-i18n="nav.collection">Collection</a>
+      <a href="#customizer-section" class="mobile-nav-link" data-i18n="nav.customize">Customize</a>
+      <a href="#craftsmanship-section" class="mobile-nav-link" data-i18n="nav.story">Story & Atelier</a>
+      <a href="#journal-section" class="mobile-nav-link" data-i18n="nav.journal">Journal</a>
+      <a href="#newsletter-section" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="mobile-nav-footer">
+      <div class="footer-hallmark" style="font-size: 0.6875rem;">Handcrafted in Algeria</div>
+      <div style="font-size: var(--text-xs); color: var(--text-muted);">Modern Feminine Luxury</div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       SECTION 02 — HERO SECTION (HERMES EDITORIAL STYLE)
+       ========================================================================== -->
+  <section class="hero-section hero-section-hermes" id="hero-section">
+    <!-- Fullscreen Background Video -->
+    <div class="hero-video-wrapper">
+      <video class="hero-bg-video" id="hero-video-el" autoplay loop muted playsinline poster="assests/images/background-image.png">
+        <source src="assests/video/video-back-ground.mp4" type="video/mp4">
+        <source src="assets/video/video-back-ground.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay-hermes"></div>
+    </div>
+
+    <!-- Bottom-Left Hermes Editorial Text -->
+    <div class="hermes-hero-content-wrapper">
+      <div class="hermes-hero-content reveal">
+        <h1 class="hermes-hero-title" data-i18n="hero.title">
+          <em>L'art du sur-mesure, façonné à la perfection</em>
+        </h1>
+        <p class="hermes-hero-description" data-i18n="hero.desc">
+          <em>Sacs d’exception en perles baroques et organza de soie, façonnés à la main en Algérie avec une grâce intemporelle.</em>
+        </p>
+        <div class="hermes-hero-actions">
+          <a href="#customizer-section" class="hermes-hero-link" id="hero-cta-create" data-i18n="hero.ctaPrimary">
+            CRÉER VOTRE SAC SUR-MESURE
+          </a>
+          <a href="#collection-section" class="hermes-hero-link" id="hero-cta-explore" data-i18n="hero.ctaSecondary">
+            DÉCOUVRIR LA COLLECTION
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom-Right Hermes Video Audio / Playback Controls -->
+    <div class="hermes-video-controls">
+      <button type="button" class="hermes-control-btn" id="hero-video-sound-toggle" aria-label="Toggle Sound">
+        <!-- Sound Muted Icon -->
+        <svg class="icon-sound-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+        <!-- Sound Active Icon -->
+        <svg class="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+      </button>
+
+      <button type="button" class="hermes-control-btn" id="hero-video-play-toggle" aria-label="Pause or Play Video">
+        <!-- Pause Icon -->
+        <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+        <!-- Play Icon -->
+        <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 03 — BRAND PROMISE
+       ========================================================================== -->
+  <section class="brand-promise-section" id="brand-promise-section">
+    <div class="container promise-grid">
+      
+      <!-- Promise 1: HANDMADE -->
+      <div class="promise-card reveal">
+        <div class="promise-icon-wrapper">
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 7.5c-1.4-1.6-3.5-1.9-5-.7-1.5 1.2-1.7 3.5-.4 5 1.6 1.9 5.4 4.7 5.4 4.7s3.8-2.8 5.4-4.7c1.3-1.5 1.1-3.8-.4-5-1.5-1.2-3.6-.9-5 .7z" />
+            <path d="M8 13.5c-1.8 2.2-2.2 5.2-1 8 1.2 2.8 3.8 4.8 6.8 5.2" />
+            <path d="M11 15.5c-1.2 1.8-1.2 4 0 5.8" />
+            <path d="M24 13.5c1.8 2.2 2.2 5.2 1 8-1.2 2.8-3.8 4.8-6.8 5.2" />
+            <path d="M21 15.5c1.2 1.8 1.2 4 0 5.8" />
+          </svg>
+        </div>
+        <h3 class="promise-title" data-i18n="promise.handmade">HANDMADE</h3>
+        <p class="promise-desc" data-i18n="promise.handmadeDesc">Every piece is carefully crafted by hand.</p>
+      </div>
+
+      <!-- Promise 2: PREMIUM MATERIALS -->
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-icon-wrapper">
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="16" r="9.5" />
+            <path d="M21.5 12a7.5 7.5 0 0 1 1.5 4.8c0 4.1-3.4 7.5-7.5 7.5-2 0-3.8-.8-5.1-2" />
+          </svg>
+        </div>
+        <h3 class="promise-title" data-i18n="promise.materials">PREMIUM MATERIALS</h3>
+        <p class="promise-desc" data-i18n="promise.materialsDesc">Pearls, organza & fine details for exceptional quality.</p>
+      </div>
+
+      <!-- Promise 3: MADE FOR YOU -->
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-icon-wrapper">
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.5 6.5a2.12 2.12 0 0 1 3 3l-12.5 12.5-4 1 1-4 12.5-12.5z" />
+            <path d="M19.5 9.5l3 3" />
+            <line x1="8" y1="25" x2="24" y2="25" />
+          </svg>
+        </div>
+        <h3 class="promise-title" data-i18n="promise.custom">MADE FOR YOU</h3>
+        <p class="promise-desc" data-i18n="promise.customDesc">Customize every detail to match your style.</p>
+      </div>
+
+      <!-- Promise 4: TIMELESS ELEGANCE -->
+      <div class="promise-card reveal reveal-delay-3">
+        <div class="promise-icon-wrapper">
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.5 22.5h21l-2.2-11.5-4.8 5.8-3.5-7.8-3.5 7.8-4.8-5.8L5.5 22.5z" />
+            <line x1="7" y1="25" x2="25" y2="25" />
+          </svg>
+        </div>
+        <h3 class="promise-title" data-i18n="promise.timeless">TIMELESS ELEGANCE</h3>
+        <p class="promise-desc" data-i18n="promise.timelessDesc">Classic design with a touch of modern sophistication.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 04 — CUSTOM BAG STUDIO
+       ========================================================================== -->
+  <section class="customizer-section section-padding" id="customizer-section">
+    <div class="container">
+      
+      <div class="section-header centered reveal">
+        <span class="eyebrow" data-i18n="customizer.eyebrow">YOUR STYLE, YOUR STORY</span>
+        <h2 data-i18n="customizer.heading">Create Your Bag</h2>
+        <div class="gold-accent-line centered"></div>
+      </div>
+
+      <div class="customizer-studio reveal" id="customizer-studio-root">
+        
+        <!-- Left: Summary & CTA -->
+        <div class="customizer-info-col">
+          <div>
+            <div class="caption" style="color: var(--color-champagne-dark); margin-bottom: var(--space-2);">Bespoke Atelier Service</div>
+            <h3 class="customizer-heading">The Zaphira Custom Creation</h3>
+            <p class="customizer-subtext" data-i18n="customizer.subtext">
+              Choose your colors, materials, pearls, chain and personalize every detail with your bespoke hot-stamped monogram.
+            </p>
+
+            <div class="customizer-specs-card">
+              <div class="specs-card-title">
+                <span>Selected Configuration</span>
+                <span class="badge badge-champagne" style="font-size: 0.6rem;">Atelier Ready</span>
+              </div>
+              <div class="specs-list">
+                <div class="specs-row">
+                  <span class="specs-label">Color:</span>
+                  <span class="specs-value" id="spec-summary-color">Warm Ivory</span>
+                </div>
+                <div class="specs-row">
+                  <span class="specs-label">Material:</span>
+                  <span class="specs-value" id="spec-summary-material">Sheer Silk Organza</span>
+                </div>
+                <div class="specs-row">
+                  <span class="specs-label">Pearls:</span>
+                  <span class="specs-value" id="spec-summary-pearls">Medium Luster</span>
+                </div>
+                <div class="specs-row">
+                  <span class="specs-label">Chain:</span>
+                  <span class="specs-value" id="spec-summary-chain">Champagne Gold</span>
+                </div>
+                <div class="specs-row">
+                  <span class="specs-label">Monogram:</span>
+                  <span class="specs-value" id="spec-summary-monogram">None</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="customizer-pricing-box">
+            <div class="pricing-label" data-i18n="customizer.basePriceLabel">Estimated Price</div>
+            <div class="pricing-amount" id="customizer-price-amount">18,500 DZD</div>
+            <button type="button" class="btn btn-primary btn-full" id="customizer-add-to-bag-btn" data-i18n="customizer.btnCreate">
+              Add Bespoke Bag to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Center: Interactive Preview Stage -->
+        <div class="customizer-preview-col">
+          <div class="preview-stage-container">
+            <div class="bag-preview-canvas" id="bag-preview-stage">
+              <img id="bag-layer-base-img" class="bag-layer-base" src="assets/images/product-pearl-ivory.jpg" alt="Custom Zaphira bag preview">
+              <div id="bag-layer-monogram-badge" class="bag-layer-monogram"></div>
+            </div>
+          </div>
+          <div class="preview-controls-bar">
+            <span class="caption" style="color: var(--color-taupe);">Real-time Atelier Rendering</span>
+          </div>
+        </div>
+
+        <!-- Right: Modular Controls -->
+        <div class="customizer-controls-col">
+          
+          <!-- 1. Color Palette -->
+          <div class="option-group">
+            <div class="option-group-header">
+              <span class="option-group-title">1. Color</span>
+              <span class="option-group-selected-val" id="selected-color-label">Warm Ivory</span>
+            </div>
+            <div class="swatches-grid" id="customizer-colors-container"></div>
+          </div>
+
+          <!-- 2. Material -->
+          <div class="option-group">
+            <div class="option-group-header">
+              <span class="option-group-title">2. Material</span>
+              <span class="option-group-selected-val" id="selected-material-label">Sheer Silk Organza</span>
+            </div>
+            <div class="options-pills-row" id="customizer-materials-container"></div>
+          </div>
+
+          <!-- 3. Pearl Details -->
+          <div class="option-group">
+            <div class="option-group-header">
+              <span class="option-group-title">3. Pearls</span>
+              <span class="option-group-selected-val" id="selected-pearl-label">Medium Luster</span>
+            </div>
+            <div class="options-pills-row" id="customizer-pearls-container"></div>
+          </div>
+
+          <!-- 4. Chain Hardware -->
+          <div class="option-group">
+            <div class="option-group-header">
+              <span class="option-group-title">4. Chain</span>
+              <span class="option-group-selected-val" id="selected-chain-label">Champagne Gold</span>
+            </div>
+            <div class="options-pills-row" id="customizer-chains-container"></div>
+          </div>
+
+          <!-- 5. Monogram Foil -->
+          <div class="option-group">
+            <div class="option-group-header">
+              <span class="option-group-title">5. Bespoke Monogram</span>
+              <span class="badge badge-champagne" style="font-size: 0.6rem;">+1,500 DZD</span>
+            </div>
+            <div class="monogram-input-box">
+              <input type="text" id="customizer-monogram-input" class="input-luxury monogram-input" maxlength="3" placeholder="INITIALS">
+              <span style="font-size: var(--text-xs); color: var(--text-muted); line-height: 1.4;">Up to 3 letters hot-stamped in 24k gold foil.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 05 — COLLECTION
+       ========================================================================== -->
+  <section class="collection-section section-padding" id="collection-section">
+    <div class="container">
+      
+      <div class="section-header centered reveal">
+        <span class="eyebrow" data-i18n="collection.eyebrow">OUR COLLECTION</span>
+        <h2 data-i18n="collection.heading">Timeless Pieces</h2>
+        <div class="gold-accent-line centered"></div>
+      </div>
+
+      <div class="collection-grid" id="collection-grid-container">
+        <!-- Rendered dynamically by collection.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 06 — EDITORIAL STORY
+       ========================================================================== -->
+  <section class="editorial-story-section section-padding" id="craftsmanship-section">
+    <div class="container editorial-grid">
+      
+      <!-- Macro Craftsmanship Image -->
+      <div class="editorial-image-frame reveal">
+        <img src="assets/images/craftsmanship-macro.jpg" alt="Atelier artisan hand-stitching organza and pearls" loading="lazy">
+      </div>
+
+      <!-- Story Narrative -->
+      <div class="editorial-content reveal reveal-delay-2">
+        <span class="eyebrow" data-i18n="craft.eyebrow">THE ART OF HANDMADE</span>
+        <h2 class="editorial-quote" data-i18n="craft.quote">
+          “Crafted with Passion, Loved for a Lifetime.”
+        </h2>
+        <p class="editorial-text" data-i18n="craft.text">
+          Each Zaphira bag is a result of meticulous craftsmanship and dedication to beauty in every detail. In our Algiers atelier, master artisans hand-stitch delicate organza layers and individually string lustrous freshwater pearls with quiet perfection.
+        </p>
+        <button type="button" class="btn btn-outline" id="craft-story-btn" data-i18n="craft.cta">
+          Discover Our Story
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 07 — ALGERIA HERITAGE
+       ========================================================================== -->
+  <section class="heritage-section section-padding" id="heritage-section">
+    <div class="container heritage-grid">
+      
+      <!-- Heritage Narrative -->
+      <div class="heritage-content reveal">
+        <span class="eyebrow eyebrow-dark" data-i18n="heritage.eyebrow">CULTURAL HERITAGE</span>
+        <h2 class="heritage-headline" data-i18n="heritage.headline">
+          Born in Algeria.<br><span>Made for the world.</span>
+        </h2>
+        <p class="heritage-desc" data-i18n="heritage.desc">
+          Inspired by Princess Zaphira, the legendary last princess of Algiers, representing exquisite taste, culture, elegance, and traditional haute couture reinterpreted through quiet modern luxury.
+        </p>
+        <button type="button" class="btn btn-outline-light" id="heritage-story-btn" data-i18n="heritage.cta">
+          Explore Our Heritage
+        </button>
+      </div>
+
+      <!-- Heritage Visual -->
+      <div class="heritage-image-frame reveal reveal-delay-2">
+        <img src="assets/images/algeria-heritage.jpg" alt="Princess Zaphira heritage haute couture tribute in Algiers palace" loading="lazy">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 08 — SOCIAL PROOF / TESTIMONIALS
+       ========================================================================== -->
+  <section class="testimonials-section section-padding" id="testimonials-section">
+    <div class="container">
+      
+      <div class="section-header centered reveal">
+        <span class="eyebrow" data-i18n="social.eyebrow">CLIENT VOICES</span>
+        <h2 data-i18n="social.heading">Cherished by Connoisseurs</h2>
+        <div class="gold-accent-line centered"></div>
+      </div>
+
+      <div class="testimonials-slider-container reveal">
+        <div class="testimonial-quote-large" id="testimonial-quote-text">
+          “Every detail feels like it was made especially for me. The organza draping and freshwater pearls are even more breathtaking in person.”
+        </div>
+        <div class="testimonial-author-meta">
+          <div class="testimonial-author-name" id="testimonial-author-name">Amina B.</div>
+          <div class="testimonial-author-location" id="testimonial-author-loc">Algiers, Hydra • Custom Pearl Ivory</div>
+        </div>
+        <div class="testimonial-nav-dots" id="testimonial-dots-container"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 09 — JOURNAL / INSTAGRAM FEED
+       ========================================================================== -->
+  <section class="journal-section section-padding" id="journal-section">
+    <div class="container">
+      
+      <div class="section-header centered reveal">
+        <span class="eyebrow" data-i18n="journal.eyebrow">ATELIER FEED</span>
+        <h2 data-i18n="journal.heading">Journal & Stories</h2>
+        <div class="gold-accent-line centered"></div>
+      </div>
+
+      <div class="journal-grid" id="journal-grid-container">
+        <!-- Rendered dynamically by main.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 10 — NEWSLETTER / EXCLUSIVE ACCESS
+       ========================================================================== -->
+  <section class="newsletter-section section-padding" id="newsletter-section">
+    <div class="container">
+      <div class="newsletter-box reveal">
+        <span class="eyebrow" data-i18n="newsletter.eyebrow">EXCLUSIVE ACCESS</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: var(--space-3);" data-i18n="newsletter.heading">
+          Be the first to discover new designs.
+        </h2>
+        <p style="font-size: var(--text-sm); color: var(--text-secondary); max-width: 440px; margin-bottom: var(--space-4); line-height: 1.6; font-weight: 300;" data-i18n="newsletter.desc">
+          Receive private invitations to preview new seasonal collections and bespoke atelier releases.
+        </p>
+
+        <form class="newsletter-form" id="newsletter-subscription-form">
+          <input type="email" required class="input-luxury" placeholder="YOUR EMAIL ADDRESS" data-i18n-placeholder="newsletter.placeholder" aria-label="Email address">
+          <button type="submit" class="btn btn-primary" data-i18n="newsletter.btn">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 11 — LUXURY FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Brand Summary -->
+        <div class="footer-brand-col">
+          <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" class="footer-logo-img">
+          <p class="footer-brand-tagline" data-i18n="footer.brandDesc">
+            Modern feminine luxury, handcrafted in Algeria, made personal through bespoke customization.
+          </p>
+        </div>
+
+        <!-- Shop Links -->
+        <div>
+          <div class="footer-col-title" data-i18n="footer.shop">Shop</div>
+          <div class="footer-links">
+            <a href="#collection-section" class="footer-link">Collection</a>
+            <a href="#customizer-section" class="footer-link">Customize Your Bag</a>
+            <a href="#collection-section" class="footer-link">New Arrivals</a>
+            <a href="#collection-section" class="footer-link">Evening Pearls</a>
+          </div>
+        </div>
+
+        <!-- About Links -->
+        <div>
+          <div class="footer-col-title" data-i18n="footer.about">About</div>
+          <div class="footer-links">
+            <a href="#craftsmanship-section" class="footer-link">Our Story</a>
+            <a href="#craftsmanship-section" class="footer-link">Craftsmanship</a>
+            <a href="#heritage-section" class="footer-link">Princess Zaphira</a>
+            <a href="#journal-section" class="footer-link">Journal</a>
+          </div>
+        </div>
+
+        <!-- Customer Care -->
+        <div>
+          <div class="footer-col-title" data-i18n="footer.customerCare">Customer Care</div>
+          <div class="footer-links">
+            <a href="#newsletter-section" class="footer-link">Contact Atelier</a>
+            <a href="#newsletter-section" class="footer-link">Algeria 58 Wilayas</a>
+            <a href="#newsletter-section" class="footer-link">Worldwide Shipping</a>
+            <a href="#newsletter-section" class="footer-link">Care & Maintenance</a>
+          </div>
+        </div>
+
+        <!-- Follow -->
+        <div>
+          <div class="footer-col-title" data-i18n="footer.follow">Follow</div>
+          <div class="footer-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="footer-link">Pinterest</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-hallmark" data-i18n="footer.hallmark">HANDCRAFTED IN ALGERIA</div>
+        <div>© 2026 ZAPHIRA Haute Couture. All rights reserved.</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS & DRAWERS
+       ========================================================================== -->
+
+  <!-- Quick View Product Modal -->
+  <div class="modal-backdrop" id="quickview-backdrop"></div>
+  <div class="modal-content-wrapper" id="quickview-modal-wrapper" role="dialog" aria-modal="true" aria-label="Product quick view"></div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-backdrop" id="cart-drawer-backdrop"></div>
+  <aside class="cart-drawer-container" id="cart-drawer" role="dialog" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <div>
+        <span class="brand-wordmark" style="font-size: 1.25rem;">Shopping Bag</span>
+        <span id="cart-drawer-count" style="font-size: var(--text-xs); color: var(--text-muted);">(0)</span>
+      </div>
+      <button type="button" class="modal-close-btn" id="cart-drawer-close" aria-label="Close bag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Items rendered dynamically -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+        <span style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--text-secondary);">Subtotal</span>
+        <span id="cart-subtotal-display" style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; color: var(--color-charcoal);">0 DZD</span>
+      </div>
+      <p style="font-size: 0.6875rem; color: var(--text-muted); margin-bottom: var(--space-4); text-align: center;">
+        Complimentary insured delivery & luxury box packaging included.
+      </p>
+      <button type="button" class="btn btn-primary btn-full" id="cart-checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkout-backdrop"></div>
+  <div class="modal-content-wrapper" id="checkout-modal-wrapper" role="dialog" aria-modal="true" aria-label="Checkout"></div>
+
+  <!-- Live Search Modal -->
+  <div class="modal-backdrop" id="search-backdrop"></div>
+  <div class="modal-content-wrapper" id="search-modal-wrapper" role="dialog" aria-modal="true" aria-label="Search creations"></div>
+
+  <!-- Brand Story Modal -->
+  <div class="modal-backdrop" id="story-backdrop"></div>
+  <div class="modal-content-wrapper" id="story-modal-wrapper" role="dialog" aria-modal="true" aria-label="Brand Story"></div>
+
+  <!-- Main JavaScript Application -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
