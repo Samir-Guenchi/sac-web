@@ -29,7 +29,20 @@ class CartStore {
   loadCart() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : [];
+      if (!saved) return [];
+      const items = JSON.parse(saved);
+      return Array.isArray(items) ? items.map(item => {
+        if (item && item.image) {
+          item.image = item.image
+            .replace('assests/', 'assets/')
+            .replace('assets/images/product-', 'assets/images/products/product-')
+            .replace('assets/images/hero-bag.jpg', 'assets/images/products/hero-bag.jpg')
+            .replace('assets/images/logo-zaphira.svg', 'assets/images/branding/logo-zaphira.svg')
+            .replace('assets/images/boite-orange.jpg', 'assets/images/branding/boite-orange.jpg')
+            .replace('assets/images/journal-', 'assets/images/editorial/journal-');
+        }
+        return item;
+      }) : [];
     } catch (e) {
       console.warn('Could not load cart from storage', e);
       return [];
