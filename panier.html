@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/panier.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="panier-page">
 
@@ -31,7 +32,7 @@
         </a>
 
         <a href="index.html" class="panier-logo-link" aria-label="Accueil ZAPHIRA">
-          <img src="assests/images/logo-zaphira.svg" alt="ZAPHIRA" class="panier-logo-img">
+          <img src="assets/images/logo-zaphira.svg" alt="ZAPHIRA" class="panier-logo-img">
         </a>
 
         <div></div>
@@ -75,15 +76,15 @@
                   <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
               </div>
-              <p class="empty-cart-text">Votre panier est vide</p>
+              <h1 class="empty-cart-text">Votre panier est vide</h1>
               <a href="index.html" class="btn-continue-shopping">CONTINUEZ VOS ACHATS</a>
             </div>
 
             <!-- Non-Empty Cart Content -->
             <div id="filled-cart-view" style="display: none;">
-              <div class="panier-heading" id="panier-count-header">
+              <h1 class="panier-heading" id="panier-count-header">
                 VOUS AVEZ 0 OBJET DANS VOTRE PANIER.
-              </div>
+              </h1>
 
               <!-- Cart Items Dynamic List -->
               <div class="panier-items-list" id="panier-items-container"></div>
@@ -128,7 +129,7 @@
             
             <!-- La Boîte Orange Card -->
             <div class="panier-sidebar-card">
-              <div class="panier-sidebar-title">LA BOÎTE ORANGE</div>
+              <h2 class="panier-sidebar-title">LA BOÎTE ORANGE</h2>
               <div class="panier-box-content">
                 <img src="assets/images/boite-orange.jpg" alt="La Boîte Orange" class="panier-box-img">
                 <p class="panier-box-text">
@@ -139,7 +140,7 @@
 
             <!-- Service Client Card -->
             <div class="panier-sidebar-card">
-              <div class="panier-sidebar-title">SERVICE CLIENT</div>
+              <h2 class="panier-sidebar-title">SERVICE CLIENT</h2>
               
               <div class="panier-service-block">
                 <p class="panier-service-text">
@@ -184,7 +185,7 @@
             
             <!-- Compte Section -->
             <div class="checkout-section-box">
-              <div class="checkout-section-title">VOTRE COMPTE & COORDONNÉES</div>
+              <h2 class="checkout-section-title">VOTRE COMPTE & COORDONNÉES</h2>
               <div class="checkout-form-grid">
                 <div class="hermes-form-group full-width">
                   <label class="hermes-form-label" for="checkout-email">E-mail *</label>
@@ -195,7 +196,7 @@
 
             <!-- Livraison Section -->
             <div class="checkout-section-box">
-              <div class="checkout-section-title">ADRESSE DE LIVRAISON</div>
+              <h2 class="checkout-section-title">ADRESSE DE LIVRAISON</h2>
               <div class="checkout-form-grid">
                 <div class="hermes-form-group">
                   <label class="hermes-form-label" for="checkout-prenom">Prénom *</label>
@@ -236,7 +237,7 @@
 
             <!-- Mode de Paiement Section -->
             <div class="checkout-section-box">
-              <div class="checkout-section-title">MODE DE PAIEMENT</div>
+              <h2 class="checkout-section-title">MODE DE PAIEMENT</h2>
               <div class="payment-methods-list">
                 <label class="payment-method-item is-selected">
                   <input type="radio" name="payment-method" value="cod" checked>
@@ -272,7 +273,7 @@
           <!-- Right Column: Order Summary -->
           <div class="panier-sidebar">
             <div class="panier-sidebar-card">
-              <div class="panier-sidebar-title">RÉCAPITULATIF DE VOTRE COMMANDE</div>
+              <h2 class="panier-sidebar-title">RÉCAPITULATIF DE VOTRE COMMANDE</h2>
               <div class="panier-totals-box">
                 <div class="panier-total-row">
                   <span>Sous-total</span>

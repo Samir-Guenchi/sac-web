@@ -32,6 +32,7 @@ export const I18N = {
       badge: 'Algerian Haute Couture'
     },
     promise: {
+      heading: 'Our Promises & Craftsmanship',
       handmade: 'Handmade',
       handmadeDesc: 'Every piece is carefully crafted by hand.',
       materials: 'Premium Materials',
@@ -120,6 +121,7 @@ export const I18N = {
       badge: 'Haute Couture Algérienne'
     },
     promise: {
+      heading: 'Nos Engagements & Promesses',
       handmade: 'Fait Main',
       handmadeDesc: 'Chaque pièce est soigneusement façonnée à la main.',
       materials: 'Matières Nobles',
@@ -208,6 +210,7 @@ export const I18N = {
       badge: 'هوت كوتور جزائري فاخر'
     },
     promise: {
+      heading: 'وعودنا والتزاماتنا',
       handmade: 'صناعة يدوية خالصة',
       handmadeDesc: 'تُصاغ كل قطعة بعناية فائقة وتطريز يدوي دقيق.',
       materials: 'أفخر الخامات',
