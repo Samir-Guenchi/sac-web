@@ -52,10 +52,10 @@ export function initStoryModal() {
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
           <div style="border-radius: var(--radius-xs); overflow: hidden; border: 1px solid var(--border-champagne);">
-            <img src="assets/images/algeria-heritage.jpg" alt="Princess Zaphira Haute Couture" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="assets/images/editorial/algeria-heritage.jpg" alt="Princess Zaphira Haute Couture" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div style="border-radius: var(--radius-xs); overflow: hidden; border: 1px solid var(--border-champagne);">
-            <img src="assets/images/craftsmanship-macro.jpg" alt="Atelier Needlework" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="assets/images/editorial/craftsmanship-macro.jpg" alt="Atelier Needlework" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
 

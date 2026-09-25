@@ -15,7 +15,7 @@ export const CUSTOMIZER_CONFIG = {
       previewFilter: 'none',
       tintColor: 'transparent',
       priceModifierDZD: 0,
-      imageRef: 'assets/images/product-pearl-ivory.jpg'
+      imageRef: 'assets/images/products/product-pearl-ivory.jpg'
     },
     {
       id: 'noir',
@@ -24,7 +24,7 @@ export const CUSTOMIZER_CONFIG = {
       previewFilter: 'brightness(0.2) contrast(1.2)',
       tintColor: 'rgba(25, 24, 23, 0.75)',
       priceModifierDZD: 1300,
-      imageRef: 'assets/images/product-noir-prestige.jpg'
+      imageRef: 'assets/images/products/product-noir-prestige.jpg'
     },
     {
       id: 'blush',
@@ -33,7 +33,7 @@ export const CUSTOMIZER_CONFIG = {
       previewFilter: 'sepia(0.3) hue-rotate(310deg) saturate(1.2)',
       tintColor: 'rgba(184, 141, 141, 0.4)',
       priceModifierDZD: 0,
-      imageRef: 'assets/images/product-blush-organza.jpg'
+      imageRef: 'assets/images/products/product-blush-organza.jpg'
     },
     {
       id: 'taupe',
@@ -42,7 +42,7 @@ export const CUSTOMIZER_CONFIG = {
       previewFilter: 'sepia(0.3) saturate(0.8) brightness(0.6)',
       tintColor: 'rgba(117, 107, 97, 0.55)',
       priceModifierDZD: 2500,
-      imageRef: 'assets/images/product-taupe-elegance.jpg'
+      imageRef: 'assets/images/products/product-taupe-elegance.jpg'
     },
     {
       id: 'champagne',
@@ -51,7 +51,7 @@ export const CUSTOMIZER_CONFIG = {
       previewFilter: 'sepia(0.4) saturate(1.3) brightness(0.95)',
       tintColor: 'rgba(214, 185, 140, 0.45)',
       priceModifierDZD: 1800,
-      imageRef: 'assets/images/hero-bag.jpg'
+      imageRef: 'assets/images/products/hero-bag.jpg'
     }
   ],
 

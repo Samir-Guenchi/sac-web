@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
           <div class="panier-item-card" data-item-idx="${idx}">
             <div class="panier-item-image">
-              <img src="${item.image || 'assets/images/product-pearl-ivory.jpg'}" alt="${item.name}">
+              <img src="${item.image || 'assets/images/products/product-pearl-ivory.jpg'}" alt="${item.name}">
             </div>
             <div class="panier-item-details">
               <div>

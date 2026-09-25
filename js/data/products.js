@@ -18,11 +18,11 @@ export const PRODUCTS = [
     dimensions: '22cm (W) x 16cm (H) x 8cm (D)',
     hardware: 'Champagne Gold Clasp & Chain',
     images: {
-      primary: 'assets/images/product-pearl-ivory.jpg',
+      primary: 'assets/images/products/product-pearl-ivory.jpg',
       gallery: [
-        'assets/images/product-pearl-ivory.jpg',
-        'assets/images/hero-bag.jpg',
-        'assets/images/craftsmanship-macro.jpg'
+        'assets/images/products/product-pearl-ivory.jpg',
+        'assets/images/products/hero-bag.jpg',
+        'assets/images/editorial/craftsmanship-macro.jpg'
       ]
     },
     defaultConfig: {
@@ -47,10 +47,10 @@ export const PRODUCTS = [
     dimensions: '21cm (W) x 15cm (H) x 7.5cm (D)',
     hardware: '18k Champagne Gold Lock Clasp',
     images: {
-      primary: 'assets/images/product-noir-prestige.jpg',
+      primary: 'assets/images/products/product-noir-prestige.jpg',
       gallery: [
-        'assets/images/product-noir-prestige.jpg',
-        'assets/images/craftsmanship-macro.jpg'
+        'assets/images/products/product-noir-prestige.jpg',
+        'assets/images/editorial/craftsmanship-macro.jpg'
       ]
     },
     defaultConfig: {
@@ -75,10 +75,10 @@ export const PRODUCTS = [
     dimensions: '22cm (W) x 16cm (H) x 8cm (D)',
     hardware: 'Rose Gold & Champagne Hardware',
     images: {
-      primary: 'assets/images/product-blush-organza.jpg',
+      primary: 'assets/images/products/product-blush-organza.jpg',
       gallery: [
-        'assets/images/product-blush-organza.jpg',
-        'assets/images/journal-2.jpg'
+        'assets/images/products/product-blush-organza.jpg',
+        'assets/images/editorial/journal-2.jpg'
       ]
     },
     defaultConfig: {
@@ -103,10 +103,10 @@ export const PRODUCTS = [
     dimensions: '24cm (W) x 18cm (H) x 9cm (D)',
     hardware: 'Burnished Champagne Gold Lock & Key',
     images: {
-      primary: 'assets/images/product-taupe-elegance.jpg',
+      primary: 'assets/images/products/product-taupe-elegance.jpg',
       gallery: [
-        'assets/images/product-taupe-elegance.jpg',
-        'assets/images/journal-4.jpg'
+        'assets/images/products/product-taupe-elegance.jpg',
+        'assets/images/editorial/journal-4.jpg'
       ]
     },
     defaultConfig: {

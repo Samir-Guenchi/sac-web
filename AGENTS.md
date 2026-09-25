@@ -19,7 +19,7 @@ When executing any task, AI coding agents and human engineers must inspect **any
 - **JavaScript & Logic**: Application entry points, UI controllers, and reactive state in `js/`
 - **Data Layers**: Product catalogs, options matrices, multilingual dictionaries, and editorial articles in `js/data/`
 - **State Stores**: Cart and customizer state singletons in `js/state/`
-- **Media & Visual Assets**: Both `assets/` and `assests/` (SVG vectors, WebP/JPG/PNG photography, MP4 video)
+- **Media & Visual Assets**: Canonical `assets/` directory organized by category (`branding/`, `products/`, `editorial/`, `video/`)
 - **Version Control & Documentation**: `.git/`, `AGENTS.md`, `SKILL.md`, `github/github.md`
 
 ### Context Rules
@@ -91,7 +91,7 @@ sac-web/
 │       ├── search-modal.js      # Live full-text search overlay over products & materials
 │       ├── story-modal.js       # Heritage & craftsmanship modal narrative
 │       └── toast.js             # Ephemeral floating notification system
-└── assets/ & assests/           # Visual assets, SVG vectors, product imagery, background video
+└── assets/                      # Canonical visual assets: branding/, products/, editorial/, video/
 ```
 
 ### Detailed Subsystem Responsibilities
@@ -227,16 +227,23 @@ Before writing a single line of code, answer:
 
 ---
 
-## 8. Asset Management: `assets/` and `assests/`
+## 8. Asset Management: Canonical `assets/` Structure
 
-The repository currently contains two asset directories:
-- `assets/`: Contains primary product photography, journal editorial imagery, craftsmanship macros, Algerian heritage photography, and video.
-- `assests/`: A typographical spelling containing duplicates of the brand logo SVG, hero background video, and select images referenced in existing HTML markup.
+All visual and multimedia assets reside strictly in the canonical `assets/` directory:
+
+```text
+assets/
+├── images/
+│   ├── branding/    # Brand logo SVG, background poster, Boîte Orange packaging
+│   ├── products/    # Handbags (Pearl Ivory, Noir Prestige, Blush, Taupe, Hero)
+│   └── editorial/   # Craftsmanship macro, Algerian heritage, Atelier journal stories
+└── video/           # Hero background video (video-back-ground.mp4)
+```
 
 ### Strict Asset Rules:
-1. **Never delete either directory arbitrarily**: Both directories are actively referenced across HTML files (`index.html`, `panier.html`, `compte.html`).
-2. **Never create a third spelling variant**: Do not create `asset/`, `images/`, or similar folders at the root.
-3. **Trace every reference**: Before consolidating or renaming any asset, grep the entire codebase (HTML, CSS, JS, JSON) and update all references simultaneously.
+1. **Single Source of Truth**: All assets belong in `assets/` and its subdirectories. Never re-introduce `assests/` or loose root media.
+2. **Never create alternate spellings**: Do not create `assests/`, `asset/`, or `images/` at the root.
+3. **Trace every reference**: Before moving or renaming any asset, grep the entire codebase (HTML, CSS, JS, JSON) and update all references simultaneously.
 4. **Preserve image quality & aspect ratios**: When introducing or replacing imagery, preserve high resolution, appropriate aspect ratios (e.g. 3:4 for portrait product shots, 16:9 for hero video/heritage), and optimized file sizes.
 
 ---

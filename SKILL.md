@@ -68,7 +68,7 @@ Understand ZAPHIRA Identity (70% Luxury Discipline + 30% Modernist Artistry)
     ↓
 Inspect Existing Tokens (Colors, fonts, shadows in `css/tokens.css`)
     ↓
-Inspect Existing Assets (Check `assets/` and `assests/` before adding new files)
+Inspect Existing Assets (Check canonical `assets/` subdirectories before adding new files)
     ↓
 Inspect Sibling Components (Align markup, button classes, and spacing)
     ↓
@@ -161,10 +161,10 @@ Open PR for Review
 - [ ] User profile data stored in `localStorage.zaphira_user` is handled safely without leaking credentials.
 
 ### Asset Integrity Checklist
-- [ ] Asset references check both `assets/` and `assests/` before renaming or consolidating.
+- [ ] Asset references use canonical `assets/` subdirectories (`branding/`, `products/`, `editorial/`, `video/`).
 - [ ] Images load without 404 errors in the browser network tab.
 - [ ] SVGs retain clean viewports and scale without clipping.
-- [ ] Hero video has working fallback poster image (`assets/images/background-image.png`).
+- [ ] Hero video has working fallback poster image (`assets/images/branding/background-image.png`).
 
 ---
 
