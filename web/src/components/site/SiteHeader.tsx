@@ -30,7 +30,7 @@ const MEGA_MENU = [
       ['craftHandmade', 'craftsmanship-section'],
       ['craftPleating', 'craftsmanship-section'],
       ['craftPearls', 'craftsmanship-section'],
-      ['craftHeritage', 'heritage-section']
+      ['craftHeritage', 'maison#legende']
     ]
   },
   {
@@ -61,7 +61,7 @@ const MOBILE_LINKS = [
   ['home', 'hero-section'],
   ['collection', 'collection-section'],
   ['customize', 'customizer-section'],
-  ['story', 'craftsmanship-section'],
+  ['story', 'maison'],
   ['journal', 'journal-section'],
   ['contact', 'newsletter-section']
 ] as const;
@@ -74,7 +74,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const home = `/${locale}`;
-  const section = (id: string) => `${home}#${id}`;
+  const section = (id: string) => (id.startsWith('maison') ? `${home}/${id}` : `${home}#${id}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -243,7 +243,7 @@ export function SiteHeader() {
                 </div>
               ))}
               <div className="nav-item-hermes">
-                <Link href={section('heritage-section')} className="nav-link-hermes">
+                <Link href={`${home}/maison`} className="nav-link-hermes">
                   {t('nav.catAbout')}
                 </Link>
               </div>

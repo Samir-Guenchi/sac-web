@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [catalog, pages] = await Promise.all([getCatalog(), getPublishedPages()]);
   const paths = [
     '',
+    '/maison',
     '/collections',
     ...catalog.categories.map(c => `/collections/${c.id}`),
     ...catalog.products.map(p => `/produits/${p.id}`),

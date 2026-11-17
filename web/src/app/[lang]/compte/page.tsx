@@ -108,7 +108,7 @@ function CompteFooter({ t, locale }: { t: TFunction; locale: Locale }) {
   const columns: Array<[string, Array<[string, string]>]> = [
     ['compte.footerServices', [['compte.contactUs', `${home}/pages/contact`], ['compte.faq', `${home}/pages/faq`], ['compte.bespoke', `${home}#customizer-section`]]],
     ['compte.footerOrders', [['compte.payment', `${home}/panier`], ['compte.delivery', `${home}/pages/livraison-retours`], ['compte.tracking', `${home}/suivi`]]],
-    ['compte.footerHouse', [['compte.princessStory', `${home}#heritage-section`], ['compte.atelier', `${home}#craftsmanship-section`], ['compte.journal', `${home}#journal-section`]]],
+    ['compte.footerHouse', [['compte.princessStory', `${home}/maison#legende`], ['compte.atelier', `${home}/maison#atelier`], ['compte.journal', `${home}#journal-section`]]],
     ['compte.footerLegal', [['compte.terms', `${home}/pages/cgv`], ['compte.privacy', `${home}/pages/confidentialite`], ['links.legalNotice', `${home}/pages/mentions-legales`]]]
   ];
   return (

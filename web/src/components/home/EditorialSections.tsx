@@ -1,8 +1,10 @@
 import type { SiteMedia } from '@/lib/catalog-types';
 import type { TFunction } from '@/lib/i18n/translate';
+import Link from 'next/link';
+import type { Locale } from '@/lib/i18n/config';
 import { StoryButton } from './StoryButton';
 
-export function EditorialSections({ t, media }: { t: TFunction; media: SiteMedia }) {
+export function EditorialSections({ t, media, locale }: { t: TFunction; media: SiteMedia; locale: Locale }) {
   return (
     <>
       <section className="editorial-story-section section-padding" id="craftsmanship-section">
@@ -28,7 +30,7 @@ export function EditorialSections({ t, media }: { t: TFunction; media: SiteMedia
             <span className="eyebrow eyebrow-dark">{t('heritage.eyebrow')}</span>
             <h2 className="heritage-headline">{t('heritage.headline')}</h2>
             <p className="heritage-desc">{t('heritage.desc')}</p>
-            <StoryButton className="btn btn-outline-light">{t('heritage.cta')}</StoryButton>
+            <Link href={`/${locale}/maison`} className="btn btn-outline-light">{t('heritage.cta')}</Link>
           </div>
           {/* Heritage Visual */}
           <div className="heritage-image-frame reveal reveal-delay-2">

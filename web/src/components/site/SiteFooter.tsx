@@ -37,9 +37,9 @@ export async function SiteFooter({ t, locale }: { t: TFunction; locale: Locale }
           <div>
             <div className="footer-col-title">{t('footer.about')}</div>
             <div className="footer-links">
-              <Link href={`${home}#craftsmanship-section`} className="footer-link">{t('links.ourStory')}</Link>
-              <Link href={`${home}#craftsmanship-section`} className="footer-link">{t('links.craftsmanship')}</Link>
-              <Link href={`${home}#heritage-section`} className="footer-link">{t('links.princess')}</Link>
+              <Link href={`${home}/maison`} className="footer-link">{t('links.ourStory')}</Link>
+              <Link href={`${home}/maison#savoir-faire`} className="footer-link">{t('links.craftsmanship')}</Link>
+              <Link href={`${home}/maison#legende`} className="footer-link">{t('links.princess')}</Link>
               <Link href={`${home}#journal-section`} className="footer-link">{t('links.journal')}</Link>
             </div>
           </div>

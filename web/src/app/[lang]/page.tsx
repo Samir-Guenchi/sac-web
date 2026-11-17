@@ -26,7 +26,7 @@ export default async function HomePage() {
         <BrandPromise t={t} />
         <Customizer />
         <CollectionGrid />
-        <EditorialSections t={t} media={catalog.settings.media} />
+        <EditorialSections t={t} media={catalog.settings.media} locale={locale} />
         <Testimonials items={testimonials} />
         <Journal entries={journal} />
         <Newsletter />
