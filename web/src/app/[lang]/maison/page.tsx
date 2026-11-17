@@ -58,7 +58,7 @@ export default async function MaisonPage() {
           <p>{t('about.legendText1')}</p>
           <p>{t('about.legendText2')}</p>
         </div>
-        <div className="about-split-image">
+        <div className="about-split-image reveal reveal-image">
           <img src={media.heroPoster} alt="" loading="lazy" />
         </div>
       </section>
@@ -70,7 +70,7 @@ export default async function MaisonPage() {
           <p>{t('about.atelierText1')}</p>
           <p>{t('about.atelierText2')}</p>
         </div>
-        <div className="about-split-image">
+        <div className="about-split-image reveal reveal-image">
           <img src={media.craftImage} alt={t('media.craftAlt')} loading="lazy" />
         </div>
       </section>
@@ -82,7 +82,7 @@ export default async function MaisonPage() {
         </header>
         <ol>
           {steps.map(n => (
-            <li key={n}>
+            <li key={n} className="reveal">
               <span className="about-step-number">{String(n).padStart(2, '0')}</span>
               <h3>{t(`about.step${n}Title`)}</h3>
               <p>{t(`about.step${n}Text`)}</p>
@@ -98,7 +98,7 @@ export default async function MaisonPage() {
         </header>
         <div className="about-commitments-grid">
           {commitments.map(([n, icon]) => (
-            <div key={n} className="about-commitment">
+            <div key={n} className="about-commitment reveal">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d={icon} />
               </svg>
@@ -117,7 +117,7 @@ export default async function MaisonPage() {
           </header>
           <div className="about-collections-grid">
             {collections.map(c => (
-              <Link key={c.id} href={`${home}/collections/${c.id}`} className="about-collection-card">
+              <Link key={c.id} href={`${home}/collections/${c.id}`} className="about-collection-card reveal">
                 <img src={c.cover} alt="" loading="lazy" />
                 <span className="about-collection-name">{pick(c.name, locale)}</span>
                 <span className="about-collection-cta">{t('about.discover')} →</span>

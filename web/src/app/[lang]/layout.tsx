@@ -27,6 +27,7 @@ import '@/styles/about.css';
 import '@/styles/responsive.css';
 import '@/styles/fonts.css';
 import '@/styles/app.css';
+import '@/styles/animations.css';
 
 const serif = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '500', '600', '700'], style: ['normal', 'italic'], variable: '--nf-serif' });
 const display = Playfair_Display({ subsets: ['latin'], weight: ['400', '500', '600', '700'], style: ['normal', 'italic'], variable: '--nf-display' });

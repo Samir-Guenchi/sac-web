@@ -3,6 +3,7 @@ import { CollectionGrid } from '@/components/home/CollectionGrid';
 import { Customizer } from '@/components/home/Customizer';
 import { EditorialSections } from '@/components/home/EditorialSections';
 import { Hero } from '@/components/home/Hero';
+import { Marquee } from '@/components/home/Marquee';
 import { Journal } from '@/components/home/Journal';
 import { Newsletter } from '@/components/home/Newsletter';
 import { Testimonials } from '@/components/home/Testimonials';
@@ -23,6 +24,7 @@ export default async function HomePage() {
       <SiteHeader />
       <main id="main-content">
         <Hero />
+        <Marquee t={t} />
         <BrandPromise t={t} />
         <Customizer />
         <CollectionGrid />

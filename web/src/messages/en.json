@@ -161,7 +161,7 @@
     "giftPlaceholder": "Write your calligraphed gift message (complimentary)...",
     "order": "CHECKOUT",
     "boxTitle": "THE ZAPHIRA CASKET",
-    "boxText": "Every creation travels in our ivory casket, tied with a champagne ribbon and sealed with the Z monogram.",
+    "boxText": "Every creation travels in our Picasso-blue box with its beige band and gold Z, delivered in the matching ribbon-handled bag with a signed card.",
     "serviceTitle": "CUSTOMER SERVICE",
     "serviceWhatsapp": "WhatsApp:",
     "returns": "Returns & exchanges",
@@ -476,7 +476,7 @@
     "step4Title": "Personalisation",
     "step4Text": "For bespoke creations, your colours, materials and gold monogram are applied in the atelier.",
     "step5Title": "Inspection & the casket",
-    "step5Text": "Each bag is inspected, then placed in its ivory Zaphira casket with a champagne ribbon before delivery.",
+    "step5Text": "Each bag is inspected, then placed in its Picasso-blue Zaphira box with a beige band and gold monogram, inside the matching ribbon-handled bag.",
     "commitEyebrow": "Our commitments",
     "commitTitle": "What you can count on",
     "commit1Title": "Handmade in Algeria",
@@ -513,5 +513,12 @@
     "marketingTitle": "Marketing",
     "marketingText": "Lets Meta (Facebook, Instagram) measure our ads and show you relevant ones.",
     "manage": "Cookie settings"
+  },
+  "marquee": {
+    "item1": "Handmade in Algiers",
+    "item2": "Free delivery to all 69 wilayas",
+    "item3": "Bespoke monogram in gold",
+    "item4": "Cash on delivery",
+    "item5": "Made to order, just for you"
   }
 }

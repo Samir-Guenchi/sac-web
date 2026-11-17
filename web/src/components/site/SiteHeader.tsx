@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { LOCALE_COOKIE, LOCALE_LABELS, LOCALES, isLocale } from '@/lib/i18n/config';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { LOCALE_COOKIE, LOCALES, isLocale } from '@/lib/i18n/config';
 import { CURRENCIES, isCurrency } from '@/lib/money';
 import { useStore } from '@/components/store/StoreProvider';
+import { Dropdown } from './Dropdown';
 
 // The leather-goods menu is built from the collections in the database (see LeatherMenu)
 const MEGA_MENU = [
@@ -68,20 +69,44 @@ const MOBILE_LINKS = [
 
 export function SiteHeader() {
   const { locale, t, loc, catalog, currency, setCurrency, cart, ui } = useStore();
-  const router = useRouter();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const badge = useRef<HTMLSpanElement>(null);
+  const previousCount = useRef<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const home = `/${locale}`;
   const section = (id: string) => (id.startsWith('maison') ? `${home}/${id}` : `${home}#${id}`);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // Hide while reading downwards, come back as soon as the visitor scrolls up
+      if (Math.abs(y - lastY) > 6) setHidden(y > lastY && y > 220);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Bounce the bag counter when an item is added (not on first load)
+  useEffect(() => {
+    if (!cart.hydrated) return;
+    if (previousCount.current !== null && cart.count > previousCount.current) {
+      // Replay the CSS bounce on the same element (re-keying it left stale copies behind)
+      const el = badge.current;
+      if (el) {
+        el.classList.remove('is-bump');
+        void el.offsetWidth;
+        el.classList.add('is-bump');
+      }
+    }
+    previousCount.current = cart.count;
+  }, [cart.count, cart.hydrated]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
@@ -94,12 +119,14 @@ export function SiteHeader() {
     if (!isLocale(next) || next === locale) return;
     document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
     const rest = pathname.replace(/^\/(fr|en|ar)(?=\/|$)/, '');
-    router.push(`/${next}${rest}${window.location.hash}`);
+    // Each language has its own root layout: a full load avoids keeping the previous language's tree around
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full load is intended (root layout changes)
+    window.location.assign(`/${next}${rest}${window.location.search}${window.location.hash}`);
   }
 
   return (
     <>
-      <header className={`site-header site-header-hermes${scrolled ? ' is-scrolled' : ''}`} id="site-header">
+      <header className={`site-header site-header-hermes${scrolled ? ' is-scrolled' : ''}${hidden && !mobileOpen ? ' is-hidden' : ''}`} id="site-header" onFocusCapture={() => setHidden(false)}>
         <div className="header-top-bar">
           <div className="container header-top-container">
             <div className="header-top-left">
@@ -139,26 +166,23 @@ export function SiteHeader() {
 
             <div className="header-top-right">
               <div className="currency-lang-group">
-                <select
-                  className="nav-select-pill"
-                  aria-label="Currency"
+                <Dropdown
+                  className="zd-pill"
+                  label="Currency"
+                  align="end"
                   value={currency}
-                  onChange={event => isCurrency(event.target.value) && setCurrency(event.target.value)}
-                >
-                  {CURRENCIES.map(code => (
-                    <option key={code} value={code}>
-                      {code === 'DZD' ? 'DZD' : code === 'EUR' ? 'EUR (€)' : 'USD ($)'}
-                    </option>
-                  ))}
-                </select>
-                <span style={{ color: 'var(--border-medium)' }}>|</span>
-                <select className="nav-select-pill" aria-label="Language" value={locale} onChange={event => switchLanguage(event.target.value)}>
-                  {LOCALES.map(code => (
-                    <option key={code} value={code}>
-                      {LOCALE_LABELS[code]}
-                    </option>
-                  ))}
-                </select>
+                  onChange={code => isCurrency(code) && setCurrency(code)}
+                  options={CURRENCIES.map(code => ({ value: code, label: code, hint: code === 'DZD' ? 'دج' : code === 'EUR' ? '€' : '$' }))}
+                />
+                <span className="currency-lang-divider" aria-hidden="true" />
+                <Dropdown
+                  className="zd-pill"
+                  label="Language"
+                  align="end"
+                  value={locale}
+                  onChange={switchLanguage}
+                  options={LOCALES.map(code => ({ value: code, label: code.toUpperCase(), hint: { fr: 'Français', en: 'English', ar: 'العربية' }[code] }))}
+                />
               </div>
 
               <Link href={`${home}/compte`} className="hermes-utility-link">
@@ -177,7 +201,7 @@ export function SiteHeader() {
                 </svg>
                 <span className="utility-label">{t('nav.bag')}</span>
                 {cart.count > 0 && (
-                  <span className="bag-badge" style={{ display: 'flex' }}>
+                  <span ref={badge} className="bag-badge" style={{ display: 'flex' }}>
                     {cart.count}
                   </span>
                 )}

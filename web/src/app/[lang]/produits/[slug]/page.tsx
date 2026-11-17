@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, ViewTransition } from 'react';
 import { Breadcrumbs } from '@/components/catalog/Breadcrumbs';
 import { ProductDetail } from '@/components/catalog/ProductDetail';
 import { PageShell } from '@/components/site/PageShell';
@@ -35,8 +35,16 @@ export default function ProductPage({ params }: PageProps<'/[lang]/produits/[slu
   return (
     <PageShell className="product-page">
       {/* The slug is URL data: resolve it inside a boundary so navigation stays instant */}
-      <Suspense fallback={<div className="page-skeleton" aria-busy="true" />}>
-        <ProductContent params={params} />
+      <Suspense
+        fallback={
+          <ViewTransition exit="slide-down" default="none">
+            <div className="page-skeleton" aria-busy="true" />
+          </ViewTransition>
+        }
+      >
+        <ViewTransition enter="slide-up" default="none">
+          <ProductContent params={params} />
+        </ViewTransition>
       </Suspense>
     </PageShell>
   );

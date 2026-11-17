@@ -41,7 +41,7 @@ export function SearchResults() {
       {q && results.length === 0 && <p className="collection-empty">{t('search.noResults', { query: q })}</p>}
       <div className="collection-grid">
         {results.map(product => (
-          <ProductCard key={product.id} product={product} reveal={false} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </>

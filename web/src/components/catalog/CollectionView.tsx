@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, ViewTransition } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
+import { Dropdown } from '@/components/site/Dropdown';
 import { ProductCard } from './ProductCard';
 
 type Sort = 'featured' | 'priceAsc' | 'priceDesc';
@@ -40,24 +41,34 @@ export function CollectionView({ categoryId }: { categoryId: string | null }) {
 
       <div className="collection-toolbar">
         <span>{t(items.length === 1 ? 'collections.countOne' : 'collections.countMany', { count: items.length })}</span>
-        <label>
-          {t('collections.sortLabel')}{' '}
-          <select value={sort} onChange={event => setSort(event.target.value as Sort)}>
-            <option value="featured">{t('collections.sortFeatured')}</option>
-            <option value="priceAsc">{t('collections.sortPriceAsc')}</option>
-            <option value="priceDesc">{t('collections.sortPriceDesc')}</option>
-          </select>
-        </label>
+        <div className="collection-sort">
+          <span className="collection-sort-label">{t('collections.sortLabel')}</span>
+          <Dropdown<Sort>
+            className="zd-sort"
+            label={t('collections.sortLabel')}
+            align="end"
+            value={sort}
+            onChange={setSort}
+            options={[
+              { value: 'featured', label: t('collections.sortFeatured') },
+              { value: 'priceAsc', label: t('collections.sortPriceAsc') },
+              { value: 'priceDesc', label: t('collections.sortPriceDesc') }
+            ]}
+          />
+        </div>
       </div>
 
       {items.length === 0 ? (
         <p className="collection-empty">{t('collections.empty')}</p>
       ) : (
-        <div className="collection-grid">
-          {items.map(product => (
-            <ProductCard key={product.id} product={product} reveal={false} />
-          ))}
-        </div>
+        // Re-sorting crossfades the grid
+        <ViewTransition key={sort} enter="crossfade" exit="crossfade" default="none">
+          <div className="collection-grid">
+            {items.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </ViewTransition>
       )}
     </>
   );

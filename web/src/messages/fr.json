@@ -161,7 +161,7 @@
     "giftPlaceholder": "Rédigez votre mot d’accompagnement calligraphié (offert)...",
     "order": "COMMANDER",
     "boxTitle": "L’ÉCRIN ZAPHIRA",
-    "boxText": "Chaque création voyage dans notre écrin ivoire, noué d’un ruban champagne et scellé du monogramme Z.",
+    "boxText": "Chaque création voyage dans notre coffret bleu Picasso, ceint d’une bande beige et du Z doré, remis dans son sac assorti à anses en ruban avec une carte signée.",
     "serviceTitle": "SERVICE CLIENT",
     "serviceWhatsapp": "WhatsApp :",
     "returns": "Retours & échanges",
@@ -476,7 +476,7 @@
     "step4Title": "La personnalisation",
     "step4Text": "Pour les créations sur-mesure, vos couleurs, matières et votre monogramme doré sont réalisés à l’atelier.",
     "step5Title": "Le contrôle et l’écrin",
-    "step5Text": "Chaque sac est contrôlé, puis placé dans son écrin ivoire Zaphira noué d’un ruban champagne avant la livraison.",
+    "step5Text": "Chaque sac est contrôlé, puis placé dans son coffret Zaphira bleu Picasso à bande beige et monogramme doré, dans le sac assorti à anses en ruban.",
     "commitEyebrow": "Nos engagements",
     "commitTitle": "Ce sur quoi vous pouvez compter",
     "commit1Title": "Fait main en Algérie",
@@ -513,5 +513,12 @@
     "marketingTitle": "Marketing",
     "marketingText": "Permet à Meta (Facebook, Instagram) de mesurer nos publicités et de vous en proposer de pertinentes.",
     "manage": "Gestion des cookies"
+  },
+  "marquee": {
+    "item1": "Fait main à Alger",
+    "item2": "Livraison offerte dans les 69 wilayas",
+    "item3": "Monogramme doré sur-mesure",
+    "item4": "Paiement à la livraison",
+    "item5": "Réalisé sur commande, rien que pour vous"
   }
 }

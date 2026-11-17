@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, ViewTransition } from 'react';
 import { Breadcrumbs } from '@/components/catalog/Breadcrumbs';
 import { CollectionView } from '@/components/catalog/CollectionView';
 import { PageShell } from '@/components/site/PageShell';
@@ -24,8 +24,16 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/collection
 export default function CollectionPage({ params }: PageProps<'/[lang]/collections/[slug]'>) {
   return (
     <PageShell className="collection-page">
-      <Suspense fallback={<div className="page-skeleton" aria-busy="true" />}>
-        <CollectionContent params={params} />
+      <Suspense
+        fallback={
+          <ViewTransition exit="slide-down" default="none">
+            <div className="page-skeleton" aria-busy="true" />
+          </ViewTransition>
+        }
+      >
+        <ViewTransition enter="slide-up" default="none">
+          <CollectionContent params={params} />
+        </ViewTransition>
       </Suspense>
     </PageShell>
   );

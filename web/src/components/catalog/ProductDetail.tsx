@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, ViewTransition } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
 import type { Category, Product } from '@/lib/catalog-types';
 import { MAX_LINE_QUANTITY } from '@/lib/pricing';
@@ -29,9 +29,11 @@ export function ProductDetail({ product, category, related }: { product: Product
     <>
       <div className="product-page-grid">
         <div className="product-gallery">
-          <div className="product-gallery-main">
-            <img src={image} alt={product.name} />
-          </div>
+          <ViewTransition name={`product-${product.id}`} share="morph" default="none">
+            <div className="product-gallery-main">
+              <img key={image} src={image} alt={product.name} className="product-gallery-image" />
+            </div>
+          </ViewTransition>
           {product.gallery.length > 1 && (
             <div className="product-gallery-thumbs">
               {product.gallery.map((src, index) => (
@@ -96,7 +98,7 @@ export function ProductDetail({ product, category, related }: { product: Product
           <h2 id="related-title">{t('product.related')}</h2>
           <div className="collection-grid">
             {related.map(item => (
-              <ProductCard key={item.id} product={item} reveal={false} />
+              <ProductCard key={item.id} product={item} />
             ))}
           </div>
         </section>

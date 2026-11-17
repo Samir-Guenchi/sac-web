@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, ViewTransition } from 'react';
 import { Breadcrumbs } from '@/components/catalog/Breadcrumbs';
 import { PageShell } from '@/components/site/PageShell';
 import { RichText } from '@/components/site/RichText';
@@ -23,8 +23,16 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/pages/[slu
 export default function InfoPage({ params }: PageProps<'/[lang]/pages/[slug]'>) {
   return (
     <PageShell className="info-page">
-      <Suspense fallback={<div className="page-skeleton" aria-busy="true" />}>
-        <InfoContent params={params} />
+      <Suspense
+        fallback={
+          <ViewTransition exit="slide-down" default="none">
+            <div className="page-skeleton" aria-busy="true" />
+          </ViewTransition>
+        }
+      >
+        <ViewTransition enter="slide-up" default="none">
+          <InfoContent params={params} />
+        </ViewTransition>
       </Suspense>
     </PageShell>
   );

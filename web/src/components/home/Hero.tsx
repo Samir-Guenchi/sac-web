@@ -26,7 +26,7 @@ export function Hero() {
       </div>
 
       <div className="hermes-hero-content-wrapper">
-        <div className="hermes-hero-content reveal">
+        <div className="hermes-hero-content hero-animate">
           <h1 className="hermes-hero-title">
             <em>{t('hero.title')}</em>
           </h1>

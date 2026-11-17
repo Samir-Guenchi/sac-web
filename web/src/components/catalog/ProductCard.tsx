@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ViewTransition } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
 import type { Product } from '@/lib/catalog-types';
 
@@ -14,7 +15,11 @@ export function ProductCard({ product, reveal = true }: { product: Product; reve
       <div className="product-image-container">
         <span className={`badge ${product.badgeClass} product-card-badge`}>{loc(product.tag)}</span>
         <Link href={href} aria-label={product.name}>
-          <img src={product.primaryImage} alt={product.name} loading="lazy" />
+          {/* Same name as the product page's main photo: the image morphs between pages */}
+          <ViewTransition name={`product-${product.id}`} share="morph" default="none">
+            <img src={product.primaryImage} alt={product.name} loading="lazy" />
+          </ViewTransition>
+          {product.gallery[1] && <img src={product.gallery[1]} alt="" loading="lazy" className="product-image-alt" aria-hidden="true" />}
         </Link>
         <div className="product-overlay-actions">
           <button type="button" className="btn btn-secondary btn-sm btn-full" onClick={() => ui.openQuickView(product.id)}>
