@@ -43,10 +43,10 @@ async function seedCollections() {
     .values(collection2026.categories.map((c, i) => ({ id: c.id, name: c.name, description: c.description, sortOrder: i })))
     .onConflictDoNothing();
 
-  // New bags arrive hidden: they go live from Admin → Products once real photos are in place
+  // Published at the owner's request; photos showing other makers' branding were not imported
   await db
     .insert(schema.products)
-    .values(collection2026.products.map(p => ({ ...p, active: false })))
+    .values(collection2026.products.map(p => ({ ...p, active: true })))
     .onConflictDoNothing();
 
   for (const [productId, categoryId] of Object.entries(ORIGINAL_CATEGORIES)) {
