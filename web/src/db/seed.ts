@@ -5,7 +5,10 @@
  *   npm run db:seed
  */
 
-import 'dotenv/config';
+import { config } from 'dotenv';
+
+// Same files as Next.js: .env.local (developer secrets) wins over .env
+config({ path: ['.env.local', '.env'], quiet: true });
 import { createClient } from '@libsql/client';
 import { hashPassword } from 'better-auth/crypto';
 import { and, eq, inArray } from 'drizzle-orm';
