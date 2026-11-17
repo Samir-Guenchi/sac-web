@@ -14,7 +14,8 @@
   width: 85%;
   max-width: 380px;
   background-color: var(--bg-surface);
-  z-index: var(--z-drawer);
+  /* Above its own backdrop (--z-modal), or every tap on the menu would land on the backdrop and close it */
+  z-index: calc(var(--z-modal) + 1);
   transform: translateX(-100%);
   transition: transform var(--duration-normal) var(--ease-editorial);
   display: flex;

@@ -1,0 +1,118 @@
+{
+  "name": "Maison Zaphira",
+  "slug": "zaphira",
+  "tagline": "Handmade luxury bags from Algiers — Picasso & the Mediterranean.",
+  "motto": "Art · Créativité · Confiance",
+  "type": "Full-stack e-commerce platform (storefront + bespoke configurator + back office)",
+  "status": "Feature-complete, deployment-ready (Turso database live; Vercel deployment pending)",
+  "year": 2026,
+  "timeline": {
+    "start": "2026-08",
+    "rebuild": "2026-11",
+    "notes": "Started as a static HTML/CSS/JS prototype, rebuilt as a full-stack Next.js application in November 2026."
+  },
+  "role": "Founder & full-stack developer — product, brand direction, UX, front end, back end, database, deployment",
+  "development": "Built with AI pair-programming (Claude Code) under the founder's direction.",
+  "client": "Own brand (Algerian start-up)",
+  "industry": ["Fashion", "Luxury", "E-commerce", "Handcraft"],
+  "summary": {
+    "short": "Trilingual luxury e-commerce platform for an Algerian handmade-bag brand, with a bespoke bag configurator and a full back office.",
+    "medium": "Maison Zaphira is the online house of an Algerian brand of crocheted and woven handbags. The platform offers a French / English / Arabic (RTL) storefront, a step-by-step bespoke atelier with server-verified pricing, cash-on-delivery checkout for all 69 wilayas, customer accounts with email verification, editorial brand pages and a back office that lets the owner run products, orders, content and media without code.",
+    "long": "Zaphira sells handmade bags crocheted and woven in Algiers. The brand's identity fuses Picasso's single-line drawings with the blues of the Mediterranean. The project rebuilt a static prototype into a full-stack Next.js 16 application: a trilingual storefront (French, English and right-to-left Arabic) with collections, product pages, search and a three-step checkout priced on the server; a bespoke atelier where clients compose their bag (colour, stitch, finishing touch, strap, embroidered initials) while a real photo follows each choice; editorial pages (Lookbook, L'Univers, L'Art d'offrir, Journal); customer accounts with six-digit email codes; guest order tracking; GDPR-style cookie consent gating analytics; and a back office covering orders, products and photo galleries, collections, configurator options, customers, every interface text in three languages, information pages, journal stories, contact numbers, media and tracking ids. The interface is animated with shared-element page transitions, scroll-drawn line art and curtain reveals, all disabled for reduced-motion users, and is tested end to end with Playwright on phone, tablet and desktop widths."
+  },
+  "problem": "The brand needed more than a brochure site: a shop that feels like a luxury house, works in Arabic as well as French and English, takes cash-on-delivery orders across Algeria, lets clients personalise a bag, and can be run day to day by a non-technical owner.",
+  "solution": "A single Next.js codebase with a typed database, server-side pricing and an owner-facing back office, wrapped in a distinctive Picasso-blue identity with editorial pages and refined motion.",
+  "features": [
+    { "title": "Trilingual storefront", "detail": "French, English and Arabic with full right-to-left layout and Arabic typography; prices in DZD, EUR or USD." },
+    { "title": "Bespoke atelier", "detail": "Five-step bag configurator (colour, stitch, finishing touch, strap, embroidered initials) with a real product photo that follows each choice and a price recomputed on the server." },
+    { "title": "Checkout for Algeria", "detail": "Cash on delivery to all 69 wilayas, guest checkout, order tracking by order number and email, confirmation emails." },
+    { "title": "Customer accounts", "detail": "Email + password with six-digit email verification codes, rate-limited, order history." },
+    { "title": "Editorial brand pages", "detail": "L'Univers (Picasso & the Mediterranean), Lookbook built from the live catalogue, L'Art d'offrir (packaging and gifts by budget), Journal with photo-gallery stories, About." },
+    { "title": "Back office", "detail": "Orders and statuses, products with photo galleries and uploads, collections, configurator options and prices, customers, every site text in three languages, information pages, journal and testimonials, contact numbers, social links, hero video and images, analytics ids." },
+    { "title": "Motion design", "detail": "Shared-element transition from product card to product page (React ViewTransition), scroll-drawn Picasso line art, curtain reveals, scroll-driven parallax; all disabled under prefers-reduced-motion." },
+    { "title": "Privacy & SEO", "detail": "Cookie consent with Google Analytics and Meta Pixel loaded only after consent; sitemap with language alternates; per-page metadata." },
+    { "title": "Responsive", "detail": "Audited at 360, 768 and 1024 px across 17 pages; swipeable choices and a pinned price bar on phones." }
+  ],
+  "stack": {
+    "frontend": ["Next.js 16 (App Router, Cache Components, Server Actions)", "React 19 (ViewTransition)", "TypeScript (strict)", "CSS with design tokens", "next/font"],
+    "backend": ["Next.js Server Actions & Route Handlers", "Better Auth (email OTP, admin role, rate limiting)", "Zod 4"],
+    "data": ["Turso (libSQL)", "Drizzle ORM", "Versioned SQL migrations"],
+    "services": ["Vercel (hosting)", "Vercel Blob (image uploads)", "Resend (email)", "CodPilot (order hand-off, prepared)"],
+    "testing": ["Playwright end-to-end suites against the production build"]
+  },
+  "metrics": {
+    "languages": 3,
+    "storefront_and_admin_pages": 28,
+    "products_at_launch": 24,
+    "collections": 4,
+    "configurator_options": 22,
+    "wilayas_served": 69,
+    "translated_interface_strings_per_language": 574,
+    "database_migrations": 5,
+    "typescript_lines": 9100,
+    "css_lines": 7700,
+    "commits": 39,
+    "automated_end_to_end_checks": 150
+  },
+  "links": {
+    "repository": "https://github.com/Samir-Guenchi/sac-web",
+    "live_site": null
+  },
+  "brand": {
+    "colors": {
+      "picasso_blue": "#1F3F6E",
+      "picasso_deep": "#162D50",
+      "mediterranean_blue": "#5E86A8",
+      "sand": "#E8D9BF",
+      "gold": "#C9A46A",
+      "powder_pink": "#DDA3A9",
+      "ivory": "#F7F2E8",
+      "charcoal": "#191817"
+    },
+    "fonts": ["Cormorant Garamond (headings)", "Plus Jakarta Sans (interface)", "Amiri and IBM Plex Sans Arabic (Arabic)"]
+  },
+  "images": {
+    "cover": "brand/zaphira-cover-1280x640.png",
+    "logo_light_background": "logo/zaphira-logo-black.svg",
+    "logo_dark_background": "logo/zaphira-logo-cream.svg",
+    "logo_accent": "logo/zaphira-logo-gold.svg",
+    "avatar": "logo/zaphira-avatar-800.png",
+    "gallery": [
+      { "file": "screenshots/desktop/01-home-hero.jpg", "caption": "Home — hero video in a Picasso-inspired style" },
+      { "file": "screenshots/desktop/02-home-shop-by-mood.jpg", "caption": "Shop by mood: the four collections" },
+      { "file": "screenshots/desktop/03-home-collection.jpg", "caption": "Product grid with hover photo swap" },
+      { "file": "screenshots/desktop/04-home-picasso-universe-band.jpg", "caption": "Picasso & the Mediterranean band with drawn line art" },
+      { "file": "screenshots/desktop/05-bespoke-atelier.jpg", "caption": "Bespoke atelier — step 1, colour" },
+      { "file": "screenshots/desktop/06-bespoke-atelier-stitch-step.jpg", "caption": "Bespoke atelier — the photo follows the chosen stitch" },
+      { "file": "screenshots/desktop/07-home-art-of-giving.jpg", "caption": "The art of giving: Picasso-blue packaging" },
+      { "file": "screenshots/desktop/08-home-journal.jpg", "caption": "Journal stories on the home page" },
+      { "file": "screenshots/desktop/09-product-page.jpg", "caption": "Product page" },
+      { "file": "screenshots/desktop/10-collection-winter.jpg", "caption": "Collection page with sorting" },
+      { "file": "screenshots/desktop/11-lookbook.jpg", "caption": "Lookbook 2026" },
+      { "file": "screenshots/desktop/12-universe-page.jpg", "caption": "L'Univers — brand universe page" },
+      { "file": "screenshots/desktop/13-universe-palette.jpg", "caption": "The house palette" },
+      { "file": "screenshots/desktop/14-gifts-page.jpg", "caption": "L'Art d'offrir — gifts by budget" },
+      { "file": "screenshots/desktop/15-journal.jpg", "caption": "Journal" },
+      { "file": "screenshots/desktop/16-journal-story.jpg", "caption": "A journal story" },
+      { "file": "screenshots/desktop/17-about-page.jpg", "caption": "About Zaphira" },
+      { "file": "screenshots/desktop/18-arabic-rtl-home.jpg", "caption": "Arabic, right-to-left" },
+      { "file": "screenshots/desktop/19-bag-checkout.jpg", "caption": "Bag and checkout" },
+      { "file": "screenshots/desktop/20-admin-overview.jpg", "caption": "Back office — overview" },
+      { "file": "screenshots/desktop/21-admin-products.jpg", "caption": "Back office — products" },
+      { "file": "screenshots/desktop/22-admin-product-editor.jpg", "caption": "Back office — product editor with photo gallery" },
+      { "file": "screenshots/desktop/23-admin-bespoke-options.jpg", "caption": "Back office — configurator options" },
+      { "file": "screenshots/desktop/24-admin-site-texts.jpg", "caption": "Back office — every site text in three languages" },
+      { "file": "screenshots/desktop/25-admin-settings-media.jpg", "caption": "Back office — contact, media and tracking settings" },
+      { "file": "screenshots/mobile/01-home.jpg", "caption": "Phone — home" },
+      { "file": "screenshots/mobile/02-menu.jpg", "caption": "Phone — menu" },
+      { "file": "screenshots/mobile/03-shop-by-mood.jpg", "caption": "Phone — shop by mood" },
+      { "file": "screenshots/mobile/04-bespoke-atelier.jpg", "caption": "Phone — bespoke atelier" },
+      { "file": "screenshots/mobile/05-bespoke-atelier-stitch.jpg", "caption": "Phone — swipeable stitches and pinned price bar" },
+      { "file": "screenshots/mobile/06-product.jpg", "caption": "Phone — product page" },
+      { "file": "screenshots/mobile/07-lookbook.jpg", "caption": "Phone — lookbook" },
+      { "file": "screenshots/mobile/08-universe.jpg", "caption": "Phone — L'Univers" },
+      { "file": "screenshots/mobile/09-journal.jpg", "caption": "Phone — journal" }
+    ]
+  },
+  "tags": ["Next.js", "React", "TypeScript", "Turso", "Drizzle ORM", "Better Auth", "Vercel", "i18n", "RTL", "E-commerce", "Luxury", "Product configurator", "Admin dashboard", "Playwright", "Motion design"]
+}

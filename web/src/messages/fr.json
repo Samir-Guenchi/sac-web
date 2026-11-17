@@ -11,7 +11,7 @@
     "searchPlaceholder": "Rechercher...",
     "account": "Compte",
     "bag": "Panier",
-    "catLeather": "MAROQUINERIE",
+    "catLeather": "LES SACS",
     "catCustom": "SUR-MESURE",
     "catCraft": "SAVOIR-FAIRE",
     "catJournal": "JOURNAL",
@@ -26,7 +26,7 @@
   "hero": {
     "eyebrow": "Élégance Artisanale",
     "title": "L’art du sur-mesure, façonné à la perfection.",
-    "desc": "Sacs d’exception en perles baroques et organza de soie, façonnés à la main en Algérie avec une grâce intemporelle.",
+    "desc": "Sacs crochetés et tissés à la main à Alger, en couleurs de Méditerranée, avec une grâce intemporelle.",
     "ctaPrimary": "CRÉER VOTRE SAC SUR-MESURE",
     "ctaSecondary": "DÉCOUVRIR LA COLLECTION",
     "badge": "Haute Couture Algérienne",
@@ -38,7 +38,7 @@
     "handmade": "Fait Main",
     "handmadeDesc": "Chaque pièce est soigneusement façonnée à la main.",
     "materials": "Matières Nobles",
-    "materialsDesc": "Perles, organza et soies sélectionnés pour leur qualité remarquable.",
+    "materialsDesc": "Fils, chenilles et fermoirs dorés choisis pour leur toucher et leur tenue.",
     "custom": "Sur-Mesure",
     "customDesc": "Personnalisez chaque détail selon vos envies.",
     "timeless": "Élégance Éternelle",
@@ -134,7 +134,7 @@
   },
   "search": {
     "label": "Recherche Maison Zaphira",
-    "placeholder": "Rechercher créations, perles, organza, collections...",
+    "placeholder": "Rechercher un sac, une couleur, une collection...",
     "popular": "Suggestions Populaires",
     "noResults": "Aucune création ne correspond à « {query} ».",
     "close": "Fermer la recherche",
@@ -242,7 +242,7 @@
     "imgHeritage": "Haute couture de la Princesse Zaphira",
     "imgAtelier": "Travail d’aiguille à l’atelier",
     "atelierTitle": "L’Atelier d’Alger",
-    "atelierText": "Dans notre atelier au cœur historique d’Alger, chaque pièce Zaphira naît de matières choisies à la main : organza de soie translucide, perles d’eau douce naturelles récoltées pour leur irisation et cuirs de veau riches et structurés.",
+    "atelierText": "Dans notre atelier au cœur historique d’Alger, chaque pièce Zaphira naît de matières choisies à la main : fils tressés, chenille veloutée, bouclette douce comme un nuage et fermoirs dorés, crochetés maille après maille.",
     "personalTitle": "L’Exclusivité Personnalisée",
     "personalText": "Nous croyons que le vrai luxe est personnel. En invitant chaque cliente à choisir sa palette, la taille de ses perles, ses finitions et ses initiales marquées à chaud, chaque création devient un objet de transmission à l’image de celle qui la porte.",
     "cta": "Créer Votre Sac Sur-Mesure"
@@ -373,7 +373,7 @@
   },
   "meta": {
     "title": "Zaphira — Sacs de luxe faits main en Algérie",
-    "description": "Sacs de luxe féminins faits main en Algérie, personnalisés avec perles, organza et détails intemporels."
+    "description": "Sacs de luxe féminins crochetés et tissés à la main en Algérie, inspirés de Picasso et de la Méditerranée, personnalisables."
   },
   "media": {
     "craftAlt": "Artisane de l’atelier cousant à la main organza et perles",
@@ -487,7 +487,7 @@
     "stepsEyebrow": "Savoir-faire",
     "stepsTitle": "Du premier fil jusqu’à votre porte",
     "step1Title": "Le choix des matières",
-    "step1Text": "Cordons, chenille, bouclette, velours, organza et perles sont choisis pour leur toucher, leur couleur et leur tenue dans le temps.",
+    "step1Text": "Cordons, chenille, bouclette, velours et perles sont choisis pour leur toucher, leur couleur et leur tenue dans le temps.",
     "step2Title": "Le tissage et le tricot",
     "step2Text": "Le corps du sac est tissé ou tricoté à la main, maille après maille, selon le motif propre à chaque modèle.",
     "step3Title": "Les perles et les finitions",

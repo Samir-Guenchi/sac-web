@@ -1,4 +1,7 @@
-import 'dotenv/config';
+import { config } from 'dotenv';
+
+// Same files as Next.js: .env.local (developer secrets) wins over .env
+config({ path: ['.env.local', '.env'], quiet: true });
 import { defineConfig } from 'drizzle-kit';
 
 const url = process.env.TURSO_DATABASE_URL ?? 'file:local.db';
