@@ -3,7 +3,7 @@
  */
 
 .panier-page {
-  background-color: #FAF6EE;
+  background-color: var(--bg-primary);
   color: var(--color-charcoal);
   min-height: 100vh;
   display: flex;
@@ -13,7 +13,7 @@
 /* Header Stepper */
 .panier-header {
   border-bottom: 1px solid var(--border-subtle);
-  background-color: #FAF6EE;
+  background-color: var(--bg-primary);
   padding: var(--space-4) 0 var(--space-6);
 }
 
@@ -154,7 +154,8 @@
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: #191817;
+  color: var(--color-charcoal);
+  margin-top: 0;
   margin-bottom: 26px;
   letter-spacing: -0.01em;
 }
@@ -187,6 +188,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-top: 0;
   margin-bottom: var(--space-8);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-subtle);
@@ -377,7 +379,8 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #191817;
+  color: var(--color-charcoal);
+  margin-top: 0;
   margin-bottom: var(--space-4);
 }
 
@@ -456,6 +459,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-top: 0;
   margin-bottom: var(--space-6);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-subtle);

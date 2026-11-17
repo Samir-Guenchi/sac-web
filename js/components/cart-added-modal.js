@@ -1,6 +1,11 @@
 /**
- * ZAPHIRA — Hermès Added-to-Cart Confirmation Modal
+ * ZAPHIRA — Added-to-Cart Confirmation Modal
+ * The single feedback shown after any add-to-bag; links to panier.html.
  */
+
+import { t } from '../utils/i18n.js';
+import { escapeHtml } from '../utils/escape.js';
+import { describeCartItem } from '../utils/cart-display.js';
 
 export function initCartAddedModal() {
   let modalWrapper = document.getElementById('cart-added-modal-wrapper');
@@ -12,7 +17,7 @@ export function initCartAddedModal() {
     modalWrapper.innerHTML = `
       <div class="cart-added-backdrop" id="cart-added-backdrop"></div>
       <div class="cart-added-card reveal-modal" role="dialog" aria-modal="true" aria-labelledby="cart-added-title">
-        <button type="button" class="cart-added-close-btn" id="cart-added-close" aria-label="Fermer">
+        <button type="button" class="cart-added-close-btn" id="cart-added-close" data-i18n-aria="cartAdded.close" aria-label="${escapeHtml(t('cartAdded.close'))}">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -27,16 +32,12 @@ export function initCartAddedModal() {
           </svg>
         </div>
 
-        <h3 class="cart-added-title" id="cart-added-title">
-          Cet objet a été ajouté au panier
-        </h3>
+        <h3 class="cart-added-title" id="cart-added-title" data-i18n="cartAdded.title">${escapeHtml(t('cartAdded.title'))}</h3>
 
         <div class="cart-added-item-preview" id="cart-added-preview"></div>
 
         <div class="cart-added-actions">
-          <a href="panier.html" class="btn-hermes-black" id="cart-added-view-btn">
-            VOIR LE PANIER
-          </a>
+          <a href="panier.html" class="btn-hermes-black" id="cart-added-view-btn" data-i18n="cartAdded.viewBag">${escapeHtml(t('cartAdded.viewBag'))}</a>
         </div>
       </div>
     `;
@@ -50,12 +51,13 @@ export function initCartAddedModal() {
 
   function openModal(product) {
     if (previewContainer && product) {
+      const { name } = describeCartItem(product);
       previewContainer.innerHTML = `
         <div class="cart-added-item-info">
-          ${product.image ? `<img src="${product.image}" alt="${product.name}" class="cart-added-thumb">` : ''}
+          ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(name)}" class="cart-added-thumb">` : ''}
           <div class="cart-added-details">
-            <span class="cart-added-name">${product.name}</span>
-            ${product.isCustom ? `<span class="cart-added-sub">Création personnalisée sur-mesure</span>` : ''}
+            <span class="cart-added-name">${escapeHtml(name)}</span>
+            ${product.isCustom ? `<span class="cart-added-sub">${escapeHtml(t('cartAdded.bespokeSub'))}</span>` : ''}
           </div>
         </div>
       `;
@@ -71,6 +73,12 @@ export function initCartAddedModal() {
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalWrapper.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
 
   window.addEventListener('cart:item-added', (e) => {
     openModal(e.detail?.product);

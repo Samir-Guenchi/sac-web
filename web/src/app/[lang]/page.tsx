@@ -1,0 +1,44 @@
+import { BrandPromise } from '@/components/home/BrandPromise';
+import { GiftTeaser, MoodArches, ScrollProgress, UniverseBand } from '@/components/home/BrandSections';
+import { CollectionGrid } from '@/components/home/CollectionGrid';
+import { Customizer } from '@/components/home/Customizer';
+import { EditorialSections } from '@/components/home/EditorialSections';
+import { Hero } from '@/components/home/Hero';
+import { Marquee } from '@/components/home/Marquee';
+import { Journal } from '@/components/home/Journal';
+import { Newsletter } from '@/components/home/Newsletter';
+import { Testimonials } from '@/components/home/Testimonials';
+import { SiteFooter } from '@/components/site/SiteFooter';
+import { SiteHeader } from '@/components/site/SiteHeader';
+import { getCatalog, getJournal, getTestimonials } from '@/lib/catalog';
+import { getLocale, getT } from '@/lib/i18n/server';
+
+export default async function HomePage() {
+  const locale = await getLocale();
+  const [t, journal, testimonials, catalog] = await Promise.all([getT(locale), getJournal(), getTestimonials(), getCatalog()]);
+
+  return (
+    <>
+      <a href="#main-content" className="sr-only">
+        {t('menu.skip')}
+      </a>
+      <SiteHeader />
+      <main id="main-content">
+        <ScrollProgress />
+        <Hero />
+        <Marquee t={t} />
+        <BrandPromise t={t} />
+        <MoodArches t={t} catalog={catalog} locale={locale} />
+        <CollectionGrid />
+        <UniverseBand t={t} locale={locale} />
+        <Customizer />
+        <EditorialSections t={t} media={catalog.settings.media} locale={locale} />
+        <GiftTeaser t={t} locale={locale} />
+        <Testimonials items={testimonials} />
+        <Journal entries={journal} />
+        <Newsletter />
+      </main>
+      <SiteFooter t={t} locale={locale} />
+    </>
+  );
+}

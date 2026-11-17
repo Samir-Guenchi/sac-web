@@ -5,7 +5,8 @@
 import { CUSTOMIZER_CONFIG } from '../data/customizer-options.js';
 import { customizerStore } from '../state/customizer-state.js';
 import { cartStore } from '../state/cart-state.js';
-import { showToast } from './toast.js';
+import { loc, t } from '../utils/i18n.js';
+import { escapeHtml } from '../utils/escape.js';
 
 export function initCustomizer() {
   const container = document.getElementById('customizer-studio-root');
@@ -18,6 +19,10 @@ export function initCustomizer() {
   // Re-render price & specs whenever customizer state or currency changes
   customizerStore.subscribe(() => updateCustomizerView());
   cartStore.subscribe(() => updatePriceDisplay());
+  document.addEventListener('i18n:change', () => {
+    renderCustomizerControls();
+    updateCustomizerView();
+  });
 }
 
 function renderCustomizerControls() {
@@ -28,10 +33,10 @@ function renderCustomizerControls() {
       <button type="button" 
               class="color-swatch-btn ${color.id === customizerStore.selected.color ? 'is-active' : ''}" 
               data-option-type="color" 
-              data-value="${color.id}"
-              style="background-color: ${color.hex};"
-              title="${color.name}"
-              aria-label="${color.name}">
+              data-value="${escapeHtml(color.id)}"
+              style="background-color: ${escapeHtml(color.hex)};"
+              title="${escapeHtml(loc(color.name))}"
+              aria-label="${escapeHtml(loc(color.name))}">
       </button>
     `).join('');
   }
@@ -43,8 +48,8 @@ function renderCustomizerControls() {
       <button type="button" 
               class="option-pill-btn ${mat.id === customizerStore.selected.material ? 'is-active' : ''}" 
               data-option-type="material" 
-              data-value="${mat.id}">
-        ${mat.name}
+              data-value="${escapeHtml(mat.id)}" title="${escapeHtml(loc(mat.description))}">
+        ${escapeHtml(loc(mat.name))}
       </button>
     `).join('');
   }
@@ -56,8 +61,8 @@ function renderCustomizerControls() {
       <button type="button" 
               class="option-pill-btn ${pearl.id === customizerStore.selected.pearls ? 'is-active' : ''}" 
               data-option-type="pearls" 
-              data-value="${pearl.id}">
-        ${pearl.name}
+              data-value="${escapeHtml(pearl.id)}" title="${escapeHtml(loc(pearl.description))}">
+        ${escapeHtml(loc(pearl.name))}
       </button>
     `).join('');
   }
@@ -69,8 +74,8 @@ function renderCustomizerControls() {
       <button type="button" 
               class="option-pill-btn ${chain.id === customizerStore.selected.chain ? 'is-active' : ''}" 
               data-option-type="chain" 
-              data-value="${chain.id}">
-        ${chain.name}
+              data-value="${escapeHtml(chain.id)}" title="${escapeHtml(loc(chain.description))}">
+        ${escapeHtml(loc(chain.name))}
       </button>
     `).join('');
   }
@@ -115,23 +120,23 @@ function bindCustomizerEvents() {
 
       const customBagItem = {
         id: `bespoke-zaphira-${Date.now()}`,
-        name: `Bespoke Zaphira (${details.color.name})`,
+        // Display names are resolved per language from the option ids (utils/cart-display.js)
+        name: t('studio.itemName', { color: loc(details.color.name) }),
         priceDZD: totalPrice,
         image: details.color.imageRef,
         isCustom: true,
         quantity: 1,
         specs: {
-          color: details.color.name,
-          material: details.material.name,
-          pearls: details.pearls.name,
-          chain: details.chain.name,
-          monogram: details.monogram || 'None'
+          colorId: details.color.id,
+          materialId: details.material.id,
+          pearlsId: details.pearls.id,
+          chainId: details.chain.id,
+          monogram: details.monogram || ''
         }
       };
 
+      // cartStore fires `cart:item-added`, which opens the confirmation card
       cartStore.addItem(customBagItem);
-      showToast('Bespoke Creation Added', `${customBagItem.name} placed in your shopping bag.`);
-      document.dispatchEvent(new CustomEvent('cart:open'));
     });
   }
 }
@@ -141,32 +146,32 @@ function updateCustomizerView() {
 
   // Update selected value text labels
   const colorLabel = document.getElementById('selected-color-label');
-  if (colorLabel) colorLabel.textContent = details.color.name;
+  if (colorLabel) colorLabel.textContent = loc(details.color.name);
 
   const materialLabel = document.getElementById('selected-material-label');
-  if (materialLabel) materialLabel.textContent = details.material.name;
+  if (materialLabel) materialLabel.textContent = loc(details.material.name);
 
   const pearlLabel = document.getElementById('selected-pearl-label');
-  if (pearlLabel) pearlLabel.textContent = details.pearls.name;
+  if (pearlLabel) pearlLabel.textContent = loc(details.pearls.name);
 
   const chainLabel = document.getElementById('selected-chain-label');
-  if (chainLabel) chainLabel.textContent = details.chain.name;
+  if (chainLabel) chainLabel.textContent = loc(details.chain.name);
 
   // Update Specs Summary Table
   const specColor = document.getElementById('spec-summary-color');
-  if (specColor) specColor.textContent = details.color.name;
+  if (specColor) specColor.textContent = loc(details.color.name);
 
   const specMat = document.getElementById('spec-summary-material');
-  if (specMat) specMat.textContent = details.material.name;
+  if (specMat) specMat.textContent = loc(details.material.name);
 
   const specPearl = document.getElementById('spec-summary-pearls');
-  if (specPearl) specPearl.textContent = details.pearls.name;
+  if (specPearl) specPearl.textContent = loc(details.pearls.name);
 
   const specChain = document.getElementById('spec-summary-chain');
-  if (specChain) specChain.textContent = details.chain.name;
+  if (specChain) specChain.textContent = loc(details.chain.name);
 
   const specMono = document.getElementById('spec-summary-monogram');
-  if (specMono) specMono.textContent = details.monogram ? `Embossed "${details.monogram}"` : 'None';
+  if (specMono) specMono.textContent = details.monogram ? t('studio.embossed', { mono: details.monogram }) : t('studio.none');
 
   // Update Visual Preview
   const bagBaseImg = document.getElementById('bag-layer-base-img');

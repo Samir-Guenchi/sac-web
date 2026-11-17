@@ -1,0 +1,1212 @@
+{
+  "categories": [
+    {
+      "id": "luxe",
+      "name": {
+        "fr": "Luxe",
+        "en": "Luxury",
+        "ar": "فاخرة"
+      },
+      "description": {
+        "fr": "Velours profonds, chaînes dorées et finitions d’exception pour les grandes soirées.",
+        "en": "Deep velvets, golden chains and exceptional finishes for grand evenings.",
+        "ar": "مخمل عميق وسلاسل ذهبية ولمسات استثنائية للأمسيات الكبرى."
+      }
+    },
+    {
+      "id": "ceremonie",
+      "name": {
+        "fr": "Mariages & Cérémonies",
+        "en": "Weddings & Occasions",
+        "ar": "أعراس ومناسبات"
+      },
+      "description": {
+        "fr": "Perles, tressages précieux et couleurs de fête pour les plus beaux jours.",
+        "en": "Pearls, precious weaves and festive colours for the most beautiful days.",
+        "ar": "لآلئ وتطريزات ثمينة وألوان احتفالية لأجمل الأيام."
+      }
+    },
+    {
+      "id": "printemps",
+      "name": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "description": {
+        "fr": "Cordons tissés main aux motifs graphiques, légers et lumineux.",
+        "en": "Hand-woven cord with graphic patterns, light and luminous.",
+        "ar": "حبال منسوجة يدوياً بزخارف هندسية، خفيفة ومشرقة."
+      }
+    },
+    {
+      "id": "hiver",
+      "name": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "description": {
+        "fr": "Chenille veloutée, bouclette et fourrure douce, tricotées main pour la saison froide.",
+        "en": "Velvety chenille, bouclé and soft faux fur, hand-knitted for the cold season.",
+        "ar": "شنيل مخملي وصوف مجعد وفرو ناعم، محاكة يدوياً لموسم البرد."
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "imperatrice",
+      "name": "Impératrice",
+      "categoryId": "luxe",
+      "priceDzd": 16500,
+      "collection": {
+        "fr": "Luxe",
+        "en": "Luxury",
+        "ar": "فاخرة"
+      },
+      "tag": {
+        "fr": "Luxe",
+        "en": "Luxury",
+        "ar": "فاخرة"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Pochette en chenille bordeaux, chaîne dorée et fermoir bijou.",
+        "en": "Burgundy chenille clutch with a golden chain and jewel clasp.",
+        "ar": "حقيبة يد من الشنيل العنابي بسلسلة ذهبية وقفل كالحلي."
+      },
+      "fullDescription": {
+        "fr": "Notre pièce la plus précieuse : une chenille bordeaux profonde, tricotée main maille à maille, portée main ou épaule grâce à sa double chaîne dorée.",
+        "en": "Our most precious piece: deep burgundy chenille, hand-knitted stitch by stitch, carried in hand or on the shoulder with its double golden chain.",
+        "ar": "قطعتنا الأثمن: شنيل عنابي عميق محاك يدوياً غرزة بغرزة، يُحمل باليد أو على الكتف بسلسلته الذهبية المزدوجة."
+      },
+      "materials": {
+        "fr": "Chenille velours tricotée main, doublure satin",
+        "en": "Hand-knitted velvet chenille, satin lining",
+        "ar": "شنيل مخملي محاك يدوياً، بطانة ساتان"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/luxe/imperatrice-1.jpg",
+      "gallery": [
+        "/assets/images/products/luxe/imperatrice-1.jpg",
+        "/assets/images/products/luxe/imperatrice-2.jpg",
+        "/assets/images/products/luxe/imperatrice-3.jpg"
+      ],
+      "sortOrder": 100,
+      "active": false
+    },
+    {
+      "id": "emeraude",
+      "name": "Émeraude",
+      "categoryId": "ceremonie",
+      "priceDzd": 14500,
+      "collection": {
+        "fr": "Mariages & Cérémonies",
+        "en": "Weddings & Occasions",
+        "ar": "أعراس ومناسبات"
+      },
+      "tag": {
+        "fr": "Cérémonie",
+        "en": "Occasion",
+        "ar": "مناسبات"
+      },
+      "badgeClass": "badge-champagne",
+      "shortDescription": {
+        "fr": "Pochette enveloppe vert émeraude au tressage diagonal.",
+        "en": "Emerald-green envelope clutch with a diagonal weave.",
+        "ar": "حقيبة ظرف بلون الزمرد بنسيج مائل."
+      },
+      "fullDescription": {
+        "fr": "Une pochette enveloppe au tressage diagonal, pensée pour les cérémonies : élégante, plate, et assez grande pour l’essentiel.",
+        "en": "An envelope clutch with a diagonal weave, designed for ceremonies: elegant, slim and roomy enough for the essentials.",
+        "ar": "حقيبة ظرف بنسيج مائل صُممت للمناسبات: أنيقة ونحيفة وتتسع للأساسيات."
+      },
+      "materials": {
+        "fr": "Tressage main, perles nacrées",
+        "en": "Hand weaving, pearlescent beads",
+        "ar": "نسج يدوي، لآلئ صدفية"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Rabat aimanté",
+        "en": "Magnetic flap",
+        "ar": "غطاء مغناطيسي"
+      },
+      "primaryImage": "/assets/images/products/ceremonie/emeraude-1.jpg",
+      "gallery": [
+        "/assets/images/products/ceremonie/emeraude-1.jpg"
+      ],
+      "sortOrder": 101,
+      "active": false
+    },
+    {
+      "id": "perle-dazur",
+      "name": "Perle d’Azur",
+      "categoryId": "ceremonie",
+      "priceDzd": 15500,
+      "collection": {
+        "fr": "Mariages & Cérémonies",
+        "en": "Weddings & Occasions",
+        "ar": "أعراس ومناسبات"
+      },
+      "tag": {
+        "fr": "Cérémonie",
+        "en": "Occasion",
+        "ar": "مناسبات"
+      },
+      "badgeClass": "badge-champagne",
+      "shortDescription": {
+        "fr": "Sac bleu ciel tressé, anse de grosses perles nacrées.",
+        "en": "Sky-blue woven bag with a handle of large pearls.",
+        "ar": "حقيبة زرقاء سماوية منسوجة بمقبض من اللآلئ الكبيرة."
+      },
+      "fullDescription": {
+        "fr": "Un tressage organza bleu ciel, rehaussé d’une anse de grosses perles nacrées et d’un fermoir doré : la touche lumineuse des mariages d’été.",
+        "en": "Sky-blue organza weave set off by a handle of large pearls and a gold-tone clasp: the luminous touch for summer weddings.",
+        "ar": "نسيج أورجانزا أزرق سماوي يزينه مقبض من اللآلئ الكبيرة وقفل ذهبي: لمسة مضيئة لأعراس الصيف."
+      },
+      "materials": {
+        "fr": "Tressage main, perles nacrées",
+        "en": "Hand weaving, pearlescent beads",
+        "ar": "نسج يدوي، لآلئ صدفية"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/ceremonie/perle-dazur-1.jpg",
+      "gallery": [
+        "/assets/images/products/ceremonie/perle-dazur-1.jpg"
+      ],
+      "sortOrder": 102,
+      "active": false
+    },
+    {
+      "id": "nuit-de-casbah",
+      "name": "Nuit de Casbah",
+      "categoryId": "printemps",
+      "priceDzd": 12500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Cabas noir tissé main, foulard rayé noué à l’anse.",
+        "en": "Black hand-woven tote with a striped scarf tied to the handle.",
+        "ar": "حقيبة تسوق سوداء منسوجة يدوياً مع وشاح مخطط معقود على المقبض."
+      },
+      "fullDescription": {
+        "fr": "Un grand cabas structuré au tissage chevron, sublimé par un foulard rayé noir et blanc. Le compagnon quotidien de la femme active.",
+        "en": "A large structured tote with a chevron weave, finished with a black-and-white striped scarf. The everyday companion of the busy woman.",
+        "ar": "حقيبة كبيرة منظَّمة بنسيج متعرج يزينها وشاح مخطط بالأسود والأبيض. رفيقة يومية للمرأة النشيطة."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Anses tressées, fermoir doré",
+        "en": "Braided handles, gold-tone clasp",
+        "ar": "مقابض مضفورة، قفل ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/nuit-de-casbah-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/nuit-de-casbah-1.jpg"
+      ],
+      "sortOrder": 103,
+      "active": false
+    },
+    {
+      "id": "sable-dore",
+      "name": "Sable Doré",
+      "categoryId": "printemps",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac à rabat crème, bande centrale chocolat.",
+        "en": "Cream flap bag with a chocolate centre stripe.",
+        "ar": "حقيبة بغطاء كريمي وشريط بني في الوسط."
+      },
+      "fullDescription": {
+        "fr": "Un sac à rabat aux tons sable, traversé d’une bande chocolat et fermé par un fermoir doré pivotant.",
+        "en": "A sand-toned flap bag crossed by a chocolate stripe and closed with a gold-tone turn-lock.",
+        "ar": "حقيبة بغطاء بألوان الرمل يقطعها شريط بني وتُغلق بقفل ذهبي دوّار."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/sable-dore-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/sable-dore-1.jpg"
+      ],
+      "sortOrder": 104,
+      "active": false
+    },
+    {
+      "id": "rose-de-blida",
+      "name": "Rose de Blida",
+      "categoryId": "printemps",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac rose poudré au tressage plissé.",
+        "en": "Powder-pink bag with a pleated weave.",
+        "ar": "حقيبة وردية بنسيج مطوي."
+      },
+      "fullDescription": {
+        "fr": "En hommage à Blida, la ville des roses : un tressage plissé rose poudré, souple et lumineux, fermé par un fermoir doré.",
+        "en": "A tribute to Blida, the city of roses: a soft, luminous powder-pink pleated weave closed with a gold-tone clasp.",
+        "ar": "تحية للبليدة مدينة الورود: نسيج مطوي وردي ناعم ومشرق يُغلق بقفل ذهبي."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/rose-de-blida-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/rose-de-blida-1.jpg"
+      ],
+      "sortOrder": 105,
+      "active": false
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "categoryId": "printemps",
+      "priceDzd": 12500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Cabas taupe structuré, anses tressées.",
+        "en": "Structured taupe tote with braided handles.",
+        "ar": "حقيبة رمادية بنية منظَّمة بمقابض مضفورة."
+      },
+      "fullDescription": {
+        "fr": "Lignes nettes et tissage chevron taupe : un cabas d’allure architecturale, porté à la main grâce à ses anses tressées.",
+        "en": "Clean lines and a taupe chevron weave: an architectural tote carried by its braided handles.",
+        "ar": "خطوط واضحة ونسيج متعرج بلون رمادي بني: حقيبة ذات طابع معماري تُحمل بمقابضها المضفورة."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Anses tressées, fermoir doré",
+        "en": "Braided handles, gold-tone clasp",
+        "ar": "مقابض مضفورة، قفل ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/atlas-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/atlas-1.jpg"
+      ],
+      "sortOrder": 106,
+      "active": false
+    },
+    {
+      "id": "djurdjura",
+      "name": "Djurdjura",
+      "categoryId": "printemps",
+      "priceDzd": 11500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac à main rayé ivoire, céladon et chocolat, anse sculptée.",
+        "en": "Ivory, celadon and chocolate striped handbag with a sculpted handle.",
+        "ar": "حقيبة يد مخططة بالعاجي والأخضر الفاتح والبني بمقبض منحوت."
+      },
+      "fullDescription": {
+        "fr": "Rayures ivoire et céladon encadrées de chocolat, anse tricotée sculpturale et chaîne gunmetal : un hommage aux couleurs des montagnes du Djurdjura.",
+        "en": "Ivory and celadon stripes framed in chocolate, a sculptural knitted handle and gunmetal chain: a tribute to the colours of the Djurdjura mountains.",
+        "ar": "خطوط عاجية وخضراء فاتحة يحيطها البني، مقبض محاك منحوت وسلسلة معدنية داكنة: تحية لألوان جبال جرجرة."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne gunmetal",
+        "en": "Gunmetal clasp and chain",
+        "ar": "قفل وسلسلة بلون معدني داكن"
+      },
+      "primaryImage": "/assets/images/products/printemps/djurdjura-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/djurdjura-1.jpg"
+      ],
+      "sortOrder": 107,
+      "active": false
+    },
+    {
+      "id": "oasis",
+      "name": "Oasis",
+      "categoryId": "printemps",
+      "priceDzd": 9800,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Petit sac à rabat sable, chaîne dorée.",
+        "en": "Small sand-coloured flap bag with a golden chain.",
+        "ar": "حقيبة صغيرة بغطاء بلون الرمل وسلسلة ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Le petit sac à rabat de tous les jours, au tissage sable vertical, porté épaule avec sa chaîne dorée.",
+        "en": "The everyday small flap bag in a vertical sand weave, worn on the shoulder with its golden chain.",
+        "ar": "حقيبة صغيرة يومية بنسيج عمودي بلون الرمل تُحمل على الكتف بسلسلتها الذهبية."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/oasis-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/oasis-1.jpg"
+      ],
+      "sortOrder": 108,
+      "active": false
+    },
+    {
+      "id": "tassili",
+      "name": "Tassili",
+      "categoryId": "printemps",
+      "priceDzd": 9500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Minaudières à pompon, trois coloris graphiques.",
+        "en": "Tasselled mini bags in three graphic colourways.",
+        "ar": "حقائب صغيرة بشرابة بثلاثة ألوان هندسية."
+      },
+      "fullDescription": {
+        "fr": "Motifs géométriques inspirés des fresques du Tassili et pompon assorti : une minaudière disponible en gris, vert ou sable.",
+        "en": "Geometric patterns inspired by the Tassili frescoes with a matching tassel: a mini bag in grey, green or sand.",
+        "ar": "زخارف هندسية مستوحاة من رسوم الطاسيلي مع شرابة متناسقة: حقيبة صغيرة بالرمادي أو الأخضر أو الرملي."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Pompon, chaîne fine",
+        "en": "Tassel, fine chain",
+        "ar": "شرابة، سلسلة رفيعة"
+      },
+      "primaryImage": "/assets/images/products/printemps/tassili-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/tassili-1.jpg"
+      ],
+      "sortOrder": 109,
+      "active": false
+    },
+    {
+      "id": "tipaza",
+      "name": "Tipaza",
+      "categoryId": "printemps",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac à rabat ivoire et mauve, vagues festonnées.",
+        "en": "Ivory and mauve flap bag with scalloped waves.",
+        "ar": "حقيبة بغطاء عاجي وبنفسجي بموجات مزخرفة."
+      },
+      "fullDescription": {
+        "fr": "Des vagues festonnées ivoire sur fond mauve, comme la mer à Tipaza, avec un fermoir triangle doré.",
+        "en": "Scalloped ivory waves on a mauve ground, like the sea at Tipaza, with a gold-tone triangle clasp.",
+        "ar": "موجات عاجية مزخرفة على خلفية بنفسجية كبحر تيبازة، بقفل مثلث ذهبي."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/printemps/tipaza-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/tipaza-1.jpg"
+      ],
+      "sortOrder": 110,
+      "active": false
+    },
+    {
+      "id": "blanche-dalger",
+      "name": "Blanche d’Alger",
+      "categoryId": "printemps",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac blanc tissé, bandoulière à motifs dorés.",
+        "en": "White woven bag with a gold-patterned strap.",
+        "ar": "حقيبة بيضاء منسوجة بحزام بزخارف ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Comme Alger la Blanche : un tissage immaculé aux lignes verticales, porté avec une large bandoulière brodée de chevrons dorés.",
+        "en": "Like Algiers the White: an immaculate weave with vertical lines, worn on a wide strap embroidered with golden chevrons.",
+        "ar": "مثل الجزائر البيضاء: نسيج ناصع بخطوط عمودية يُحمل بحزام عريض مطرز بزخارف ذهبية."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir doré, bandoulière textile",
+        "en": "Gold-tone clasp, fabric shoulder strap",
+        "ar": "قفل ذهبي، حزام كتف من القماش"
+      },
+      "primaryImage": "/assets/images/products/printemps/blanche-dalger-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/blanche-dalger-1.jpg"
+      ],
+      "sortOrder": 111,
+      "active": false
+    },
+    {
+      "id": "constantine",
+      "name": "Constantine",
+      "categoryId": "printemps",
+      "priceDzd": 11500,
+      "collection": {
+        "fr": "Collection Printemps",
+        "en": "Spring Collection",
+        "ar": "تشكيلة الربيع"
+      },
+      "tag": {
+        "fr": "Printemps",
+        "en": "Spring",
+        "ar": "ربيع"
+      },
+      "badgeClass": "badge-rose",
+      "shortDescription": {
+        "fr": "Sac noir au relief géométrique, bandoulière chevron.",
+        "en": "Black bag with geometric relief and a chevron strap.",
+        "ar": "حقيبة سوداء بنقش هندسي بارز وحزام متعرج."
+      },
+      "fullDescription": {
+        "fr": "Un relief géométrique noir aux lignes brisées, comme les ponts de Constantine, fermé par un fermoir pivotant argenté.",
+        "en": "Black geometric relief with broken lines, like the bridges of Constantine, closed with a silver-tone turn-lock.",
+        "ar": "نقش هندسي أسود بخطوط متكسرة كجسور قسنطينة، يُغلق بقفل فضي دوّار."
+      },
+      "materials": {
+        "fr": "Cordon tissé main sur structure rigide",
+        "en": "Hand-woven cord on a structured frame",
+        "ar": "حبل منسوج يدوياً على هيكل متين"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne argentés",
+        "en": "Silver-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون فضي"
+      },
+      "primaryImage": "/assets/images/products/printemps/constantine-1.jpg",
+      "gallery": [
+        "/assets/images/products/printemps/constantine-1.jpg"
+      ],
+      "sortOrder": 112,
+      "active": false
+    },
+    {
+      "id": "damier-bordeaux",
+      "name": "Damier Bordeaux",
+      "categoryId": "hiver",
+      "priceDzd": 9800,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac damier bordeaux et ivoire, bijou cerf doré.",
+        "en": "Burgundy and ivory checkerboard bag with a golden stag charm.",
+        "ar": "حقيبة مربعات عنابية وعاجية بحلية غزال ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Un damier bordeaux et ivoire tricoté en chenille douce, orné d’un bijou cerf doré et d’une chaîne entrelacée.",
+        "en": "A burgundy and ivory checkerboard in soft chenille, adorned with a golden stag charm and a woven chain.",
+        "ar": "مربعات عنابية وعاجية من الشنيل الناعم، تزينها حلية غزال ذهبية وسلسلة مضفورة."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/damier-bordeaux-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/damier-bordeaux-1.jpg"
+      ],
+      "sortOrder": 113,
+      "active": false
+    },
+    {
+      "id": "rose-des-sables",
+      "name": "Rose des Sables",
+      "categoryId": "hiver",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac velours rose à chevrons noirs, fermoir sculpté.",
+        "en": "Pink velvet bag with black chevrons and a sculpted clasp.",
+        "ar": "حقيبة مخملية وردية بزخارف متعرجة سوداء وقفل منحوت."
+      },
+      "fullDescription": {
+        "fr": "Un velours rose aux chevrons noirs, inspiré des roses des sables du Sahara, fermé par un grand fermoir doré sculpté.",
+        "en": "Pink velvet with black chevrons, inspired by the Sahara’s desert roses, closed with a large sculpted gold-tone clasp.",
+        "ar": "مخمل وردي بزخارف سوداء مستوحى من وردة الصحراء، يُغلق بقفل ذهبي منحوت كبير."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/rose-des-sables-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/rose-des-sables-1.jpg"
+      ],
+      "sortOrder": 114,
+      "active": false
+    },
+    {
+      "id": "damier-noir",
+      "name": "Damier Noir",
+      "categoryId": "hiver",
+      "priceDzd": 9800,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac damier noir et blanc, chaîne dorée.",
+        "en": "Black and white checkerboard bag with a golden chain.",
+        "ar": "حقيبة مربعات بالأبيض والأسود بسلسلة ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Le damier noir et blanc, intemporel, tricoté en chenille épaisse et porté épaule sur une chaîne dorée.",
+        "en": "The timeless black-and-white checkerboard, knitted in thick chenille and worn on a golden chain.",
+        "ar": "المربعات الخالدة بالأبيض والأسود، محاكة من شنيل سميك وتُحمل على سلسلة ذهبية."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/damier-noir-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/damier-noir-1.jpg"
+      ],
+      "sortOrder": 115,
+      "active": false
+    },
+    {
+      "id": "neige-de-chrea",
+      "name": "Neige de Chréa",
+      "categoryId": "hiver",
+      "priceDzd": 11500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Pochette bordeaux bordée de fourrure ivoire, bijou cerf.",
+        "en": "Burgundy clutch trimmed with ivory faux fur and a stag charm.",
+        "ar": "حقيبة عنابية بحواف من الفرو العاجي وحلية غزال."
+      },
+      "fullDescription": {
+        "fr": "Une chenille bordeaux bordée de fourrure ivoire, comme la neige sur les cèdres de Chréa, avec un bijou cerf doré.",
+        "en": "Burgundy chenille edged with ivory faux fur, like snow on the cedars of Chréa, with a golden stag charm.",
+        "ar": "شنيل عنابي بحواف من الفرو العاجي كالثلج على أرز الشريعة، مع حلية غزال ذهبية."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/neige-de-chrea-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/neige-de-chrea-1.jpg"
+      ],
+      "sortOrder": 116,
+      "active": false
+    },
+    {
+      "id": "cedre",
+      "name": "Cèdre",
+      "categoryId": "hiver",
+      "priceDzd": 11500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac chocolat bordé de fourrure caramel.",
+        "en": "Chocolate bag trimmed with caramel faux fur.",
+        "ar": "حقيبة بنية بحواف من الفرو بلون الكراميل."
+      },
+      "fullDescription": {
+        "fr": "Une chenille chocolat généreuse, bordée de fourrure caramel et portée sur une épaisse chaîne dorée.",
+        "en": "Generous chocolate chenille trimmed with caramel faux fur, worn on a thick golden chain.",
+        "ar": "شنيل بني سخي بحواف من الفرو بلون الكراميل يُحمل على سلسلة ذهبية سميكة."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/cedre-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/cedre-1.jpg"
+      ],
+      "sortOrder": 117,
+      "active": false
+    },
+    {
+      "id": "yakouren",
+      "name": "Yakouren",
+      "categoryId": "hiver",
+      "priceDzd": 10500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac velours vert forêt, double chaîne argentée.",
+        "en": "Forest-green velvet bag with a double silver chain.",
+        "ar": "حقيبة مخملية خضراء بسلسلة فضية مزدوجة."
+      },
+      "fullDescription": {
+        "fr": "Le vert profond des forêts de Yakouren, en chenille côtelée, avec une double chaîne et un fermoir argentés.",
+        "en": "The deep green of the Yakouren forests in ribbed chenille, with a double chain and silver-tone clasp.",
+        "ar": "الأخضر العميق لغابات ياكورن من الشنيل المضلع، بسلسلة مزدوجة وقفل فضي."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne argentés",
+        "en": "Silver-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون فضي"
+      },
+      "primaryImage": "/assets/images/products/hiver/yakouren-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/yakouren-1.jpg"
+      ],
+      "sortOrder": 118,
+      "active": false
+    },
+    {
+      "id": "flocon",
+      "name": "Flocon",
+      "categoryId": "hiver",
+      "priceDzd": 9500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Petit sac en fourrure blanche, breloque dorée.",
+        "en": "Small white faux-fur bag with a golden charm.",
+        "ar": "حقيبة صغيرة من الفرو الأبيض بحلية ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Douce comme un flocon : une fourrure blanche immaculée, une petite breloque dorée et une chaîne fine.",
+        "en": "Soft as a snowflake: immaculate white faux fur, a small golden charm and a fine chain.",
+        "ar": "ناعمة كندفة الثلج: فرو أبيض ناصع وحلية ذهبية صغيرة وسلسلة رفيعة."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/flocon-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/flocon-1.jpg"
+      ],
+      "sortOrder": 119,
+      "active": false
+    },
+    {
+      "id": "ondine",
+      "name": "Ondine",
+      "categoryId": "hiver",
+      "priceDzd": 7900,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Pochette téléphone zigzag gris et blanc, chaîne de perles.",
+        "en": "Grey and white zigzag phone pouch with a pearl chain.",
+        "ar": "حقيبة هاتف بزخارف متعرجة رمادية وبيضاء وسلسلة لآلئ."
+      },
+      "fullDescription": {
+        "fr": "Une pochette verticale pour le téléphone, aux vagues grises et blanches, portée en bandoulière sur une chaîne de perles.",
+        "en": "A vertical phone pouch with grey and white waves, worn crossbody on a pearl chain.",
+        "ar": "حقيبة هاتف عمودية بموجات رمادية وبيضاء تُحمل على الكتف بسلسلة من اللآلئ."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir doré, chaîne de perles",
+        "en": "Gold-tone clasp, pearl chain",
+        "ar": "قفل ذهبي، سلسلة لآلئ"
+      },
+      "primaryImage": "/assets/images/products/hiver/ondine-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/ondine-1.jpg"
+      ],
+      "sortOrder": 120,
+      "active": false
+    },
+    {
+      "id": "nuit-bleue",
+      "name": "Nuit Bleue",
+      "categoryId": "hiver",
+      "priceDzd": 11500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac à main velours bleu roi, chaîne dorée.",
+        "en": "Royal-blue velvet handbag with a golden chain.",
+        "ar": "حقيبة يد مخملية زرقاء ملكية بسلسلة ذهبية."
+      },
+      "fullDescription": {
+        "fr": "Un velours bleu roi au relief chevron, deux anses courtes et une chaîne dorée amovible pour le soir.",
+        "en": "Royal-blue velvet with a chevron relief, two short handles and a detachable golden chain for evenings.",
+        "ar": "مخمل أزرق ملكي بنقش متعرج، بمقبضين قصيرين وسلسلة ذهبية قابلة للفصل للمساء."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/nuit-bleue-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/nuit-bleue-1.jpg"
+      ],
+      "sortOrder": 121,
+      "active": false
+    },
+    {
+      "id": "carmin",
+      "name": "Carmin",
+      "categoryId": "hiver",
+      "priceDzd": 12500,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac matelassé rouge carmin, grosse chaîne dorée.",
+        "en": "Carmine-red quilted bag with a chunky golden chain.",
+        "ar": "حقيبة مبطنة حمراء قرمزية بسلسلة ذهبية عريضة."
+      },
+      "fullDescription": {
+        "fr": "Un matelassé rouge carmin tricoté main, porté sur une généreuse chaîne dorée : la pièce forte de l’hiver.",
+        "en": "A hand-knitted carmine-red quilted bag on a generous golden chain: the statement piece of winter.",
+        "ar": "حقيبة مبطنة حمراء قرمزية محاكة يدوياً تُحمل على سلسلة ذهبية عريضة: قطعة الشتاء المميزة."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/carmin-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/carmin-1.jpg"
+      ],
+      "sortOrder": 122,
+      "active": false
+    },
+    {
+      "id": "duo-bouclette",
+      "name": "Duo Bouclette",
+      "categoryId": "hiver",
+      "priceDzd": 8900,
+      "collection": {
+        "fr": "Collection Hiver",
+        "en": "Winter Collection",
+        "ar": "تشكيلة الشتاء"
+      },
+      "tag": {
+        "fr": "Hiver",
+        "en": "Winter",
+        "ar": "شتاء"
+      },
+      "badgeClass": "badge-charcoal",
+      "shortDescription": {
+        "fr": "Sac bouclette, en ivoire ou framboise.",
+        "en": "Bouclé bag in ivory or raspberry.",
+        "ar": "حقيبة من الصوف المجعد بالعاجي أو التوتي."
+      },
+      "fullDescription": {
+        "fr": "La douceur de la bouclette, en ivoire ou en framboise, avec une grosse chaîne dorée et un fermoir losange.",
+        "en": "The softness of bouclé in ivory or raspberry, with a chunky golden chain and a diamond-shaped clasp.",
+        "ar": "نعومة الصوف المجعد بالعاجي أو التوتي، بسلسلة ذهبية عريضة وقفل على شكل معين."
+      },
+      "materials": {
+        "fr": "Fil chenille et bouclette tricotés main",
+        "en": "Hand-knitted chenille and bouclé yarn",
+        "ar": "خيط شنيل وصوف مجعد محاك يدوياً"
+      },
+      "dimensions": {
+        "fr": "Dimensions précises sur demande",
+        "en": "Exact dimensions on request",
+        "ar": "المقاسات الدقيقة عند الطلب"
+      },
+      "hardware": {
+        "fr": "Fermoir et chaîne dorés",
+        "en": "Gold-tone clasp and chain",
+        "ar": "قفل وسلسلة بلون ذهبي"
+      },
+      "primaryImage": "/assets/images/products/hiver/duo-bouclette-1.jpg",
+      "gallery": [
+        "/assets/images/products/hiver/duo-bouclette-1.jpg"
+      ],
+      "sortOrder": 123,
+      "active": false
+    }
+  ]
+}

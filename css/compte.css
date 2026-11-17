@@ -3,7 +3,7 @@
  */
 
 .compte-page {
-  background-color: #FAF6EE;
+  background-color: var(--bg-primary);
   color: var(--color-charcoal);
   min-height: 100vh;
   display: flex;
@@ -23,7 +23,7 @@
 
 /* Screen 1: Email Entry */
 .compte-step-1-card {
-  background-color: #FFFFFF;
+  background-color: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   max-width: 680px;
   margin: 0 auto;
@@ -38,6 +38,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-charcoal);
+  margin-top: 0;
   margin-bottom: var(--space-8);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-subtle);
@@ -118,6 +119,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-charcoal);
+  margin-top: 0;
   margin-bottom: var(--space-8);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-subtle);

@@ -3,7 +3,6 @@
  */
 
 import { cartStore } from '../state/cart-state.js';
-import { I18N } from '../data/i18n.js';
 
 export function initNavbar() {
   const header = document.getElementById('site-header');
@@ -106,48 +105,7 @@ export function initNavbar() {
   if (langSelect) {
     langSelect.value = cartStore.language;
     langSelect.addEventListener('change', (e) => {
-      const lang = e.target.value;
-      cartStore.setLanguage(lang);
-      applyLanguage(lang);
+      cartStore.setLanguage(e.target.value);
     });
   }
-}
-
-export function applyLanguage(lang) {
-  const dict = I18N[lang] || I18N.en;
-  
-  // Update translatable elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const keys = key.split('.');
-    let val = dict;
-    for (const k of keys) {
-      if (val && val[k]) {
-        val = val[k];
-      } else {
-        val = null;
-        break;
-      }
-    }
-    if (val && typeof val === 'string') {
-      if (el.classList.contains('hermes-hero-title') || el.classList.contains('hermes-hero-description')) {
-        el.innerHTML = `<em>${val}</em>`;
-      } else {
-        el.textContent = val;
-      }
-    }
-  });
-
-  // Update input placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    const keys = key.split('.');
-    let val = dict;
-    for (const k of keys) {
-      if (val && val[k]) val = val[k];
-    }
-    if (val && typeof val === 'string') {
-      el.setAttribute('placeholder', val);
-    }
-  });
 }
