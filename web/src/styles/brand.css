@@ -19,6 +19,15 @@
 }
 
 /* ---------- Shared ---------- */
+/* Quick successive taps (e.g. "Next" then a choice) must never trigger double-tap zoom */
+a,
+button,
+[role='radio'],
+label,
+select {
+  touch-action: manipulation;
+}
+
 /* Full-bleed bands are 100vw wide: clip the scrollbar's width so the page never scrolls sideways */
 .page-main {
   overflow-x: clip;
@@ -240,7 +249,8 @@
 /* ---------- Bespoke atelier (step-by-step) ---------- */
 .atelier-section {
   position: relative;
-  overflow: hidden;
+  /* clip, not hidden: hidden would turn the section into a scroll container and break position: sticky */
+  overflow: clip;
   background:
     radial-gradient(1200px 500px at 85% 10%, rgba(94, 134, 168, 0.12), transparent 60%),
     radial-gradient(900px 500px at 5% 90%, rgba(221, 163, 169, 0.14), transparent 60%),
@@ -336,18 +346,22 @@
 }
 
 .atelier-views {
+  position: absolute;
+  inset-inline-end: 14px;
+  bottom: 14px;
   display: flex;
-  gap: 10px;
-  margin-top: var(--space-4);
+  flex-direction: column;
+  gap: 8px;
 }
 
 .atelier-view {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 12px 6px 6px;
+  padding: 5px 12px 5px 5px;
   border: 1px solid rgba(201, 164, 106, 0.4);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
   font: inherit;
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
@@ -1827,30 +1841,23 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
+  /* minmax(0, …): the swipeable rows must scroll, not widen the column */
   .atelier-studio {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .atelier-preview {
     position: relative;
     top: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: var(--space-4);
-    align-items: end;
-    max-width: 620px;
+    max-width: 520px;
     width: 100%;
     margin: 0 auto;
   }
 
-  .atelier-views {
-    flex-direction: column;
-    margin-top: 0;
-  }
-
-  .atelier-caption {
-    grid-column: 1 / -1;
-    margin-top: 0;
+  .atelier-panel {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .universe-swatches {
@@ -1919,29 +1926,145 @@
     font-size: 1.05rem;
   }
 
-  .atelier-preview {
-    grid-template-columns: 1fr;
+  /* Bespoke atelier on phones: short photo, swipeable choices, pinned price bar */
+  .atelier-section.section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 0;
+  }
+
+  .atelier-deco {
+    display: none;
+  }
+
+  .atelier-intro {
+    font-size: 0.875rem;
+  }
+
+  .atelier-studio {
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .atelier-frame {
+    aspect-ratio: 1;
+    max-height: 48vh;
+    width: 100%;
+  }
+
+  .atelier-frame-label {
+    inset-inline-start: 10px;
+    top: 10px;
+    padding: 5px 10px;
+    font-size: 0.625rem;
   }
 
   .atelier-views {
-    flex-direction: row;
+    inset-inline-end: 10px;
+    bottom: 10px;
+    gap: 6px;
+  }
+
+  .atelier-view {
+    padding: 3px;
+    font-size: 0;
+  }
+
+  .atelier-view img {
+    width: 34px;
+    height: 44px;
+  }
+
+  .atelier-view.is-active {
+    box-shadow: 0 0 0 2px var(--picasso);
+  }
+
+  .atelier-monogram {
+    font-size: 1.2rem;
+    padding: 6px 14px;
+  }
+
+  .atelier-caption {
+    margin-top: var(--space-3);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .atelier-tabs {
+    margin-bottom: var(--space-6);
+  }
+
+  .atelier-tab-num {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .atelier-tabs::before,
+  .atelier-tabs::after {
+    top: 14px;
   }
 
   .atelier-tab-label {
     display: none;
   }
 
+  .atelier-step {
+    min-height: 0;
+  }
+
+  .atelier-step-head {
+    margin-bottom: var(--space-4);
+  }
+
   .atelier-step-head h3 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
-  .atelier-swatches {
-    grid-template-columns: repeat(3, 1fr);
+  .atelier-step-head span {
+    font-size: 0.75rem;
+    text-align: end;
   }
 
+  /* Swipeable rows that bleed to the screen edge */
+  .atelier-swatches,
   .atelier-tiles {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    display: flex;
+    gap: 10px;
+    margin-inline: calc(-1 * var(--space-6));
+    padding: 4px var(--space-6) 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-6);
+    scrollbar-width: none;
+  }
+
+  .atelier-swatches::-webkit-scrollbar,
+  .atelier-tiles::-webkit-scrollbar {
+    display: none;
+  }
+
+  .atelier-swatch {
+    flex: 0 0 72px;
+    scroll-snap-align: start;
+  }
+
+  .atelier-swatch .color-swatch-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .atelier-swatch-name {
+    font-size: 0.6875rem;
+    line-height: 1.25;
+  }
+
+  .atelier-tile {
+    flex: 0 0 116px;
+    scroll-snap-align: start;
+  }
+
+  .atelier-tile:hover {
+    transform: none;
   }
 
   .atelier-tile-name {
@@ -1950,30 +2073,92 @@
 
   .atelier-tile-name,
   .atelier-tile-price {
-    padding: 0 6px;
+    padding: 0 8px;
   }
 
-  .atelier-frame {
-    aspect-ratio: 4 / 5;
-    max-height: 56vh;
-    width: 100%;
+  .atelier-hint {
+    margin-top: var(--space-2);
+    font-size: 0.95rem;
   }
 
   .atelier-row {
     padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .atelier-row-text small {
+    display: none;
   }
 
   .atelier-monogram-field {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: var(--space-2);
   }
 
-  .atelier-summary-row .atelier-cta {
+  .atelier-monogram-field .monogram-input {
     width: 100%;
   }
 
+  .atelier-step-nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    margin-top: var(--space-6);
+  }
+
+  .atelier-step-nav .link-underline,
   .atelier-step-nav .atelier-next {
-    padding: 12px 14px;
+    display: block;
+    width: 100%;
+    padding: 13px 10px;
+    border: 1px solid rgba(201, 164, 106, 0.6);
+    background-image: none;
+    text-align: center;
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+  }
+
+  .atelier-step-nav .atelier-next {
+    grid-column: 2;
+    border-color: var(--picasso);
+    background: var(--picasso);
+    color: #fff;
+  }
+
+  /* Price bar pinned to the bottom of the screen while the studio is in view */
+  .atelier-summary {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    margin: var(--space-6) calc(-1 * var(--space-6)) 0;
+    padding: 12px var(--space-6) calc(12px + env(safe-area-inset-bottom));
+    box-shadow: 0 -12px 30px -12px rgba(22, 45, 80, 0.5);
+  }
+
+  .atelier-chips,
+  .atelier-summary-note {
+    display: none;
+  }
+
+  .atelier-summary-row {
+    flex-wrap: nowrap;
+  }
+
+  .atelier-summary .pricing-label {
+    font-size: 0.5625rem;
+  }
+
+  .atelier-summary .pricing-amount {
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+
+  .atelier-summary-row .atelier-cta {
+    width: auto;
+    padding: 13px 16px;
+    font-size: 0.625rem;
+    white-space: nowrap;
   }
 
   .gifts-hero-face {
