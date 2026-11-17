@@ -77,17 +77,19 @@ sac-web/
 │   │   ├── products.js          # Product catalog (Pearl Ivory, Noir Prestige, Blush Organza, Taupe Elegance)
 │   │   ├── customizer-options.js# Swatches, noble materials, pearl grades, chains & cost modifiers
 │   │   ├── i18n.js              # Trilingual translation dictionary (EN, FR, AR)
+│   │   ├── wilayas.js           # All 69 Algerian wilayas, FR + AR names (used by the panier.html delivery form)
 │   │   ├── testimonials.js      # Curated client editorial reviews & quotes
 │   │   └── journal.js           # Atelier journal articles & styling stories
+│   ├── utils/
+│   │   ├── i18n.js              # t() lookup with EN fallback, applyLanguage() for [data-i18n], lang/dir
+│   │   └── escape.js            # escapeHtml() for values interpolated into template strings
 │   └── components/
 │       ├── navbar.js            # Two-tier navigation, sticky scroll, search triggers, mobile drawer
 │       ├── hero.js              # Background video controls (mute/unmute, play/pause)
 │       ├── customizer.js        # Bespoke bag studio controller & live preview rendering
 │       ├── collection.js        # Dynamic product grid renderer & quickview triggers
 │       ├── quickview-modal.js   # Product modal with thumbnail gallery & attribute tabs
-│       ├── cart-drawer.js       # Slide-out mini shopping bag drawer
-│       ├── cart-added-modal.js  # Confirmation modal displayed upon adding an item to the bag
-│       ├── checkout-modal.js    # In-page checkout modal with Algerian 58 Wilayas selector
+│       ├── cart-added-modal.js  # Confirmation modal shown after any add-to-bag; links to panier.html
 │       ├── search-modal.js      # Live full-text search overlay over products & materials
 │       ├── story-modal.js       # Heritage & craftsmanship modal narrative
 │       └── toast.js             # Ephemeral floating notification system
@@ -106,7 +108,6 @@ sac-web/
 | [`customizer-state.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/state/customizer-state.js) | Singleton store (`customizerStore`) tracking selected customizer configuration (color, material, pearls, chain, monogram) and dynamically calculating base price + option modifiers. |
 | [`navbar.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/navbar.js) | Manages sticky header transparency on scroll, bag count badge reactivity, search modal triggers, currency selection, language switcher, and mobile navigation drawer. |
 | [`customizer.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/customizer.js) | Renders color swatches, material pills, pearl buttons, and chain selectors. Synchronizes real-time preview layer, updates monogram badge, and dispatches custom creations into `cartStore`. |
-| [`checkout-modal.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/checkout-modal.js) | In-page simulation checkout modal with comprehensive coverage of all 58 Algerian Wilayas and international delivery options. |
 | [`cart-added-modal.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/cart-added-modal.js) | Listens to `cart:item-added` events and displays an elegant confirmation card with thumbnail and "Voir le Panier" action. |
 
 ---
@@ -126,7 +127,9 @@ Unless the user explicitly instructs otherwise, agents must strictly follow thes
    Never break these storage contracts without an explicit migration path.
 5. **Reuse Existing Components & Events**:
    - Do not create parallel cart stores or modal systems.
-   - Use established CustomEvents (`cart:open`, `checkout:open`, `search:open`, `quickview:open`, `story:open`, `cart:item-added`).
+   - Use established CustomEvents (`search:open`, `quickview:open`, `story:open`, `cart:item-added`, `i18n:change`).
+   - The only cart & checkout flow is add-to-bag → `cart-added-modal.js` → `panier.html`. Cart lines are addressed by `item.key` (see `lineKey()` in `cart-state.js`), never by array index.
+   - User-visible strings live in `js/data/i18n.js` (EN/FR/AR). Use `data-i18n` / `data-i18n-placeholder` / `data-i18n-aria` in markup and `t()` in JS; pass interpolated values through `escapeHtml()`.
 6. **Avoid Duplicate Business Logic**: All price calculations and currency conversions must pass through `cartStore` or `customizerStore`.
 7. **No Unnecessary Rewrites**: Follow the principle:
    ```text
@@ -266,7 +269,7 @@ ZAPHIRA’s visual identity is forged from three distinct pillars:
 - **Spatial Restraint**: Generous whitespace, disciplined margins, and uncluttered compositions.
 - **Editorial Typography**: Pairing classical serif headlines (`Cormorant Garamond`, `Playfair Display`) with clean, modern sans-serif functional UI text (`Plus Jakarta Sans`).
 - **Material Richness**: Colors derived from natural haute couture materials—warm raw silk ivory, midnight satin charcoal, polished champagne gold hardware, and dusty organza rose.
-- **Packaging Theater**: Elevating unboxing through dedicated presentation cards, Bolduc ribbon detailing, and bespoke concierge touches.
+- **Packaging Theater**: Elevating unboxing through dedicated presentation cards, the ivory Écrin Zaphira with its champagne ribbon and Z seal, and bespoke concierge touches (never Hermès packaging trade dress such as the orange box or Bolduc ribbon).
 
 ### 2. Modernist Geometric Artistry (Picasso Inspiration) (30%)
 - **Expressive Geometry**: Subtle asymmetric card grids, diagonal dividing accents, and geometric framing.

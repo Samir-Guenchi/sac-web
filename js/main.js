@@ -2,13 +2,11 @@
  * ZAPHIRA — Application Bootstrap & Main Entry Point
  */
 
-import { initNavbar, applyLanguage } from './components/navbar.js';
+import { initNavbar } from './components/navbar.js';
 import { initHero } from './components/hero.js';
 import { initCustomizer } from './components/customizer.js';
 import { initCollection } from './components/collection.js';
 import { initQuickViewModal } from './components/quickview-modal.js';
-import { initCartDrawer } from './components/cart-drawer.js';
-import { initCheckoutModal } from './components/checkout-modal.js';
 import { initCartAddedModal } from './components/cart-added-modal.js';
 import { initSearchModal } from './components/search-modal.js';
 import { initStoryModal } from './components/story-modal.js';
@@ -16,7 +14,8 @@ import { showToast } from './components/toast.js';
 
 import { TESTIMONIALS } from './data/testimonials.js';
 import { JOURNAL_ENTRIES } from './data/journal.js';
-import { cartStore } from './state/cart-state.js';
+import { applyLanguage, loc, t } from './utils/i18n.js';
+import { escapeHtml } from './utils/escape.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all subsystems
@@ -25,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCustomizer();
   initCollection();
   initQuickViewModal();
-  initCartDrawer();
   initCartAddedModal();
-  initCheckoutModal();
   initSearchModal();
   initStoryModal();
 
@@ -36,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletterForm();
   initScrollReveals();
 
-  // Apply saved language
-  applyLanguage(cartStore.language);
+  // Apply saved language (also sets <html lang/dir>)
+  applyLanguage();
 });
 
 /**
@@ -51,45 +48,73 @@ function initTestimonialsSlider() {
 
   if (!quoteEl || !dotsContainer) return;
 
+  const AUTO_ADVANCE_MS = 6000;
   let activeIndex = 0;
+  let timerId = null;
 
   dotsContainer.innerHTML = TESTIMONIALS.map((_, idx) => `
-    <button type="button" class="nav-dot ${idx === 0 ? 'is-active' : ''}" data-test-idx="${idx}" aria-label="View testimonial ${idx + 1}"></button>
+    <button type="button" class="nav-dot ${idx === 0 ? 'is-active' : ''}" data-test-idx="${idx}"
+            aria-label="${escapeHtml(t('testimonials.dotLabel', { n: idx + 1 }))}"></button>
   `).join('');
+
+  // Labels include the dot number, so they're rebuilt here rather than via data-i18n-aria
+  document.addEventListener('i18n:change', () => {
+    dotsContainer.querySelectorAll('.nav-dot').forEach((dot, idx) => {
+      dot.setAttribute('aria-label', t('testimonials.dotLabel', { n: idx + 1 }));
+    });
+    fillTestimonial(TESTIMONIALS[activeIndex]);
+  });
+
+  function fillTestimonial(testimonial) {
+    quoteEl.textContent = `“${loc(testimonial.quote)}”`;
+    if (authorEl) authorEl.textContent = testimonial.author;
+    if (locEl) locEl.textContent = `${loc(testimonial.location)} • ${testimonial.product}`;
+  }
 
   function showTestimonial(idx) {
     activeIndex = idx;
-    const t = TESTIMONIALS[idx];
     quoteEl.style.opacity = '0';
     quoteEl.style.transform = 'translateY(10px)';
 
     setTimeout(() => {
-      quoteEl.textContent = `“${t.quote}”`;
-      if (authorEl) authorEl.textContent = t.author;
-      if (locEl) locEl.textContent = `${t.location} • ${t.product}`;
+      fillTestimonial(TESTIMONIALS[idx]);
       quoteEl.style.opacity = '1';
       quoteEl.style.transform = 'translateY(0)';
     }, 200);
 
-    const dots = dotsContainer.querySelectorAll('.nav-dot');
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    dotsContainer.querySelectorAll('.nav-dot').forEach((dot, i) => dot.classList.toggle('is-active', i === idx));
+  }
+
+  // One timer at a time; restarted after manual navigation and paused while the tab is hidden
+  function startAutoAdvance() {
+    stopAutoAdvance();
+    timerId = setInterval(() => showTestimonial((activeIndex + 1) % TESTIMONIALS.length), AUTO_ADVANCE_MS);
+  }
+
+  function stopAutoAdvance() {
+    if (timerId !== null) {
+      clearInterval(timerId);
+      timerId = null;
+    }
   }
 
   quoteEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+  fillTestimonial(TESTIMONIALS[0]);
 
   dotsContainer.addEventListener('click', (e) => {
     const dot = e.target.closest('[data-test-idx]');
     if (dot) {
-      const idx = parseInt(dot.getAttribute('data-test-idx'), 10);
-      showTestimonial(idx);
+      showTestimonial(parseInt(dot.getAttribute('data-test-idx'), 10));
+      startAutoAdvance();
     }
   });
 
-  // Auto advance every 6 seconds
-  setInterval(() => {
-    activeIndex = (activeIndex + 1) % TESTIMONIALS.length;
-    showTestimonial(activeIndex);
-  }, 6000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoAdvance();
+    else startAutoAdvance();
+  });
+
+  startAutoAdvance();
 }
 
 /**
@@ -100,18 +125,27 @@ function initJournalFeed() {
   if (!container) return;
 
   container.innerHTML = JOURNAL_ENTRIES.map(entry => `
-    <article class="journal-card reveal" data-journal-id="${entry.id}">
-      <img src="${entry.image}" alt="${entry.title}" loading="lazy">
+    <article class="journal-card reveal" data-journal-id="${escapeHtml(entry.id)}">
+      <img src="${escapeHtml(entry.image)}" alt="${escapeHtml(loc(entry.title))}" loading="lazy">
       <div class="journal-card-overlay">
-        <span class="journal-tag">${entry.tag} • ${entry.readTime}</span>
-        <h3 class="journal-title">${entry.title}</h3>
+        <span class="journal-tag">${escapeHtml(loc(entry.tag))} • ${escapeHtml(loc(entry.readTime))}</span>
+        <h3 class="journal-title">${escapeHtml(loc(entry.title))}</h3>
       </div>
     </article>
   `).join('');
 
+  // Update text in place so cards keep their scroll-reveal state
+  document.addEventListener('i18n:change', () => {
+    container.querySelectorAll('.journal-card').forEach((card, idx) => {
+      const entry = JOURNAL_ENTRIES[idx];
+      card.querySelector('img').alt = loc(entry.title);
+      card.querySelector('.journal-tag').textContent = `${loc(entry.tag)} • ${loc(entry.readTime)}`;
+      card.querySelector('.journal-title').textContent = loc(entry.title);
+    });
+  });
+
   container.addEventListener('click', (e) => {
-    const card = e.target.closest('.journal-card');
-    if (card) {
+    if (e.target.closest('.journal-card')) {
       document.dispatchEvent(new CustomEvent('story:open'));
     }
   });
@@ -128,7 +162,7 @@ function initNewsletterForm() {
     e.preventDefault();
     const input = form.querySelector('input[type="email"]');
     if (input && input.value) {
-      showToast('Exclusive Invitation Confirmed', `Welcome to the Maison Zaphira circle. You will receive private previews.`);
+      showToast(t('toast.newsletterTitle'), t('toast.newsletterMsg'));
       input.value = '';
     }
   });

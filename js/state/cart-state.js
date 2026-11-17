@@ -18,6 +18,11 @@ export const SYMBOLS = {
   USD: '$'
 };
 
+/** A cart line is identified by product id + its configuration. */
+export function lineKey(id, specs) {
+  return `${id}|${JSON.stringify(specs || {})}`;
+}
+
 class CartStore {
   constructor() {
     this.items = this.loadCart();
@@ -38,11 +43,11 @@ class CartStore {
             .replace('assets/images/product-', 'assets/images/products/product-')
             .replace('assets/images/hero-bag.jpg', 'assets/images/products/hero-bag.jpg')
             .replace('assets/images/logo-zaphira.svg', 'assets/images/branding/logo-zaphira.svg')
-            .replace('assets/images/boite-orange.jpg', 'assets/images/branding/boite-orange.jpg')
             .replace('assets/images/journal-', 'assets/images/editorial/journal-');
         }
+        if (item && !item.key) item.key = lineKey(item.id, item.specs);
         return item;
-      }) : [];
+      }).filter(item => item && item.key) : [];
     } catch (e) {
       console.warn('Could not load cart from storage', e);
       return [];
@@ -80,25 +85,20 @@ class CartStore {
   setLanguage(lang) {
     this.language = lang;
     localStorage.setItem(LANG_KEY, lang);
-    document.documentElement.setAttribute('lang', lang);
-    if (lang === 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-    } else {
-      document.documentElement.setAttribute('dir', 'ltr');
-    }
+    // utils/i18n.js listens for this to re-apply translations, lang and dir
+    document.dispatchEvent(new CustomEvent('i18n:change', { detail: { lang } }));
   }
 
   addItem(product) {
     // Check if exact same item exists (same id and same configuration specs)
-    const specsKey = JSON.stringify(product.specs || {});
-    const existingIndex = this.items.findIndex(
-      item => item.id === product.id && JSON.stringify(item.specs || {}) === specsKey
-    );
+    const key = lineKey(product.id, product.specs);
+    const existing = this.items.find(item => item.key === key);
 
-    if (existingIndex > -1) {
-      this.items[existingIndex].quantity += (product.quantity || 1);
+    if (existing) {
+      existing.quantity += (product.quantity || 1);
     } else {
       this.items.push({
+        key,
         id: product.id,
         name: product.name,
         priceDZD: product.priceDZD,
@@ -115,21 +115,24 @@ class CartStore {
     }
   }
 
-  removeItem(index) {
-    if (index >= 0 && index < this.items.length) {
-      this.items.splice(index, 1);
-      this.saveCart();
-    }
+  getItem(key) {
+    return this.items.find(item => item.key === key);
   }
 
-  updateQuantity(index, quantity) {
-    if (index >= 0 && index < this.items.length) {
-      if (quantity <= 0) {
-        this.removeItem(index);
-      } else {
-        this.items[index].quantity = quantity;
-        this.saveCart();
-      }
+  removeItem(key) {
+    const before = this.items.length;
+    this.items = this.items.filter(item => item.key !== key);
+    if (this.items.length !== before) this.saveCart();
+  }
+
+  updateQuantity(key, quantity) {
+    const item = this.getItem(key);
+    if (!item) return;
+    if (quantity <= 0) {
+      this.removeItem(key);
+    } else {
+      item.quantity = quantity;
+      this.saveCart();
     }
   }
 

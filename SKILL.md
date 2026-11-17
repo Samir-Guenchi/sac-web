@@ -31,9 +31,8 @@ When investigating an issue or developing a feature, **never edit only the file 
 6. **Persistence**: `cartStore.saveCart()` synchronizes with `localStorage` (`zaphira_cart_v1`).
 7. **Reactivity**: `cartStore.notify()` alerts:
    - Header badge in [`navbar.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/navbar.js)
-   - Cart Drawer in [`cart-drawer.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/cart-drawer.js)
    - Dispatches `cart:item-added` event caught by [`cart-added-modal.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/cart-added-modal.js)
-8. **Visual Feedback**: Ephemeral notification fired via [`js/components/toast.js`](file:///c:/Users/Samir%20Guenchi/Desktop/sac-web/js/components/toast.js).
+8. **Visual Feedback**: The confirmation card in `cart-added-modal.js` is the single add-to-bag feedback; its "View bag" action leads to `panier.html`.
 
 ---
 
@@ -111,7 +110,7 @@ Open PR for Review
 - [ ] Module imports use clean relative paths with `.js` extension (e.g., `import { cartStore } from '../state/cart-state.js';`).
 - [ ] No unhandled Promise rejections or uncaught exceptions in the console.
 - [ ] Event listeners are attached once (use event delegation on parent containers where elements are dynamically rendered).
-- [ ] Custom events use established namespaced names (`cart:open`, `checkout:open`, `search:open`, `quickview:open`, `story:open`, `cart:item-added`).
+- [ ] Custom events use established namespaced names (`search:open`, `quickview:open`, `story:open`, `cart:item-added`, `i18n:change`).
 - [ ] State mutations trigger appropriate notifications via store observers (`notify()`).
 - [ ] DOM queries are cached or scoped where appropriate.
 

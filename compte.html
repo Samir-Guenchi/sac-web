@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Votre Compte — ZAPHIRA Maison de Haute Couture</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/branding/logo-zaphira.svg">
+  <title data-i18n="compte.pageTitle">Votre Compte — ZAPHIRA Maison de Haute Couture</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +21,7 @@
 </head>
 <body class="compte-page">
 
-  <!-- Hermes Navigation Header -->
+  <!-- Navigation Header (layout modelled on hermes.com) -->
   <header class="site-header site-header-hermes" id="site-header">
     <div class="header-top-bar">
       <div class="container header-top-container">
@@ -33,13 +34,13 @@
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </button>
-            <input type="text" class="hermes-search-input" placeholder="Rechercher" aria-label="Search">
+            <input type="text" class="hermes-search-input" placeholder="Rechercher" data-i18n-placeholder="nav.searchPlaceholder" aria-label="Search" data-i18n-aria="nav.search">
           </form>
         </div>
 
         <!-- Center Logo -->
         <div class="header-top-center">
-          <a href="index.html" class="brand-logo-link" aria-label="Zaphira Homepage">
+          <a href="index.html" class="brand-logo-link" aria-label="Zaphira Homepage" data-i18n-aria="compte.homeAria">
             <img src="assets/images/branding/logo-zaphira.svg" alt="ZAPHIRA" class="brand-logo-img">
           </a>
         </div>
@@ -51,7 +52,7 @@
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <span class="utility-label">Compte</span>
+            <span class="utility-label" data-i18n="nav.account">Compte</span>
           </a>
 
           <a href="panier.html" class="hermes-utility-link bag-badge-container">
@@ -60,7 +61,7 @@
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
-            <span class="utility-label">Panier</span>
+            <span class="utility-label" data-i18n="nav.bag">Panier</span>
           </a>
         </div>
       </div>
@@ -70,12 +71,12 @@
     <div class="header-nav-bar">
       <div class="container header-categories-container">
         <nav class="nav-menu-hermes" aria-label="Main Navigation">
-          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes">MAROQUINERIE</a></div>
-          <div class="nav-item-hermes"><a href="index.html#customizer-section" class="nav-link-hermes">SUR-MESURE</a></div>
-          <div class="nav-item-hermes"><a href="index.html#craftsmanship-section" class="nav-link-hermes">SAVOIR-FAIRE</a></div>
-          <div class="nav-item-hermes"><a href="index.html#journal-section" class="nav-link-hermes">JOURNAL</a></div>
-          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes">CADEAUX</a></div>
-          <div class="nav-item-hermes"><a href="index.html#heritage-section" class="nav-link-hermes">A PROPOS DE ZAPHIRA</a></div>
+          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes" data-i18n="nav.catLeather">MAROQUINERIE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#customizer-section" class="nav-link-hermes" data-i18n="nav.catCustom">SUR-MESURE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#craftsmanship-section" class="nav-link-hermes" data-i18n="nav.catCraft">SAVOIR-FAIRE</a></div>
+          <div class="nav-item-hermes"><a href="index.html#journal-section" class="nav-link-hermes" data-i18n="nav.catJournal">JOURNAL</a></div>
+          <div class="nav-item-hermes"><a href="index.html#collection-section" class="nav-link-hermes" data-i18n="nav.catGifts">CADEAUX</a></div>
+          <div class="nav-item-hermes"><a href="index.html#heritage-section" class="nav-link-hermes" data-i18n="nav.catAbout">A PROPOS DE ZAPHIRA</a></div>
         </nav>
       </div>
     </div>
@@ -88,20 +89,20 @@
       <!-- SCREEN 1: STEP 1 (Screenshot 4) -->
       <div class="compte-step-1-view" id="compte-view-step-1">
         <div class="compte-step-1-card">
-          <h1 class="compte-heading-title">VOTRE COMPTE</h1>
+          <h1 class="compte-heading-title" data-i18n="compte.title">VOTRE COMPTE</h1>
 
-          <p class="compte-intro-text">
+          <p class="compte-intro-text" data-i18n="compte.intro">
             Veuillez ajouter votre e-mail ci-dessous pour accéder à votre compte ou créer un compte
           </p>
 
           <form id="compte-step-1-form">
             <div class="hermes-underline-group">
-              <label class="hermes-underline-label" for="compte-initial-email">E-mail *</label>
-              <input type="email" class="hermes-underline-input" id="compte-initial-email" placeholder="nomprenom@domaine.com" required>
-              <span class="hermes-input-hint">Format attendu : nomprenom@domaine.com</span>
+              <label class="hermes-underline-label" for="compte-initial-email" data-i18n="compte.email">E-mail *</label>
+              <input type="email" class="hermes-underline-input" id="compte-initial-email" placeholder="nomprenom@domaine.com" data-i18n-placeholder="compte.emailPlaceholder" autocomplete="email" dir="ltr" required>
+              <span class="hermes-input-hint" data-i18n="compte.emailHint">Format attendu : nomprenom@domaine.com</span>
             </div>
 
-            <button type="submit" class="btn-hermes-black" style="margin-top: 10px;">
+            <button type="submit" class="btn-hermes-black" style="margin-top: 10px;" data-i18n="compte.continue">
               CONTINUER
             </button>
           </form>
@@ -110,75 +111,75 @@
 
       <!-- SCREEN 2: STEP 2 (Screenshot 5) -->
       <div class="compte-step-2-view" id="compte-view-step-2">
-        <div class="compte-header-note">* Informations requises</div>
+        <div class="compte-header-note" data-i18n="compte.required">* Informations requises</div>
 
         <form id="compte-step-2-form">
           <div class="compte-two-columns-grid">
             
             <!-- Left Column: Informations de connexion -->
             <div class="compte-col-left">
-              <h2 class="compte-col-title">INFORMATIONS DE CONNEXION</h2>
+              <h2 class="compte-col-title" data-i18n="compte.loginTitle">INFORMATIONS DE CONNEXION</h2>
 
               <div class="email-send-code-box">
                 <div class="hermes-underline-group" style="margin-bottom: 0;">
-                  <label class="hermes-underline-label">E-mail *</label>
-                  <input type="email" class="hermes-underline-input" id="compte-display-email" readonly>
-                  <span class="hermes-input-hint">Format attendu : nomprenom@domaine.com</span>
+                  <label class="hermes-underline-label" data-i18n="compte.email">E-mail *</label>
+                  <input type="email" class="hermes-underline-input" id="compte-display-email" dir="ltr" readonly>
+                  <span class="hermes-input-hint" data-i18n="compte.emailHint">Format attendu : nomprenom@domaine.com</span>
                 </div>
-                <button type="button" class="btn-send-code" id="btn-send-verification-code">
+                <button type="button" class="btn-send-code" id="btn-send-verification-code" data-i18n="compte.sendCode">
                   ENVOYER LE CODE
                 </button>
               </div>
 
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label" for="compte-code">Code de vérification *</label>
-                <input type="text" class="hermes-underline-input" id="compte-code" placeholder="123456" maxlength="6">
-                <span class="hermes-input-hint">Format attendu: 123456</span>
+                <label class="hermes-underline-label" for="compte-code" data-i18n="compte.code">Code de vérification *</label>
+                <input type="text" class="hermes-underline-input" id="compte-code" placeholder="••••••" maxlength="6" inputmode="numeric" autocomplete="one-time-code" dir="ltr">
+                <span class="hermes-input-hint" data-i18n="compte.codeHint">Format attendu : 6 chiffres</span>
               </div>
 
               <div class="hermes-underline-group" style="margin-bottom: 0;">
-                <label class="hermes-underline-label" for="compte-password">Mot de passe *</label>
+                <label class="hermes-underline-label" for="compte-password" data-i18n="compte.password">Mot de passe *</label>
                 <input type="password" class="hermes-underline-input" id="compte-password" placeholder="••••••••••" required>
               </div>
 
               <!-- Password Security Criteria Checklist -->
               <div class="pwd-criteria-box">
-                <div class="pwd-criteria-title">Pour votre sécurité, nous vous invitons à saisir votre mot de passe en respectant les critères suivants :</div>
+                <div class="pwd-criteria-title" data-i18n="compte.pwdIntro">Pour votre sécurité, nous vous invitons à saisir votre mot de passe en respectant les critères suivants :</div>
                 <div class="pwd-criteria-grid">
-                  <div class="pwd-criterion" id="crit-len">• Au moins 10 caractères</div>
-                  <div class="pwd-criterion" id="crit-num">• Au moins 1 chiffre</div>
-                  <div class="pwd-criterion" id="crit-maj">• Au moins 1 lettre majuscule</div>
-                  <div class="pwd-criterion" id="crit-min">• Au moins 1 lettre minuscule</div>
-                  <div class="pwd-criterion" id="crit-spe">• Au moins 1 caractère spécial</div>
+                  <div class="pwd-criterion" id="crit-len" data-i18n="compte.critLen">• Au moins 10 caractères</div>
+                  <div class="pwd-criterion" id="crit-num" data-i18n="compte.critNum">• Au moins 1 chiffre</div>
+                  <div class="pwd-criterion" id="crit-maj" data-i18n="compte.critMaj">• Au moins 1 lettre majuscule</div>
+                  <div class="pwd-criterion" id="crit-min" data-i18n="compte.critMin">• Au moins 1 lettre minuscule</div>
+                  <div class="pwd-criterion" id="crit-spe" data-i18n="compte.critSpe">• Au moins 1 caractère spécial</div>
                 </div>
               </div>
             </div>
 
             <!-- Right Column: Informations personnelles -->
             <div class="compte-col-right">
-              <h2 class="compte-col-title">INFORMATIONS PERSONNELLES</h2>
+              <h2 class="compte-col-title" data-i18n="compte.personalTitle">INFORMATIONS PERSONNELLES</h2>
 
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label" for="compte-civility">Civilité *</label>
+                <label class="hermes-underline-label" for="compte-civility" data-i18n="compte.civility">Civilité *</label>
                 <select class="hermes-select-input" id="compte-civility" required>
-                  <option value="Mme">Madame</option>
-                  <option value="M.">Monsieur</option>
+                  <option value="Mme" data-i18n="compte.mrs">Madame</option>
+                  <option value="M." data-i18n="compte.mr">Monsieur</option>
                 </select>
               </div>
 
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label" for="compte-firstname">Prénom *</label>
-                <input type="text" class="hermes-underline-input" id="compte-firstname" placeholder="Votre prénom" required>
+                <label class="hermes-underline-label" for="compte-firstname" data-i18n="compte.firstName">Prénom *</label>
+                <input type="text" class="hermes-underline-input" id="compte-firstname" placeholder="Votre prénom" data-i18n-placeholder="compte.firstNamePlaceholder" autocomplete="given-name" required>
               </div>
 
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label" for="compte-lastname">Nom *</label>
-                <input type="text" class="hermes-underline-input" id="compte-lastname" placeholder="Votre nom" required>
+                <label class="hermes-underline-label" for="compte-lastname" data-i18n="compte.lastName">Nom *</label>
+                <input type="text" class="hermes-underline-input" id="compte-lastname" placeholder="Votre nom" data-i18n-placeholder="compte.lastNamePlaceholder" autocomplete="family-name" required>
               </div>
 
               <!-- Phone with Country Code -->
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label">Numéro de téléphone *</label>
+                <label class="hermes-underline-label" data-i18n="compte.phone">Numéro de téléphone *</label>
                 <div style="display: grid; grid-template-columns: 130px 1fr; gap: 12px;">
                   <select class="hermes-select-input" id="compte-phone-prefix">
                     <option value="+213">🇩🇿 DZ +213</option>
@@ -186,40 +187,40 @@
                     <option value="+971">🇦🇪 AE +971</option>
                     <option value="+44">🇬🇧 GB +44</option>
                   </select>
-                  <input type="tel" class="hermes-underline-input" id="compte-phone-number" placeholder="0550 12 34 56" required>
+                  <input type="tel" class="hermes-underline-input" id="compte-phone-number" placeholder="0550 12 34 56" autocomplete="tel-national" dir="ltr" required>
                 </div>
-                <span class="hermes-input-hint">Format attendu : numéro de téléphone avec au moins 8 chiffres</span>
+                <span class="hermes-input-hint" data-i18n="compte.phoneHint">Format attendu : numéro de téléphone avec au moins 8 chiffres</span>
               </div>
 
               <!-- Date of Birth -->
               <div class="hermes-underline-group">
-                <label class="hermes-underline-label">Date de naissance</label>
+                <label class="hermes-underline-label" data-i18n="compte.birthDate">Date de naissance</label>
                 <div class="birth-date-row">
                   <select class="hermes-select-input" id="birth-day">
-                    <option value="">Jour</option>
+                    <option value="" data-i18n="compte.day">Jour</option>
                     <!-- Generated 1 to 31 -->
                   </select>
                   <select class="hermes-select-input" id="birth-month">
-                    <option value="">Mois</option>
-                    <option value="1">Janvier</option>
-                    <option value="2">Février</option>
-                    <option value="3">Mars</option>
-                    <option value="4">Avril</option>
-                    <option value="5">Mai</option>
-                    <option value="6">Juin</option>
-                    <option value="7">Juillet</option>
-                    <option value="8">Août</option>
-                    <option value="9">Septembre</option>
-                    <option value="10">Octobre</option>
-                    <option value="11">Novembre</option>
-                    <option value="12">Décembre</option>
+                    <option value="" data-i18n="compte.month">Mois</option>
+                    <option value="1" data-i18n="compte.month1">Janvier</option>
+                    <option value="2" data-i18n="compte.month2">Février</option>
+                    <option value="3" data-i18n="compte.month3">Mars</option>
+                    <option value="4" data-i18n="compte.month4">Avril</option>
+                    <option value="5" data-i18n="compte.month5">Mai</option>
+                    <option value="6" data-i18n="compte.month6">Juin</option>
+                    <option value="7" data-i18n="compte.month7">Juillet</option>
+                    <option value="8" data-i18n="compte.month8">Août</option>
+                    <option value="9" data-i18n="compte.month9">Septembre</option>
+                    <option value="10" data-i18n="compte.month10">Octobre</option>
+                    <option value="11" data-i18n="compte.month11">Novembre</option>
+                    <option value="12" data-i18n="compte.month12">Décembre</option>
                   </select>
                   <select class="hermes-select-input" id="birth-year">
-                    <option value="">Année</option>
+                    <option value="" data-i18n="compte.year">Année</option>
                     <!-- Generated 2008 down to 1940 -->
                   </select>
                 </div>
-                <span class="hermes-input-hint">Veuillez entrer une date de naissance valide qui confirme que vous avez au moins 18 ans</span>
+                <span class="hermes-input-hint" data-i18n="compte.birthHint">Veuillez entrer une date de naissance valide qui confirme que vous avez au moins 18 ans</span>
               </div>
 
             </div>
@@ -229,12 +230,12 @@
           <!-- Consent Checkbox -->
           <div class="compte-consent-row">
             <input type="checkbox" id="compte-newsletter-optin" checked>
-            <label for="compte-newsletter-optin">
+            <label for="compte-newsletter-optin" data-i18n="compte.consent">
               J'accepte de recevoir des informations par email concernant les créations, offres, services et événements de la Maison ZAPHIRA, conformément à notre politique de confidentialité.
             </label>
           </div>
 
-          <button type="submit" class="btn-hermes-black" style="max-width: 320px; margin: 0 auto; display: block;">
+          <button type="submit" class="btn-hermes-black" style="max-width: 320px; margin: 0 auto; display: block;" data-i18n="compte.submit">
             ENREGISTRER ET CRÉER MON COMPTE
           </button>
         </form>
@@ -243,33 +244,33 @@
     </div>
   </main>
 
-  <!-- Hermes Directory Footer -->
+  <!-- Directory Footer -->
   <footer class="compte-footer">
     <div class="container">
       <div class="compte-footer-grid">
         <div class="compte-footer-col">
-          <h3>SERVICES</h3>
-          <a href="index.html#newsletter-section">Nous contacter</a>
-          <a href="index.html#newsletter-section">Questions fréquentes</a>
-          <a href="index.html#customizer-section">Sur-mesure</a>
+          <h3 data-i18n="compte.footerServices">SERVICES</h3>
+          <a href="index.html#newsletter-section" data-i18n="compte.contactUs">Nous contacter</a>
+          <a href="index.html#newsletter-section" data-i18n="compte.faq">Questions fréquentes</a>
+          <a href="index.html#customizer-section" data-i18n="compte.bespoke">Sur-mesure</a>
         </div>
         <div class="compte-footer-col">
-          <h3>COMMANDES</h3>
-          <a href="panier.html">Paiement</a>
-          <a href="panier.html">Livraison 58 Wilayas</a>
-          <a href="panier.html">Suivi de commande</a>
+          <h3 data-i18n="compte.footerOrders">COMMANDES</h3>
+          <a href="panier.html" data-i18n="compte.payment">Paiement</a>
+          <a href="panier.html" data-i18n="compte.delivery">Livraison 69 Wilayas</a>
+          <a href="panier.html" data-i18n="compte.tracking">Suivi de commande</a>
         </div>
         <div class="compte-footer-col">
-          <h3>LA MAISON ZAPHIRA</h3>
-          <a href="index.html#heritage-section">L'Histoire de la Princesse Zaphira</a>
-          <a href="index.html#craftsmanship-section">L'Atelier d'Alger</a>
-          <a href="index.html#journal-section">Le Journal</a>
+          <h3 data-i18n="compte.footerHouse">LA MAISON ZAPHIRA</h3>
+          <a href="index.html#heritage-section" data-i18n="compte.princessStory">L'Histoire de la Princesse Zaphira</a>
+          <a href="index.html#craftsmanship-section" data-i18n="compte.atelier">L'Atelier d'Alger</a>
+          <a href="index.html#journal-section" data-i18n="compte.journal">Le Journal</a>
         </div>
         <div class="compte-footer-col">
-          <h3>MENTIONS LÉGALES</h3>
-          <a href="#">Conditions générales de vente</a>
-          <a href="#">Données personnelles</a>
-          <a href="#">© Zaphira 2026. Tous droits réservés</a>
+          <h3 data-i18n="compte.footerLegal">MENTIONS LÉGALES</h3>
+          <a href="#" data-i18n="compte.terms">Conditions générales de vente</a>
+          <a href="#" data-i18n="compte.privacy">Données personnelles</a>
+          <a href="#" data-i18n="compte.copyright">© Zaphira 2026. Tous droits réservés</a>
         </div>
       </div>
     </div>

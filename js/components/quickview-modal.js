@@ -4,7 +4,9 @@
 
 import { PRODUCTS } from '../data/products.js';
 import { cartStore } from '../state/cart-state.js';
-import { showToast } from './toast.js';
+import { loc, t } from '../utils/i18n.js';
+import { toCartItem } from './collection.js';
+import { escapeHtml } from '../utils/escape.js';
 
 export function initQuickViewModal() {
   const backdrop = document.getElementById('quickview-backdrop');
@@ -46,19 +48,22 @@ export function initQuickViewModal() {
   });
 
   function renderModalContent(prod) {
+    const name = escapeHtml(prod.name);
+    const addLabel = qty => `${t('collection.addToBag')} • ${cartStore.formatPrice(prod.priceDZD * qty)}`;
+
     wrapper.innerHTML = `
-      <button class="modal-close-btn" id="quickview-close-btn" aria-label="Close modal">
+      <button class="modal-close-btn" id="quickview-close-btn" aria-label="${escapeHtml(t('quickview.close'))}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--space-8); padding: var(--space-8);" class="quickview-grid">
         <div style="display: flex; flex-direction: column; gap: var(--space-3);">
           <div style="aspect-ratio: 3/4; border-radius: var(--radius-xs); overflow: hidden; background-color: var(--color-ivory-surface); border: 1px solid var(--border-subtle);">
-            <img id="quickview-main-image" src="${prod.images.primary}" alt="${prod.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            <img id="quickview-main-image" src="${escapeHtml(prod.images.primary)}" alt="${name}" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div style="display: flex; gap: var(--space-2);">
             ${prod.images.gallery.map((img, idx) => `
-              <button type="button" class="quickview-thumb-btn" data-thumb-src="${img}" style="width: 60px; height: 60px; border-radius: var(--radius-xs); overflow: hidden; border: 1px solid ${idx === 0 ? 'var(--color-champagne-dark)' : 'var(--border-subtle)'}; cursor: pointer;">
-                <img src="${img}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+              <button type="button" class="quickview-thumb-btn" data-thumb-src="${escapeHtml(img)}" style="width: 60px; height: 60px; border-radius: var(--radius-xs); overflow: hidden; border: 1px solid ${idx === 0 ? 'var(--color-champagne-dark)' : 'var(--border-subtle)'}; cursor: pointer;">
+                <img src="${escapeHtml(img)}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
               </button>
             `).join('')}
           </div>
@@ -66,35 +71,35 @@ export function initQuickViewModal() {
 
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="caption" style="color: var(--color-champagne-dark); margin-bottom: var(--space-1);">${prod.collection}</div>
-            <h2 style="font-size: 2rem; margin-bottom: var(--space-3);">${prod.name}</h2>
+            <div class="caption" style="color: var(--color-champagne-dark); margin-bottom: var(--space-1);">${escapeHtml(loc(prod.collection))}</div>
+            <h2 style="font-size: 2rem; margin-bottom: var(--space-3);">${name}</h2>
             <div style="font-size: 1.35rem; font-family: var(--font-serif); margin-bottom: var(--space-4); color: var(--color-charcoal);">
-              ${cartStore.formatPrice(prod.priceDZD)}
+              ${escapeHtml(cartStore.formatPrice(prod.priceDZD))}
             </div>
             <p style="font-size: var(--text-sm); line-height: 1.6; color: var(--text-secondary); margin-bottom: var(--space-6); font-weight: 300;">
-              ${prod.fullDescription}
+              ${escapeHtml(loc(prod.fullDescription))}
             </p>
 
             <div style="background-color: var(--color-ivory); padding: var(--space-4); border-radius: var(--radius-xs); border: 1px solid var(--border-subtle); margin-bottom: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs);">
-              <div><strong style="text-transform: uppercase; color: var(--text-muted);">Materials:</strong> ${prod.materials}</div>
-              <div><strong style="text-transform: uppercase; color: var(--text-muted);">Dimensions:</strong> ${prod.dimensions}</div>
-              <div><strong style="text-transform: uppercase; color: var(--text-muted);">Hardware:</strong> ${prod.hardware}</div>
+              <div><strong style="text-transform: uppercase; color: var(--text-muted);">${escapeHtml(t('quickview.materials'))}</strong> ${escapeHtml(loc(prod.materials))}</div>
+              <div><strong style="text-transform: uppercase; color: var(--text-muted);">${escapeHtml(t('quickview.dimensions'))}</strong> ${escapeHtml(loc(prod.dimensions))}</div>
+              <div><strong style="text-transform: uppercase; color: var(--text-muted);">${escapeHtml(t('quickview.hardware'))}</strong> ${escapeHtml(loc(prod.hardware))}</div>
             </div>
           </div>
 
           <div>
             <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
               <div class="cart-qty-control" style="padding: 4px 8px;">
-                <button type="button" class="cart-qty-btn" id="qv-qty-minus">-</button>
+                <button type="button" class="cart-qty-btn" id="qv-qty-minus" aria-label="${escapeHtml(t('quickview.decrease'))}">-</button>
                 <span class="cart-qty-value" id="qv-qty-val">1</span>
-                <button type="button" class="cart-qty-btn" id="qv-qty-plus">+</button>
+                <button type="button" class="cart-qty-btn" id="qv-qty-plus" aria-label="${escapeHtml(t('quickview.increase'))}">+</button>
               </div>
               <button type="button" class="btn btn-primary btn-full" id="qv-add-btn">
-                Add to Bag • ${cartStore.formatPrice(prod.priceDZD)}
+                ${escapeHtml(addLabel(1))}
               </button>
             </div>
             <div style="font-size: var(--text-xs); color: var(--text-muted); text-align: center;">
-              Complimentary luxury packaging & insured delivery across Algeria & Worldwide.
+              ${escapeHtml(t('quickview.deliveryNote'))}
             </div>
           </div>
         </div>
@@ -128,33 +133,21 @@ export function initQuickViewModal() {
         if (currentQty > 1) {
           currentQty--;
           qtyVal.textContent = currentQty;
-          if (addBtn) addBtn.textContent = `Add to Bag • ${cartStore.formatPrice(prod.priceDZD * currentQty)}`;
+          if (addBtn) addBtn.textContent = addLabel(currentQty);
         }
       });
       btnPlus.addEventListener('click', () => {
         currentQty++;
         qtyVal.textContent = currentQty;
-        if (addBtn) addBtn.textContent = `Add to Bag • ${cartStore.formatPrice(prod.priceDZD * currentQty)}`;
+        if (addBtn) addBtn.textContent = addLabel(currentQty);
       });
     }
 
     if (addBtn) {
       addBtn.addEventListener('click', () => {
-        cartStore.addItem({
-          id: prod.id,
-          name: prod.name,
-          priceDZD: prod.priceDZD,
-          image: prod.images.primary,
-          quantity: currentQty,
-          isCustom: false,
-          specs: {
-            collection: prod.collection,
-            materials: prod.materials
-          }
-        });
-        showToast('Added to Bag', `${currentQty}x ${prod.name} added to your shopping bag.`);
+        cartStore.addItem(toCartItem(prod, currentQty));
+        // cartStore fires `cart:item-added`, which opens the confirmation card
         closeModal();
-        document.dispatchEvent(new CustomEvent('cart:open'));
       });
     }
   }

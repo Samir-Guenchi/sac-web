@@ -1,8 +1,14 @@
 /**
  * ZAPHIRA — Compte (Account) Controller
+ * Front-end simulation only: no account is created on a server.
  */
 
+import { showToast } from './components/toast.js';
+import { applyLanguage, t } from './utils/i18n.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+  applyLanguage();
+
   const step1View = document.getElementById('compte-view-step-1');
   const step2View = document.getElementById('compte-view-step-2');
   const step1Form = document.getElementById('compte-step-1-form');
@@ -60,11 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Send verification code simulation
   if (sendCodeBtn) {
     sendCodeBtn.addEventListener('click', () => {
-      sendCodeBtn.textContent = 'CODE ENVOYÉ (123456)';
+      // Demo: a fresh random code each time, shown on screen in place of a real email
+      const code = String(Math.floor(100000 + Math.random() * 900000));
+      sendCodeBtn.removeAttribute('data-i18n');
+      sendCodeBtn.textContent = t('compte.codeSent', { code });
       sendCodeBtn.style.backgroundColor = '#2E7D32';
       setTimeout(() => {
         const codeInput = document.getElementById('compte-code');
-        if (codeInput) codeInput.value = '123456';
+        if (codeInput) codeInput.value = code;
       }, 1000);
     });
   }
@@ -103,9 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loggedIn: true
       }));
 
-      // Success notification
-      alert(`Bienvenue dans la Maison ZAPHIRA, ${prenom} ${nom}. Votre compte a été créé avec succès.`);
-      window.location.href = 'index.html';
+      // Success notification, then return to the storefront
+      const submitBtn = step2Form.querySelector('[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      showToast(t('compte.welcomeTitle'), t('compte.welcomeMsg', { name: `${prenom} ${nom}`.trim() }), 2200);
+      setTimeout(() => { window.location.href = 'index.html'; }, 2200);
     });
   }
 });
