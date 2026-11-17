@@ -8,7 +8,7 @@
 import 'dotenv/config';
 import { createClient } from '@libsql/client';
 import { hashPassword } from 'better-auth/crypto';
-import { eq } from 'drizzle-orm';
+import { and, eq, isNull } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { randomUUID } from 'node:crypto';
 import * as schema from './schema';
@@ -16,6 +16,7 @@ import { PRODUCTS } from './seed-data/products';
 import { CUSTOMIZER_CONFIG } from './seed-data/customizer-options';
 import { JOURNAL_ENTRIES } from './seed-data/journal';
 import { TESTIMONIALS } from './seed-data/testimonials';
+import collection2026 from './seed-data/collection-2026.json';
 import { DEFAULT_SETTINGS } from '../lib/catalog-types';
 
 const client = createClient({
@@ -26,6 +27,34 @@ const db = drizzle(client, { schema });
 
 /** Original data used relative paths ("assets/…"); the app serves them from /assets. */
 const asset = (path: string) => (path.startsWith('/') || path.startsWith('http') ? path : `/${path}`);
+
+/** Collections of the original four bags (only set when they have none yet). */
+const ORIGINAL_CATEGORIES: Record<string, string> = {
+  'pearl-ivory': 'ceremonie',
+  'noir-prestige': 'luxe',
+  'blush-organza': 'printemps',
+  'taupe-elegance': 'luxe'
+};
+
+async function seedCollections() {
+  await db
+    .insert(schema.categories)
+    .values(collection2026.categories.map((c, i) => ({ id: c.id, name: c.name, description: c.description, sortOrder: i })))
+    .onConflictDoNothing();
+
+  // New bags arrive hidden: they go live from Admin → Products once real photos are in place
+  await db
+    .insert(schema.products)
+    .values(collection2026.products.map(p => ({ ...p, active: false })))
+    .onConflictDoNothing();
+
+  for (const [productId, categoryId] of Object.entries(ORIGINAL_CATEGORIES)) {
+    await db
+      .update(schema.products)
+      .set({ categoryId })
+      .where(and(eq(schema.products.id, productId), isNull(schema.products.categoryId)));
+  }
+}
 
 async function seedCatalog() {
   await db
@@ -142,6 +171,7 @@ async function seedAdmin() {
 
 async function main() {
   await seedCatalog();
+  await seedCollections();
   await seedContent();
   await seedAdmin();
   console.log('Seed complete.');

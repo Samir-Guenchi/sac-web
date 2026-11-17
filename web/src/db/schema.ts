@@ -23,9 +23,20 @@ const updatedAt = () =>
 /* Catalog                                                                     */
 /* -------------------------------------------------------------------------- */
 
+/** Collections shown in the menu and on /collections/<id> (e.g. Luxe, Mariages & Cérémonies). */
+export const categories = sqliteTable('categories', {
+  id: text('id').primaryKey(), // slug, e.g. "printemps"
+  name: localized('name'),
+  description: text('description', { mode: 'json' }).$type<Localized>(),
+  image: text('image'),
+  sortOrder: integer('sort_order').notNull().default(0),
+  active: integer('active', { mode: 'boolean' }).notNull().default(true)
+});
+
 export const products = sqliteTable('products', {
   id: text('id').primaryKey(), // slug, e.g. "pearl-ivory"
   name: text('name').notNull(), // proper name, not translated
+  categoryId: text('category_id').references(() => categories.id, { onDelete: 'set null' }),
   collection: localized('collection'),
   tag: localized('tag'),
   badgeClass: text('badge_class').notNull().default('badge-champagne'),
