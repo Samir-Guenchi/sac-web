@@ -1,14 +1,19 @@
 import type { MetadataRoute } from 'next';
-import { getCatalog } from '@/lib/catalog';
+import { getCatalog, getJournal } from '@/lib/catalog';
 import { getPublishedPages } from '@/lib/content';
 import { LOCALES } from '@/lib/i18n/config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const site = process.env.BETTER_AUTH_URL ?? 'http://localhost:3000';
-  const [catalog, pages] = await Promise.all([getCatalog(), getPublishedPages()]);
+  const [catalog, pages, journal] = await Promise.all([getCatalog(), getPublishedPages(), getJournal()]);
   const paths = [
     '',
     '/maison',
+    '/univers',
+    '/lookbook',
+    '/cadeaux',
+    '/journal',
+    ...journal.map(entry => `/journal/${entry.id}`),
     '/collections',
     ...catalog.categories.map(c => `/collections/${c.id}`),
     ...catalog.products.map(p => `/produits/${p.id}`),

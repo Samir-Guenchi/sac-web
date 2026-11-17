@@ -44,7 +44,14 @@ const SECTION_NAMES: Record<string, string> = {
   notFound: 'Page not found',
   about: 'About page (La Maison)',
   consent: 'Cookie banner & settings',
-  marquee: 'Home — scrolling ribbon'
+  marquee: 'Home — scrolling ribbon',
+  moods: 'Home — shop by mood',
+  universeBand: 'Home — Picasso & Mediterranean band',
+  giftTeaser: 'Home — art of giving',
+  universe: 'Universe page (/univers)',
+  lookbook: 'Lookbook page',
+  gifts: 'Gifts page (/cadeaux)',
+  journalPage: 'Journal pages'
 };
 
 // Back-office page behind a login: reads URL data and renders on demand (no instant-navigation shell)

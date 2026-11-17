@@ -13,58 +13,70 @@ const MEGA_MENU = [
   {
     key: 'catCustom',
     section: 'customizer-section',
-    image: '/assets/images/editorial/journal-3.jpg',
+    image: '/assets/images/products/ceremonie/perle-dazur-1.jpg',
     featured: 'customFeatured',
     links: [
       ['customBag', 'customizer-section'],
       ['customColors', 'customizer-section'],
-      ['customPearls', 'customizer-section'],
       ['customMonogram', 'customizer-section']
     ]
   },
   {
-    key: 'catCraft',
-    section: 'craftsmanship-section',
-    image: '/assets/images/editorial/craftsmanship-macro.jpg',
-    featured: 'craftFeatured',
+    key: 'catLookbook',
+    section: 'lookbook',
+    image: '/assets/images/products/luxe/imperatrice-1.jpg',
+    featured: 'lookbookFeatured',
     links: [
-      ['craftHandmade', 'craftsmanship-section'],
-      ['craftPleating', 'craftsmanship-section'],
-      ['craftPearls', 'craftsmanship-section'],
+      ['lookbookAll', 'lookbook'],
+      ['lookbookCollections', 'collections']
+    ]
+  },
+  {
+    key: 'catUniverse',
+    section: 'univers',
+    image: '/assets/images/products/hiver/nuit-bleue-1.jpg',
+    featured: 'universeFeatured',
+    links: [
+      ['universePicasso', 'univers'],
+      ['universeMed', 'univers'],
+      ['craftHandmade', 'maison#savoir-faire'],
       ['craftHeritage', 'maison#legende']
     ]
   },
   {
     key: 'catJournal',
-    section: 'journal-section',
-    image: '/assets/images/editorial/journal-4.jpg',
+    section: 'journal',
+    image: '/assets/images/products/hiver/flocon-1.jpg',
     featured: 'journalFeatured',
     links: [
-      ['journalAll', 'journal-section'],
-      ['journalStyling', 'journal-section'],
-      ['journalPearls', 'journal-section']
+      ['journalAll', 'journal'],
+      ['journalStyling', 'journal'],
+      ['journalPearls', 'journal']
     ]
   },
   {
     key: 'catGifts',
-    section: 'collection-section',
-    image: '/assets/images/editorial/journal-1.jpg',
+    section: 'cadeaux',
+    image: '/assets/images/branding/ecrin-zaphira.svg',
     featured: 'giftsFeatured',
     links: [
-      ['giftsWomen', 'collection-section'],
-      ['giftsBespoke', 'customizer-section'],
-      ['giftsBox', 'newsletter-section']
+      ['giftsWomen', 'cadeaux'],
+      ['giftsBox', 'cadeaux#ecrin'],
+      ['giftsBespoke', 'customizer-section']
     ]
   }
 ] as const;
 
 const MOBILE_LINKS = [
   ['home', 'hero-section'],
-  ['collection', 'collection-section'],
+  ['collection', 'collections'],
   ['customize', 'customizer-section'],
+  ['lookbook', 'lookbook'],
+  ['universe', 'univers'],
+  ['journal', 'journal'],
+  ['gifts', 'cadeaux'],
   ['story', 'maison'],
-  ['journal', 'journal-section'],
-  ['contact', 'newsletter-section']
+  ['contact', 'pages/contact']
 ] as const;
 
 export function SiteHeader() {
@@ -77,7 +89,8 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const home = `/${locale}`;
-  const section = (id: string) => (id.startsWith('maison') ? `${home}/${id}` : `${home}#${id}`);
+  // Page paths ("maison", "lookbook#x"…) vs. home-page anchors ("customizer-section")
+  const section = (id: string) => (/^(maison|univers|lookbook|cadeaux|journal|collections|pages)(?=$|[/#])/.test(id) ? `${home}/${id}` : `${home}#${id}`);
 
   useEffect(() => {
     let lastY = window.scrollY;

@@ -1,4 +1,5 @@
 import { BrandPromise } from '@/components/home/BrandPromise';
+import { GiftTeaser, MoodArches, ScrollProgress, UniverseBand } from '@/components/home/BrandSections';
 import { CollectionGrid } from '@/components/home/CollectionGrid';
 import { Customizer } from '@/components/home/Customizer';
 import { EditorialSections } from '@/components/home/EditorialSections';
@@ -23,12 +24,16 @@ export default async function HomePage() {
       </a>
       <SiteHeader />
       <main id="main-content">
+        <ScrollProgress />
         <Hero />
         <Marquee t={t} />
         <BrandPromise t={t} />
-        <Customizer />
+        <MoodArches t={t} catalog={catalog} locale={locale} />
         <CollectionGrid />
+        <UniverseBand t={t} locale={locale} />
+        <Customizer />
         <EditorialSections t={t} media={catalog.settings.media} locale={locale} />
+        <GiftTeaser t={t} locale={locale} />
         <Testimonials items={testimonials} />
         <Journal entries={journal} />
         <Newsletter />

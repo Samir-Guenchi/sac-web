@@ -30,8 +30,8 @@ export async function SiteFooter({ t, locale }: { t: TFunction; locale: Locale }
             <div className="footer-links">
               <Link href={`${home}/collections`} className="footer-link">{t('links.collection')}</Link>
               <Link href={`${home}#customizer-section`} className="footer-link">{t('links.customize')}</Link>
-              <Link href={`${home}#collection-section`} className="footer-link">{t('links.newArrivals')}</Link>
-              <Link href={`${home}#collection-section`} className="footer-link">{t('links.eveningPearls')}</Link>
+              <Link href={`${home}/lookbook`} className="footer-link">{t('nav.lookbook')}</Link>
+              <Link href={`${home}/cadeaux`} className="footer-link">{t('nav.gifts')}</Link>
             </div>
           </div>
           {/* About Links */}
@@ -40,8 +40,8 @@ export async function SiteFooter({ t, locale }: { t: TFunction; locale: Locale }
             <div className="footer-links">
               <Link href={`${home}/maison`} className="footer-link">{t('links.ourStory')}</Link>
               <Link href={`${home}/maison#savoir-faire`} className="footer-link">{t('links.craftsmanship')}</Link>
-              <Link href={`${home}/maison#legende`} className="footer-link">{t('links.princess')}</Link>
-              <Link href={`${home}#journal-section`} className="footer-link">{t('links.journal')}</Link>
+              <Link href={`${home}/univers`} className="footer-link">{t('nav.universe')}</Link>
+              <Link href={`${home}/journal`} className="footer-link">{t('links.journal')}</Link>
             </div>
           </div>
           {/* Customer Care */}

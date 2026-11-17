@@ -47,22 +47,22 @@
 .promise-grid > .reveal:nth-child(4n + 4) { transition-delay: 0.3s; }
 
 /* Image "curtain" reveal: the frame opens from the bottom */
-.reveal-image {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.3s var(--ease-out-expo);
+/* The curtain is on the image, not the frame: a fully clipped frame would never be
+   reported as visible to the IntersectionObserver, so it would never reveal. */
+.reveal-image.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 .reveal-image img {
-  transform: scale(1.12);
-  transition: transform 1.6s var(--ease-out-expo);
-}
-
-.reveal-image[data-revealed] {
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(100% 0 0 0);
+  scale: 1.12;
+  transition: clip-path 1.3s var(--ease-out-expo), scale 1.6s var(--ease-out-expo);
 }
 
 .reveal-image[data-revealed] img {
-  transform: scale(1);
+  clip-path: inset(0 0 0 0);
+  scale: 1;
 }
 
 /* ---------- Product cards ---------- */
@@ -322,10 +322,11 @@
     opacity: 1;
     animation: none;
   }
-  .reveal-image {
+  .reveal-image img {
     clip-path: none;
+    scale: 1;
+    transition: none;
   }
-  .reveal-image img,
   .product-card:hover,
   .product-card:hover .product-image-container img {
     transform: none;
