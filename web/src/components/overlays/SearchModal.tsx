@@ -1,25 +1,22 @@
 'use client';
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
+import { searchProducts } from '@/lib/search';
 import { useStore } from '@/components/store/StoreProvider';
 import { Modal } from './Modal';
 
 const SUGGESTIONS = ['Pearl Ivory', 'Noir Prestige', 'Organza', 'Baroque'];
 
 export function SearchModal() {
-  const { t, loc, catalog, price, ui } = useStore();
+  const { t, loc, locale, catalog, price, ui } = useStore();
+  const router = useRouter();
   const [query, setQuery] = useState('');
 
   // Matches every language, so "perles" or "لؤلؤ" find the same bags as "pearls"
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return catalog.products.filter(p =>
-      [p.name, p.collection, p.materials, p.shortDescription]
-        .flatMap(value => (typeof value === 'string' ? [value] : Object.values(value)))
-        .some(text => text.toLowerCase().includes(q))
-    );
-  }, [query, catalog.products]);
+  const results = useMemo(() => searchProducts(catalog, query), [query, catalog]);
+  const resultsHref = `/${locale}/recherche?q=${encodeURIComponent(query.trim())}`;
 
   const close = () => {
     ui.setSearchOpen(false);
@@ -41,6 +38,12 @@ export function SearchModal() {
             <input
               type="search"
               autoFocus
+              onKeyDown={event => {
+                if (event.key === 'Enter' && query.trim()) {
+                  close();
+                  router.push(resultsHref);
+                }
+              }}
               value={query}
               onChange={event => setQuery(event.target.value)}
               placeholder={t('search.placeholder')}
@@ -66,7 +69,12 @@ export function SearchModal() {
             {query.trim() && results.length === 0 && (
               <div style={{ padding: 'var(--space-6)', textAlign: 'center', color: 'var(--text-muted)', fontSize: 'var(--text-sm)' }}>{t('search.noResults', { query: query.trim() })}</div>
             )}
-            {results.map(p => (
+            {results.length > 0 && (
+              <Link href={resultsHref} className="btn-text" onClick={close} style={{ alignSelf: 'flex-start' }}>
+                {t('search.seeAll', { count: results.length })} →
+              </Link>
+            )}
+            {results.slice(0, 6).map(p => (
               <button
                 key={p.id}
                 type="button"

@@ -3,9 +3,17 @@
 import type { Localized, OptionKind } from '@/db/schema';
 import type { ExchangeRates } from './money';
 
+export type Category = {
+  id: string;
+  name: Localized;
+  description: Localized | null;
+  image: string | null;
+};
+
 export type Product = {
   id: string;
   name: string;
+  categoryId: string | null;
   collection: Localized;
   tag: Localized;
   badgeClass: string;
@@ -48,6 +56,7 @@ export type ShopSettings = {
 };
 
 export type Catalog = {
+  categories: Category[];
   products: Product[];
   options: Record<OptionKind, CustomizerOption[]>;
   settings: ShopSettings;

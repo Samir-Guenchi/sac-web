@@ -19,6 +19,7 @@ import '@/styles/sections.css';
 import '@/styles/customizer.css';
 import '@/styles/panier.css';
 import '@/styles/compte.css';
+import '@/styles/catalog.css';
 import '@/styles/responsive.css';
 import '@/styles/fonts.css';
 import '@/styles/app.css';

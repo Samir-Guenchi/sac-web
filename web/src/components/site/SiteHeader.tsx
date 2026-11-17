@@ -7,20 +7,8 @@ import { LOCALE_COOKIE, LOCALE_LABELS, LOCALES, isLocale } from '@/lib/i18n/conf
 import { CURRENCIES, isCurrency } from '@/lib/money';
 import { useStore } from '@/components/store/StoreProvider';
 
+// The leather-goods menu is built from the collections in the database (see LeatherMenu)
 const MEGA_MENU = [
-  {
-    key: 'catLeather',
-    section: 'collection-section',
-    image: '/assets/images/products/product-pearl-ivory.jpg',
-    featured: 'leatherFeatured',
-    links: [
-      ['leatherAll', 'collection-section'],
-      ['leatherIvory', 'collection-section'],
-      ['leatherNoir', 'collection-section'],
-      ['leatherBlush', 'collection-section'],
-      ['leatherTaupe', 'collection-section']
-    ]
-  },
   {
     key: 'catCustom',
     section: 'customizer-section',
@@ -79,7 +67,7 @@ const MOBILE_LINKS = [
 ] as const;
 
 export function SiteHeader() {
-  const { locale, t, currency, setCurrency, cart, ui } = useStore();
+  const { locale, t, loc, catalog, currency, setCurrency, cart, ui } = useStore();
   const router = useRouter();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -209,6 +197,29 @@ export function SiteHeader() {
         <div className="header-nav-bar">
           <div className="container header-categories-container">
             <nav className="nav-menu-hermes" aria-label="Main">
+              <div className="nav-item-hermes">
+                <Link href={`${home}/collections`} className="nav-link-hermes">
+                  {t('nav.catLeather')}
+                </Link>
+                <div className="mega-menu-drawer">
+                  <div className="container mega-menu-container">
+                    <div className="mega-menu-featured">
+                      <img src={catalog.categories[0]?.image ?? catalog.products[0]?.primaryImage ?? '/assets/images/products/product-pearl-ivory.jpg'} alt="" />
+                      <span className="mega-featured-label">{t('menu.leatherFeatured')}</span>
+                    </div>
+                    <div className="mega-menu-links">
+                      <Link href={`${home}/collections`} className="mega-link-item">
+                        {t('collections.all')}
+                      </Link>
+                      {catalog.categories.map(category => (
+                        <Link key={category.id} href={`${home}/collections/${category.id}`} className="mega-link-item">
+                          {loc(category.name)}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
               {MEGA_MENU.map(category => (
                 <div className="nav-item-hermes" key={category.key}>
                   <Link href={section(category.section)} className="nav-link-hermes">

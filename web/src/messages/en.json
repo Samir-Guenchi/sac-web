@@ -124,7 +124,10 @@
     "placeholder": "Search creations, pearls, organza, collections...",
     "popular": "Popular Suggestions",
     "noResults": "No creations found matching “{query}”.",
-    "close": "Close search"
+    "close": "Close search",
+    "resultsPage": "Search",
+    "resultsFor": "Results for “{query}”",
+    "seeAll": "See all {count} results"
   },
   "cartAdded": {
     "title": "This item has been added to your bag",
@@ -407,5 +410,29 @@
     "delivered": "Delivered",
     "cancelled": "Cancelled",
     "returned": "Returned"
+  },
+  "product": {
+    "breadcrumb": "Breadcrumb",
+    "description": "Description",
+    "details": "Materials & dimensions",
+    "delivery": "Delivery & returns",
+    "deliveryText": "Complimentary delivery to all 69 wilayas, cash on delivery available. Each creation is handmade to order in our Algiers atelier; our client service confirms the delivery date by phone. Returns and exchanges are possible within 7 days for unworn pieces (bespoke creations excepted).",
+    "care": "Care",
+    "careText": "Store your bag in its dust bag, away from light and humidity. Brush velvet and chenille gently; wipe woven cord with a slightly damp cloth. Avoid perfume and water on pearls and gold-tone hardware.",
+    "related": "You may also like",
+    "handmade": "Handmade to order in Algiers",
+    "askAdvisor": "Ask an advisor on WhatsApp"
+  },
+  "collections": {
+    "all": "All bags",
+    "navLabel": "Collections",
+    "countOne": "{count} creation",
+    "countMany": "{count} creations",
+    "sortLabel": "Sort by",
+    "sortFeatured": "Our selection",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "empty": "New creations are coming soon in this collection.",
+    "seeAll": "DISCOVER ALL BAGS"
   }
 }

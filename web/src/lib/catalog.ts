@@ -2,7 +2,7 @@ import 'server-only';
 import { asc, eq } from 'drizzle-orm';
 import { cacheLife, cacheTag } from 'next/cache';
 import { db } from '@/db';
-import { customizerOptions, journalEntries, products, settings, testimonials, OPTION_KINDS } from '@/db/schema';
+import { categories, customizerOptions, journalEntries, products, settings, testimonials, OPTION_KINDS } from '@/db/schema';
 import { DEFAULT_SETTINGS, type Catalog, type JournalEntry, type ShopSettings, type Testimonial } from './catalog-types';
 
 /** Cache tags; admin Server Actions call updateTag() with these after edits. */
@@ -30,7 +30,8 @@ export async function getCatalog(): Promise<Catalog> {
 
 /** Uncached read for checkout, so prices are always the current ones. */
 export async function loadCatalog(): Promise<Catalog> {
-  const [productRows, optionRows, shopSettings] = await Promise.all([
+  const [categoryRows, productRows, optionRows, shopSettings] = await Promise.all([
+    db.select().from(categories).where(eq(categories.active, true)).orderBy(asc(categories.sortOrder)),
     db.select().from(products).where(eq(products.active, true)).orderBy(asc(products.sortOrder), asc(products.name)),
     db.select().from(customizerOptions).where(eq(customizerOptions.active, true)).orderBy(asc(customizerOptions.sortOrder)),
     readSettings()
@@ -50,6 +51,7 @@ export async function loadCatalog(): Promise<Catalog> {
   }
 
   return {
+    categories: categoryRows.map(({ sortOrder: _s, active: _a, ...category }) => ({ ...category, description: category.description ?? null })),
     products: productRows.map(({ active: _active, sortOrder: _sort, createdAt: _c, updatedAt: _u, ...product }) => product),
     options,
     settings: shopSettings

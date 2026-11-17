@@ -124,7 +124,10 @@
     "placeholder": "Rechercher créations, perles, organza, collections...",
     "popular": "Suggestions Populaires",
     "noResults": "Aucune création ne correspond à « {query} ».",
-    "close": "Fermer la recherche"
+    "close": "Fermer la recherche",
+    "resultsPage": "Recherche",
+    "resultsFor": "Résultats pour « {query} »",
+    "seeAll": "Voir les {count} résultats"
   },
   "cartAdded": {
     "title": "Cet objet a été ajouté au panier",
@@ -407,5 +410,29 @@
     "delivered": "Livrée",
     "cancelled": "Annulée",
     "returned": "Retournée"
+  },
+  "product": {
+    "breadcrumb": "Fil d’Ariane",
+    "description": "Description",
+    "details": "Matières & dimensions",
+    "delivery": "Livraison & retours",
+    "deliveryText": "Livraison offerte dans les 69 wilayas, paiement à la livraison possible. Chaque création est réalisée à la main sur commande dans notre atelier d’Alger ; notre service client vous confirme la date de livraison par téléphone. Retours et échanges possibles sous 7 jours pour les pièces non portées (hors créations sur-mesure).",
+    "care": "Entretien",
+    "careText": "Rangez votre sac dans sa housse, à l’abri de la lumière et de l’humidité. Brossez délicatement le velours et la chenille ; essuyez le cordon tissé avec un chiffon légèrement humide. Évitez parfum et eau sur les perles et les finitions dorées.",
+    "related": "Vous aimerez aussi",
+    "handmade": "Fait main sur commande à Alger",
+    "askAdvisor": "Demander conseil sur WhatsApp"
+  },
+  "collections": {
+    "all": "Tous les sacs",
+    "navLabel": "Collections",
+    "countOne": "{count} création",
+    "countMany": "{count} créations",
+    "sortLabel": "Trier par",
+    "sortFeatured": "Notre sélection",
+    "sortPriceAsc": "Prix croissant",
+    "sortPriceDesc": "Prix décroissant",
+    "empty": "De nouvelles créations arrivent bientôt dans cette collection.",
+    "seeAll": "DÉCOUVRIR TOUS LES SACS"
   }
 }
