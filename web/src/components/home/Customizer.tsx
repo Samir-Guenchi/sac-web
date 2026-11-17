@@ -77,23 +77,23 @@ export function Customizer() {
                 </span>
               )}
               <span className="atelier-frame-label">{preview?.label}</span>
+              {views.length > 1 && (
+                <div className="atelier-views" role="group" aria-label={t('studio.views')}>
+                  {views.map(view => (
+                    <button
+                      key={view.id}
+                      type="button"
+                      className={`atelier-view${view.id === preview?.id ? ' is-active' : ''}`}
+                      aria-pressed={view.id === preview?.id}
+                      onClick={() => setFocus(view.id)}
+                    >
+                      <img src={view.src} alt="" />
+                      <span>{t(view.id === 'color' ? 'studio.labelColor' : 'studio.labelMaterial')}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-            {views.length > 1 && (
-              <div className="atelier-views" role="group" aria-label={t('studio.views')}>
-                {views.map(view => (
-                  <button
-                    key={view.id}
-                    type="button"
-                    className={`atelier-view${view.id === preview?.id ? ' is-active' : ''}`}
-                    aria-pressed={view.id === preview?.id}
-                    onClick={() => setFocus(view.id)}
-                  >
-                    <img src={view.src} alt="" />
-                    <span>{t(view.id === 'color' ? 'studio.labelColor' : 'studio.labelMaterial')}</span>
-                  </button>
-                ))}
-              </div>
-            )}
             <p className="atelier-caption">
               {model ? (
                 <>
