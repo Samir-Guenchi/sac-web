@@ -4,10 +4,29 @@ Next.js 16 (App Router, Cache Components) · TypeScript · Turso (libSQL) + Driz
 
 | URL | What |
 | --- | --- |
-| `/fr`, `/en`, `/ar` | Storefront (home, bespoke customizer, collection). `/` redirects to the visitor's language. Arabic is right-to-left. |
+| `/fr`, `/en`, `/ar` | Home: hero video, bespoke studio, selection, editorial, journal. `/` redirects to the visitor's language. Arabic is right-to-left. |
+| `/{lang}/collections`, `/{lang}/collections/{id}` | All bags / one collection (Luxe, Mariages & Cérémonies, Printemps, Hiver), with sorting. |
+| `/{lang}/produits/{id}` | Product page: gallery, details, delivery & care, related bags. |
+| `/{lang}/recherche?q=` | Search results (matches every language). |
 | `/{lang}/panier` | Bag and 3-step checkout. Orders are saved and priced on the server. |
 | `/{lang}/compte` | Customer accounts: sign-up with a 6-digit email code, sign-in, order history. |
-| `/admin` | Back office: orders, products, bespoke options and prices, customers, journal & testimonials, settings. |
+| `/{lang}/suivi` | Order tracking for guests (order number + checkout email). |
+| `/{lang}/pages/{slug}` | Delivery & returns, FAQ, care, contact, terms, privacy, legal notice, accessibility. |
+| `/admin` | Back office (see below). |
+
+### What the admin can change
+
+| Section | |
+| --- | --- |
+| Orders | List and filters, status, internal notes, send to CodPilot |
+| Products | Add, edit, show/hide, delete (if never ordered); collection; photo gallery with upload, reordering and main photo; texts in FR/EN/AR |
+| Collections | Names, descriptions, menu image, order, visibility |
+| Bespoke options | Colours, materials, pearls, chains and their prices |
+| Customers | Accounts, verification, newsletter consent, orders and spend |
+| Site texts | Every interface label of the shop, in FR/EN/AR |
+| Pages | Delivery, FAQ, legal… (simple formatting: `## ` heading, `- ` bullet) |
+| Journal & testimonials | Articles with images, client quotes |
+| Settings & media | WhatsApp/phone (enables the WhatsApp button), social links, hero video and images, bespoke base price, exchange rates |
 
 ## Run it locally
 
@@ -22,7 +41,7 @@ npm run db:setup                # creates web/local.db, applies migrations, load
 npm run dev                     # http://localhost:3000
 ```
 
-Without Turso credentials the app uses the local SQLite file `web/local.db`. Without `RESEND_API_KEY`, emails (verification codes) are printed in the terminal running `npm run dev`. Without `BLOB_READ_WRITE_TOKEN`, admin image uploads go to `public/uploads/`.
+Without Turso credentials the app uses the local SQLite file `web/local.db`. Without `RESEND_API_KEY`, emails (verification codes) are printed in the terminal running `npm run dev`. Without `BLOB_READ_WRITE_TOKEN`, admin uploads (images up to 8 MB, videos up to 100 MB) go to `public/uploads/`; with it, the browser uploads straight to Vercel Blob.
 
 Useful scripts: `npm run typecheck`, `npm run lint`, `npm run build`, `npm run db:studio` (browse the database).
 
@@ -64,13 +83,15 @@ drizzle/                generated SQL migrations (commit these)
 ```
 
 - **Prices**: `lib/pricing.ts` is shared by the browser (display) and `lib/orders.ts` (checkout). The browser sends only product/option ids and quantities; the server recomputes every price from the database and rejects the order if the total changed.
-- **Caching**: `getCatalog()`, `getJournal()`, `getTestimonials()` use `'use cache'` with tags. Admin actions call `updateTag()`, so edits show on the storefront immediately.
+- **Caching**: catalog, content, pages and text overrides use `'use cache'` with tags; admin actions call `updateTag()`. The home page updates on the next visit; pages with a slug (product, collection, info page) refresh in the background, so the first visit after an edit can still show the previous version and the next one is up to date.
 - **Translations**: interface text lives in `src/messages/*.json`; catalog text (products, options, journal, testimonials) is stored as `{ fr, en, ar }` and edited in the admin. An empty English/Arabic field falls back to French.
 - **Orders → CodPilot**: `lib/codpilot.ts` runs after the response (`after()`), so customers never wait on it. Its request format is a **placeholder** until CodPilot's order API documentation and a store API key are available; until then orders are stored with CodPilot status *not configured*, and the admin can send them later from the order page.
 
 ## Before launch
 
-- Real customer-service numbers: **Admin → Settings** (placeholders until then).
+- **New bags are hidden drafts.** The 24 bags imported from the photo folders (`pic/`) are seeded with `active = false`. Several source photos carried other makers' branding (name plates such as MODERNO, BAGAMI, Michiku Store; watermarks such as MAROUA, Lyra, By Khuyên Kim) and were not imported; the imported ones may also come from other sellers. Replace each product's photos with your own (Admin → Products → photo gallery), check the proposed name and price, then click **Show**.
+- Legal pages (terms, privacy, legal notice) are templates marked “[À compléter…]”: write the final text (ideally reviewed by a lawyer) in **Admin → Pages**.
+- Real customer-service numbers and social links: **Admin → Settings** (placeholders until then).
 - Online payment (CIB/Edahabia, international cards) is not integrated with a gateway yet; those orders are recorded and the customer is told the team will contact them to pay.
 - Finish the CodPilot integration once the API details are available.
 - Arabic wilaya names come from an open dataset; check them against the Journal officiel.
