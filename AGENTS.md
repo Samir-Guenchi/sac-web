@@ -21,7 +21,10 @@ The owner decided (2026-11-17) to move to a framework with a real backend and an
 - **Translations**: UI strings in `src/messages/{fr,en,ar}.json` (same keys in all three). Catalog text is edited in the admin.
 - **Integrations**: CodPilot hand-off is a stub in `src/lib/codpilot.ts` until the owner provides API docs and a key. Email uses Resend (console in dev). Uploads go browser → Vercel Blob via `/api/admin/upload` (`public/uploads` in dev); admin forms submit URLs only.
 - **Content the owner edits lives in the database**, not in code: products, collections (`categories`), options, journal, testimonials, information pages (`pages`), interface-text overrides (`content_overrides`, merged over `src/messages/*.json`), contact numbers, social links and site media (`settings`). Don't hard-code such content in components.
-- **Product photos**: never publish images showing another brand's name plate, watermark or logo. Imported drafts stay hidden (`active = false`) until the owner replaces their photos.
+- **Product photos**: never publish images showing another brand's name plate, watermark or logo. Never download photos from Pinterest or other sites: use the house's own photos or images the owner has the rights to (uploaded in the admin).
+- **Identity**: Picasso & the Mediterranean (owner's direction). Colours and motifs are tokens/components in `src/styles/brand.css` and `src/components/art/LineArt.tsx`; reuse them instead of new colours. Every photo frame uses `--photo-radius` (rectangles like the product cards, no arches or circles). The UX reference stays hermes.com for layout and flow, never its assets.
+- **Motion**: put reveal-on-scroll on a container with `.reveal` (and `.reveal-image` for a curtain on the image inside). Never clip the observed element itself, or the IntersectionObserver never fires. Every animation needs a `prefers-reduced-motion` fallback.
+- **Language switch** does a full page load on purpose: each language has its own root layout.
 
 ---
 

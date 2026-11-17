@@ -4,13 +4,18 @@ Next.js 16 (App Router, Cache Components) · TypeScript · Turso (libSQL) + Driz
 
 | URL | What |
 | --- | --- |
-| `/fr`, `/en`, `/ar` | Home: hero video, bespoke studio, selection, editorial, journal. `/` redirects to the visitor's language. Arabic is right-to-left. |
+| `/fr`, `/en`, `/ar` | Home: hero video, promise ribbon, shop by mood, selection, Picasso-blue universe band, step-by-step bespoke atelier, editorial, art of giving, testimonials, journal. `/` redirects to the visitor's language. Arabic is right-to-left. |
 | `/{lang}/collections`, `/{lang}/collections/{id}` | All bags / one collection (Luxe, Mariages & Cérémonies, Printemps, Hiver), with sorting. |
 | `/{lang}/produits/{id}` | Product page: gallery, details, delivery & care, related bags. |
 | `/{lang}/recherche?q=` | Search results (matches every language). |
 | `/{lang}/panier` | Bag and 3-step checkout. Orders are saved and priced on the server. |
 | `/{lang}/compte` | Customer accounts: sign-up with a 6-digit email code, sign-in, order history. |
 | `/{lang}/suivi` | Order tracking for guests (order number + checkout email). |
+| `/{lang}/maison` | About Zaphira: story, atelier, savoir-faire steps, collections, commitments. |
+| `/{lang}/univers` | Picasso & the Mediterranean: the brand universe, palette and line-art motifs. |
+| `/{lang}/lookbook` | Lookbook 2026: one chapter per collection, built from the live catalogue. |
+| `/{lang}/cadeaux` | The art of giving: the Picasso-blue packaging and gift ideas by budget. |
+| `/{lang}/journal`, `/{lang}/journal/{id}` | Journal stories with photo galleries and the bags that appear in them. |
 | `/{lang}/pages/{slug}` | Delivery & returns, FAQ, care, contact, terms, privacy, legal notice, accessibility. |
 | `/admin` | Back office (see below). |
 
@@ -21,12 +26,16 @@ Next.js 16 (App Router, Cache Components) · TypeScript · Turso (libSQL) + Driz
 | Orders | List and filters, status, internal notes, send to CodPilot |
 | Products | Add, edit, show/hide, delete (if never ordered); collection; photo gallery with upload, reordering and main photo; texts in FR/EN/AR |
 | Collections | Names, descriptions, menu image, order, visibility |
-| Bespoke options | Colours, materials, pearls, chains and their prices |
+| Bespoke options | Colours (each with a photo of a real bag), stitches, finishing touches, straps and their prices |
 | Customers | Accounts, verification, newsletter consent, orders and spend |
 | Site texts | Every interface label of the shop, in FR/EN/AR |
 | Pages | Delivery, FAQ, legal… (simple formatting: `## ` heading, `- ` bullet) |
-| Journal & testimonials | Articles with images, client quotes |
-| Settings & media | WhatsApp/phone (enables the WhatsApp button), social links, hero video and images, bespoke base price, exchange rates |
+| Journal & testimonials | Stories (cover, full text, photo gallery), client quotes |
+| Settings & media | WhatsApp/phone (enables the WhatsApp button), social links, hero video and images, bespoke base price, exchange rates, Google Analytics and Meta Pixel ids (loaded only after cookie consent) |
+
+### Look and motion
+
+Identity: Picasso blue, Mediterranean blue, sand, gold and powder pink (`src/styles/brand.css`), with single-line Picasso drawings (`src/components/art/LineArt.tsx`) that draw themselves on scroll. Every photo frame is the same rectangle as the product cards (`--photo-radius`). Motion lives in `animations.css` and `brand.css`: product photo morphs into the product page (React `ViewTransition`), staggered reveals, curtain reveals, scroll-driven titles/parallax where supported, header that hides while scrolling down. Everything is switched off for visitors who prefer reduced motion.
 
 ## Run it locally
 
