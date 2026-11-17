@@ -1,0 +1,69 @@
+/* Small additions for the Next.js storefront (the original CSS files stay untouched). */
+
+/* Journal cards are now buttons, so they're reachable by keyboard */
+.journal-card-button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.journal-card-button img {
+  display: block;
+}
+
+.journal-card-button:focus-visible,
+.search-result-item:focus-visible {
+  outline: 2px solid var(--color-champagne-dark);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Inline form feedback (checkout, account) */
+.form-error {
+  color: #a33a3a;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.form-success {
+  color: #2e7d32;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 768px) {
+  .quickview-grid,
+  .story-image-grid,
+  .story-text-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* Scroll reveal state set by components/site/RevealOnScroll.tsx */
+.reveal[data-revealed] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RTL: hero text sits on the right, so the video controls move to the left */
+[dir="rtl"] .hermes-video-controls {
+  right: auto;
+  left: 5%;
+}

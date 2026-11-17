@@ -1,0 +1,254 @@
+/**
+ * ZAPHIRA — Hermès-Style Compte (Account) Styles
+ */
+
+.compte-page {
+  background-color: var(--bg-primary);
+  color: var(--color-charcoal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.compte-main {
+  flex: 1;
+  padding: calc(var(--header-height) + var(--space-12)) 0 var(--space-20);
+}
+
+.compte-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Screen 1: Email Entry */
+.compte-step-1-card {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-12);
+  text-align: center;
+}
+
+.compte-heading-title {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  margin-top: 0;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.compte-intro-text {
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-8);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.hermes-underline-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: var(--space-8);
+}
+
+.hermes-underline-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-charcoal-muted);
+  margin-bottom: 4px;
+}
+
+.hermes-underline-input {
+  border: none;
+  border-bottom: 1.5px solid var(--color-charcoal);
+  background: transparent;
+  padding: 8px 0;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-charcoal);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.hermes-underline-input:focus {
+  border-bottom-color: var(--color-champagne-dark);
+}
+
+.hermes-input-hint {
+  font-size: 0.6875rem;
+  color: var(--color-charcoal-muted);
+  margin-top: 6px;
+}
+
+/* Screen 2: 2-Column Registration */
+.compte-step-2-view {
+  display: none;
+}
+
+.compte-header-note {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--color-charcoal-muted);
+  margin-bottom: var(--space-6);
+}
+
+.compte-two-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-10) var(--space-10);
+  margin-bottom: var(--space-8);
+}
+
+.compte-col-title {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  margin-top: 0;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.email-send-code-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4);
+  align-items: flex-end;
+  margin-bottom: var(--space-6);
+}
+
+.btn-send-code {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  height: 38px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.btn-send-code:hover {
+  opacity: 0.8;
+}
+
+/* Password Criteria */
+.pwd-criteria-box {
+  background-color: #FAF6EE;
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.pwd-criteria-title {
+  font-size: 0.75rem;
+  color: var(--color-charcoal-muted);
+  margin-bottom: var(--space-2);
+}
+
+.pwd-criteria-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  font-size: 0.6875rem;
+  color: var(--color-charcoal-muted);
+}
+
+.pwd-criterion.is-valid {
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+/* Date of Birth row */
+.birth-date-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: var(--space-3);
+  margin-top: 6px;
+}
+
+.hermes-select-input {
+  border: none;
+  border-bottom: 1.5px solid var(--color-charcoal);
+  background: transparent;
+  padding: 8px 0;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  outline: none;
+}
+
+/* Terms Checkbox */
+.compte-consent-row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: 0.75rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-8);
+}
+
+.compte-consent-row input {
+  margin-top: 3px;
+}
+
+/* Footer Directory */
+.compte-footer {
+  border-top: 1px solid var(--border-subtle);
+  background-color: #FAF6EE;
+  padding: var(--space-10) 0;
+  margin-top: auto;
+}
+
+.compte-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+}
+
+.compte-footer-col h4 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.compte-footer-col a {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-muted);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .compte-two-columns-grid {
+    grid-template-columns: 1fr;
+  }
+  .compte-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
