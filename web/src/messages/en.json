@@ -434,5 +434,24 @@
     "sortPriceDesc": "Price: high to low",
     "empty": "New creations are coming soon in this collection.",
     "seeAll": "DISCOVER ALL BAGS"
+  },
+  "tracking": {
+    "title": "Order tracking",
+    "intro": "Enter your order number and the email used at checkout.",
+    "orderId": "Order number",
+    "submit": "TRACK MY ORDER",
+    "notFound": "No order matches this number and email."
+  },
+  "widgets": {
+    "whatsapp": "Chat with us on WhatsApp",
+    "cookieLabel": "Cookie notice",
+    "cookieText": "This site only uses cookies that are necessary for it to work (sign-in, language).",
+    "cookieMore": "Learn more",
+    "cookieOk": "OK"
+  },
+  "notFound": {
+    "title": "This page could not be found",
+    "text": "The page you are looking for may have moved or no longer exists.",
+    "home": "BACK TO HOME"
   }
 }

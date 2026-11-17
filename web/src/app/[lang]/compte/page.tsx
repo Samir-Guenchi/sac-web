@@ -106,10 +106,10 @@ async function AccountSection({ locale, t }: { locale: Locale; t: TFunction }) {
 function CompteFooter({ t, locale }: { t: TFunction; locale: Locale }) {
   const home = `/${locale}`;
   const columns: Array<[string, Array<[string, string]>]> = [
-    ['compte.footerServices', [['compte.contactUs', `${home}#newsletter-section`], ['compte.faq', `${home}#newsletter-section`], ['compte.bespoke', `${home}#customizer-section`]]],
-    ['compte.footerOrders', [['compte.payment', `${home}/panier`], ['compte.delivery', `${home}/panier`], ['compte.tracking', `${home}/compte`]]],
+    ['compte.footerServices', [['compte.contactUs', `${home}/pages/contact`], ['compte.faq', `${home}/pages/faq`], ['compte.bespoke', `${home}#customizer-section`]]],
+    ['compte.footerOrders', [['compte.payment', `${home}/panier`], ['compte.delivery', `${home}/pages/livraison-retours`], ['compte.tracking', `${home}/suivi`]]],
     ['compte.footerHouse', [['compte.princessStory', `${home}#heritage-section`], ['compte.atelier', `${home}#craftsmanship-section`], ['compte.journal', `${home}#journal-section`]]],
-    ['compte.footerLegal', [['compte.terms', '#'], ['compte.privacy', '#'], ['compte.copyright', '#']]]
+    ['compte.footerLegal', [['compte.terms', `${home}/pages/cgv`], ['compte.privacy', `${home}/pages/confidentialite`], ['links.legalNotice', `${home}/pages/mentions-legales`]]]
   ];
   return (
     <footer className="compte-footer">

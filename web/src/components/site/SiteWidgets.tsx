@@ -1,0 +1,56 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useStore } from '@/components/store/StoreProvider';
+
+const NOTICE_KEY = 'zaphira_cookie_notice_v1';
+
+/**
+ * Cookie notice (the site only sets necessary cookies, so this informs rather
+ * than asks) and the floating WhatsApp button, shown once a number is set in
+ * Admin → Settings.
+ */
+export function SiteWidgets() {
+  const { t, locale, catalog } = useStore();
+  const [showNotice, setShowNotice] = useState(false);
+  const whatsapp = catalog.settings.contact.whatsapp.tel?.replace(/\D/g, '');
+
+  useEffect(() => {
+    try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- reads browser storage once after hydration
+      setShowNotice(localStorage.getItem(NOTICE_KEY) !== '1');
+    } catch {}
+  }, []);
+
+  return (
+    <>
+      {whatsapp && (
+        <a className="whatsapp-fab" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" aria-label={t('widgets.whatsapp')}>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z" />
+          </svg>
+        </a>
+      )}
+      {showNotice && (
+        <div className="cookie-notice" role="region" aria-label={t('widgets.cookieLabel')}>
+          <p>
+            {t('widgets.cookieText')} <Link href={`/${locale}/pages/confidentialite`}>{t('widgets.cookieMore')}</Link>
+          </p>
+          <button
+            type="button"
+            className="btn-hermes-black"
+            onClick={() => {
+              setShowNotice(false);
+              try {
+                localStorage.setItem(NOTICE_KEY, '1');
+              } catch {}
+            }}
+          >
+            {t('widgets.cookieOk')}
+          </button>
+        </div>
+      )}
+    </>
+  );
+}

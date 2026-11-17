@@ -105,6 +105,30 @@ export const testimonials = sqliteTable('testimonials', {
   published: integer('published', { mode: 'boolean' }).notNull().default(true)
 });
 
+/**
+ * Information pages (delivery & returns, FAQ, legal…) served at /<lang>/pages/<slug>.
+ * Body format: blank line = new paragraph, "## " = heading, "- " = bullet.
+ */
+export const pages = sqliteTable('pages', {
+  slug: text('slug').primaryKey(),
+  title: localized('title'),
+  body: localized('body'),
+  sortOrder: integer('sort_order').notNull().default(0),
+  published: integer('published', { mode: 'boolean' }).notNull().default(true),
+  updatedAt: updatedAt()
+});
+
+/** Admin edits to interface text; override src/messages/<locale>.json key by key. */
+export const contentOverrides = sqliteTable(
+  'content_overrides',
+  {
+    locale: text('locale').notNull(),
+    key: text('key').notNull(), // e.g. "hero.title"
+    value: text('value').notNull()
+  },
+  t => [primaryKey({ columns: [t.locale, t.key] })]
+);
+
 /* -------------------------------------------------------------------------- */
 /* Orders                                                                      */
 /* -------------------------------------------------------------------------- */

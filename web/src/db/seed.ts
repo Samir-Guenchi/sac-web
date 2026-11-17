@@ -17,6 +17,7 @@ import { CUSTOMIZER_CONFIG } from './seed-data/customizer-options';
 import { JOURNAL_ENTRIES } from './seed-data/journal';
 import { TESTIMONIALS } from './seed-data/testimonials';
 import collection2026 from './seed-data/collection-2026.json';
+import { PAGES } from './seed-data/pages';
 import { DEFAULT_SETTINGS } from '../lib/catalog-types';
 
 const client = createClient({
@@ -136,6 +137,13 @@ async function seedContent() {
   }
 }
 
+async function seedPages() {
+  await db
+    .insert(schema.pages)
+    .values(PAGES.map((page, i) => ({ ...page, sortOrder: i })))
+    .onConflictDoNothing();
+}
+
 async function seedAdmin() {
   const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
   const password = process.env.ADMIN_PASSWORD;
@@ -173,6 +181,7 @@ async function main() {
   await seedCatalog();
   await seedCollections();
   await seedContent();
+  await seedPages();
   await seedAdmin();
   console.log('Seed complete.');
 }

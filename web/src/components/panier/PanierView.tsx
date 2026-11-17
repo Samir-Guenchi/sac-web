@@ -414,10 +414,10 @@ export function PanierView() {
       <footer className="panier-footer">
         <div className="container">
           <nav aria-label={t('links.legalNav')}>
-            <Link href={`/${locale}#newsletter-section`}>{t('compte.terms')}</Link>
-            <Link href={`/${locale}#newsletter-section`}>{t('links.privacyCookies')}</Link>
-            <Link href={`/${locale}#newsletter-section`}>{t('links.legalNotice')}</Link>
-            <Link href={`/${locale}#newsletter-section`}>{t('links.accessibility')}</Link>
+            <Link href={`/${locale}/pages/cgv`}>{t('compte.terms')}</Link>
+            <Link href={`/${locale}/pages/confidentialite`}>{t('links.privacyCookies')}</Link>
+            <Link href={`/${locale}/pages/mentions-legales`}>{t('links.legalNotice')}</Link>
+            <Link href={`/${locale}/pages/accessibilite`}>{t('links.accessibility')}</Link>
           </nav>
           <span>{t('compte.copyright')}</span>
         </div>

@@ -8,6 +8,7 @@ import { SearchModal } from '@/components/overlays/SearchModal';
 import { StoryModal } from '@/components/overlays/StoryModal';
 import { Toasts } from '@/components/overlays/Toasts';
 import { RevealOnScroll } from '@/components/site/RevealOnScroll';
+import { SiteWidgets } from '@/components/site/SiteWidgets';
 import { getCatalog } from '@/lib/catalog';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n/config';
 import { getDictionary, getT } from '@/lib/i18n/server';
@@ -69,6 +70,7 @@ export default async function StorefrontLayout({ children, params }: LayoutProps
           <CartAddedModal />
           <Toasts />
           <RevealOnScroll />
+          <SiteWidgets />
         </StoreProvider>
       </body>
     </html>

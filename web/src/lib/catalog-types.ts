@@ -47,12 +47,16 @@ export type SiteMedia = {
   heritageImage: string;
 };
 
+/** Social profile URLs; empty ones are hidden in the footer. */
+export type SocialLinks = { instagram: string; facebook: string; tiktok: string };
+
 export type ShopSettings = {
   basePriceDzd: number;
   monogramCostDzd: number;
   rates: ExchangeRates;
   contact: { whatsapp: ContactNumber; phone: ContactNumber };
   media: SiteMedia;
+  social: SocialLinks;
 };
 
 export type Catalog = {
@@ -94,5 +98,6 @@ export const DEFAULT_SETTINGS: ShopSettings = {
     heroPoster: '/assets/images/branding/zaphira-hero-poster.jpg',
     craftImage: '/assets/images/editorial/craftsmanship-macro.jpg',
     heritageImage: '/assets/images/editorial/algeria-heritage.jpg'
-  }
+  },
+  social: { instagram: '', facebook: '', tiktok: '' }
 };

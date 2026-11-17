@@ -434,5 +434,24 @@
     "sortPriceDesc": "Prix décroissant",
     "empty": "De nouvelles créations arrivent bientôt dans cette collection.",
     "seeAll": "DÉCOUVRIR TOUS LES SACS"
+  },
+  "tracking": {
+    "title": "Suivi de commande",
+    "intro": "Saisissez votre numéro de commande et l’e-mail utilisé lors de la commande.",
+    "orderId": "Numéro de commande",
+    "submit": "SUIVRE MA COMMANDE",
+    "notFound": "Aucune commande ne correspond à ce numéro et cet e-mail."
+  },
+  "widgets": {
+    "whatsapp": "Discuter avec nous sur WhatsApp",
+    "cookieLabel": "Information cookies",
+    "cookieText": "Ce site utilise uniquement les cookies nécessaires à son fonctionnement (connexion, langue).",
+    "cookieMore": "En savoir plus",
+    "cookieOk": "J’AI COMPRIS"
+  },
+  "notFound": {
+    "title": "Cette page est introuvable",
+    "text": "La page que vous cherchez a peut-être été déplacée ou n’existe plus.",
+    "home": "RETOUR À L’ACCUEIL"
   }
 }
