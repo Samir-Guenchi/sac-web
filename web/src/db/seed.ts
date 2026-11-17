@@ -8,12 +8,12 @@
 import 'dotenv/config';
 import { createClient } from '@libsql/client';
 import { hashPassword } from 'better-auth/crypto';
-import { eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { randomUUID } from 'node:crypto';
 import * as schema from './schema';
-import { CUSTOMIZER_CONFIG } from './seed-data/customizer-options';
-import { JOURNAL_ENTRIES } from './seed-data/journal';
+import { CUSTOMIZER_CONFIG, LEGACY_OPTION_IDS } from './seed-data/customizer-options';
+import { JOURNAL_ENTRIES, LEGACY_JOURNAL_TITLES } from './seed-data/journal';
 import { TESTIMONIALS } from './seed-data/testimonials';
 import collection2026 from './seed-data/collection-2026.json';
 import { PAGES } from './seed-data/pages';
@@ -58,7 +58,29 @@ async function seedCollections() {
 
 }
 
+/**
+ * The first mock-up's bespoke options (organza, satin…) did not match the real handmade
+ * line. If they are still there, replace every option and the old prices once.
+ */
+async function replaceLegacyOptions() {
+  const legacy = await db
+    .select({ id: schema.customizerOptions.id })
+    .from(schema.customizerOptions)
+    .where(and(eq(schema.customizerOptions.kind, 'material'), inArray(schema.customizerOptions.id, LEGACY_OPTION_IDS)));
+  if (legacy.length === 0) return;
+  await db.delete(schema.customizerOptions);
+  for (const [key, old, value] of [
+    ['basePriceDzd', 18500, CUSTOMIZER_CONFIG.basePriceDZD],
+    ['monogramCostDzd', 1500, CUSTOMIZER_CONFIG.monogramCostDZD]
+  ] as const) {
+    const [row] = await db.select().from(schema.settings).where(eq(schema.settings.key, key));
+    if (row && row.value === old) await db.update(schema.settings).set({ value }).where(eq(schema.settings.key, key));
+  }
+  console.log('Replaced the mock-up bespoke options with the handmade atelier options.');
+}
+
 async function seedCatalog() {
+  await replaceLegacyOptions();
   const kinds = [
     ['color', CUSTOMIZER_CONFIG.colors],
     ['material', CUSTOMIZER_CONFIG.materials],
@@ -93,14 +115,19 @@ async function seedCatalog() {
 }
 
 async function seedContent() {
-  const existingJournal = await db.select({ id: schema.journalEntries.id }).from(schema.journalEntries).limit(1);
-  if (existingJournal.length === 0) {
+  // Replace the first mock-up's stories (pearls, organza) with the house's real ones, once
+  const journal = await db.select({ id: schema.journalEntries.id, title: schema.journalEntries.title }).from(schema.journalEntries);
+  const mockup = journal.some(row => LEGACY_JOURNAL_TITLES.includes(row.title.en));
+  if (mockup) await db.delete(schema.journalEntries);
+  if (journal.length === 0 || mockup) {
     await db.insert(schema.journalEntries).values(
       JOURNAL_ENTRIES.map((e, i) => ({
         tag: e.tag,
         title: e.title,
         excerpt: e.excerpt,
+        body: e.body,
         image: asset(e.image),
+        gallery: e.gallery.map(asset),
         readTime: e.readTime,
         date: e.date,
         sortOrder: i
