@@ -118,7 +118,10 @@
     "previewAlt": "Handmade Zaphira bag in {color}",
     "shownModel": "Shown: our “{name}” bag in this colour.",
     "seeModel": "See the model",
-    "madeToOrder": "Made to order in 10 to 15 days · Cash on delivery · Free delivery to all 69 wilayas"
+    "madeToOrder": "Made to order in 10 to 15 days · Cash on delivery · Free delivery to all 69 wilayas",
+    "previous": "Back",
+    "next": "Next: {step}",
+    "views": "Photos"
   },
   "quickview": {
     "materials": "Materials:",

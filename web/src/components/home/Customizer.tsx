@@ -10,14 +10,18 @@ import { bespokePriceDzd, findOption, normalizeMonogram, type BespokeSelection }
 /** The house configuration shown first (falls back to the first active option). */
 const PREFERRED: Record<OptionKind, string> = { color: 'azur', material: 'tresse', pearls: 'perles', chain: 'or' };
 
-const PILL_GROUPS: Array<{ kind: 'pearls' | 'chain'; step: number; title: string }> = [
-  { kind: 'pearls', step: 3, title: 'studio.groupPearls' },
-  { kind: 'chain', step: 4, title: 'studio.groupChain' }
-];
+const STEPS = [
+  { key: 'color', title: 'studio.groupColor' },
+  { key: 'material', title: 'studio.groupMaterial' },
+  { key: 'pearls', title: 'studio.groupPearls' },
+  { key: 'chain', title: 'studio.groupChain' },
+  { key: 'monogram', title: 'studio.groupMonogram' }
+] as const;
 
 /**
- * Bespoke atelier: the client composes a handmade bag (colour, stitch, finishing touch,
- * strap, embroidered initials). The preview shows a real Zaphira bag in the chosen colour.
+ * Bespoke atelier: the client composes a handmade bag one step at a time
+ * (colour, stitch, finishing touch, strap, initials). The large photo follows her
+ * latest choice: a real Zaphira bag in that colour or made with that stitch.
  */
 export function Customizer() {
   const { t, loc, locale, catalog, price, cart } = useStore();
@@ -27,17 +31,29 @@ export function Customizer() {
       catalog.options[kind].find(o => o.id === PREFERRED[kind])?.id ?? catalog.options[kind][0]?.id ?? '';
     return { color: initial('color'), material: initial('material'), pearls: initial('pearls'), chain: initial('chain'), monogram: '' };
   });
+  const [step, setStep] = useState(0);
+  // Which photo is large: the chosen colour's or the chosen stitch's
+  const [focus, setFocus] = useState<'color' | 'material'>('color');
 
-  const choose = (kind: OptionKind, id: string) => setSelection(current => ({ ...current, [kind]: id }));
+  const choose = (kind: OptionKind, id: string) => {
+    setSelection(current => ({ ...current, [kind]: id }));
+    if (kind === 'color' || kind === 'material') setFocus(kind);
+  };
   const name = (kind: OptionKind) => loc(findOption(catalog, kind, selection[kind])?.name);
   const color = findOption(catalog, 'color', selection.color);
   const stitch = findOption(catalog, 'material', selection.material);
   const total = bespokePriceDzd(catalog, selection);
   const monogram = normalizeMonogram(selection.monogram);
-  const preview = color?.imageUrl ?? catalog.products[0]?.primaryImage;
-  // The bag in the photo, when it is one of ours
-  const model = catalog.products.find(p => p.primaryImage === preview || p.gallery.includes(preview ?? ''));
   const extra = (amount: number) => (amount > 0 ? `+${price(amount)}` : t('studio.included'));
+
+  const views = [
+    { id: 'color' as const, src: color?.imageUrl, label: name('color') },
+    { id: 'material' as const, src: stitch?.imageUrl, label: name('material') }
+  ].filter((view): view is { id: 'color' | 'material'; src: string; label: string } => Boolean(view.src));
+  const preview = views.find(view => view.id === focus) ?? views[0];
+  // The bag in the photo, when it is one of ours
+  const model = preview && catalog.products.find(p => p.primaryImage === preview.src || p.gallery.includes(preview.src));
+  const current = STEPS[step];
 
   return (
     <section className="atelier-section section-padding" id="customizer-section">
@@ -53,19 +69,31 @@ export function Customizer() {
         <div className="atelier-studio reveal">
           {/* Preview */}
           <div className="atelier-preview">
-            <div className="atelier-arch">
-              {preview && <img key={preview} src={preview} alt={t('studio.previewAlt', { color: name('color') })} className="atelier-photo" />}
+            <div className="atelier-frame">
+              {preview && <img key={preview.src} src={preview.src} alt={t('studio.previewAlt', { color: name('color') })} className="atelier-photo" />}
               {monogram && (
                 <span className="atelier-monogram" aria-hidden="true">
                   {monogram}
                 </span>
               )}
-              {stitch?.imageUrl && (
-                <span className="atelier-stitch-medallion" title={name('material')}>
-                  <img key={stitch.imageUrl} src={stitch.imageUrl} alt="" />
-                </span>
-              )}
+              <span className="atelier-frame-label">{preview?.label}</span>
             </div>
+            {views.length > 1 && (
+              <div className="atelier-views" role="group" aria-label={t('studio.views')}>
+                {views.map(view => (
+                  <button
+                    key={view.id}
+                    type="button"
+                    className={`atelier-view${view.id === preview?.id ? ' is-active' : ''}`}
+                    aria-pressed={view.id === preview?.id}
+                    onClick={() => setFocus(view.id)}
+                  >
+                    <img src={view.src} alt="" />
+                    <span>{t(view.id === 'color' ? 'studio.labelColor' : 'studio.labelMaterial')}</span>
+                  </button>
+                ))}
+              </div>
+            )}
             <p className="atelier-caption">
               {model ? (
                 <>
@@ -78,138 +106,142 @@ export function Customizer() {
             </p>
           </div>
 
-          {/* Options */}
-          <div className="atelier-controls">
-            <fieldset className="atelier-step">
-              <legend>
-                <span className="atelier-step-num">1</span>
-                {t('studio.groupColor')}
-                <span className="atelier-step-value">{name('color')}</span>
-              </legend>
-              <div className="swatches-grid atelier-swatches" role="radiogroup" aria-label={t('studio.groupColor')}>
-                {catalog.options.color.map(option => (
+          {/* Steps */}
+          <div className="atelier-panel">
+            <ol className="atelier-tabs" style={{ '--progress': `${(step / (STEPS.length - 1)) * 100}%` } as React.CSSProperties}>
+              {STEPS.map((s, i) => (
+                <li key={s.key}>
                   <button
-                    key={option.id}
                     type="button"
-                    role="radio"
-                    aria-checked={selection.color === option.id}
-                    className={`color-swatch-btn${selection.color === option.id ? ' is-active' : ''}`}
-                    style={{ backgroundColor: option.hex ?? undefined }}
-                    title={loc(option.name)}
-                    aria-label={loc(option.name)}
-                    onClick={() => choose('color', option.id)}
-                  />
-                ))}
-              </div>
-            </fieldset>
-
-            <fieldset className="atelier-step">
-              <legend>
-                <span className="atelier-step-num">2</span>
-                {t('studio.groupMaterial')}
-                <span className="atelier-step-value">{name('material')}</span>
-              </legend>
-              <div className="atelier-tiles" role="radiogroup" aria-label={t('studio.groupMaterial')}>
-                {catalog.options.material.map(option => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    role="radio"
-                    aria-checked={selection.material === option.id}
-                    className={`atelier-tile${selection.material === option.id ? ' is-active' : ''}`}
-                    title={loc(option.description)}
-                    onClick={() => choose('material', option.id)}
+                    className={`atelier-tab${i === step ? ' is-current' : ''}${i < step ? ' is-done' : ''}`}
+                    aria-current={i === step ? 'step' : undefined}
+                    onClick={() => setStep(i)}
                   >
-                    <span className="atelier-tile-img">{option.imageUrl ? <img src={option.imageUrl} alt="" loading="lazy" /> : null}</span>
-                    <span className="atelier-tile-name">{loc(option.name)}</span>
-                    <span className="atelier-tile-price">{extra(option.priceModifierDzd)}</span>
+                    <span className="atelier-tab-num">{i + 1}</span>
+                    <span className="atelier-tab-label">{t(s.title)}</span>
                   </button>
-                ))}
-              </div>
-              {stitch?.description && <p className="atelier-hint">{loc(stitch.description)}</p>}
-            </fieldset>
+                </li>
+              ))}
+            </ol>
 
-            {PILL_GROUPS.map(group => (
-              <fieldset className="atelier-step" key={group.kind}>
-                <legend>
-                  <span className="atelier-step-num">{group.step}</span>
-                  {t(group.title)}
-                  <span className="atelier-step-value">{name(group.kind)}</span>
-                </legend>
-                <div className="atelier-pills" role="radiogroup" aria-label={t(group.title)}>
-                  {catalog.options[group.kind].map(option => (
+            <div className="atelier-step" key={current.key}>
+              <div className="atelier-step-head">
+                <h3>{t(current.title)}</h3>
+                <span>{current.key === 'monogram' ? `+${price(catalog.settings.monogramCostDzd)}` : name(current.key)}</span>
+              </div>
+
+              {current.key === 'color' && (
+                <div className="swatches-grid atelier-swatches" role="radiogroup" aria-label={t('studio.groupColor')}>
+                  {catalog.options.color.map(option => (
                     <button
                       key={option.id}
                       type="button"
                       role="radio"
-                      aria-checked={selection[group.kind] === option.id}
-                      className={`atelier-pill${selection[group.kind] === option.id ? ' is-active' : ''}`}
-                      title={loc(option.description)}
-                      onClick={() => choose(group.kind, option.id)}
+                      aria-checked={selection.color === option.id}
+                      className={`atelier-swatch${selection.color === option.id ? ' is-active' : ''}`}
+                      onClick={() => choose('color', option.id)}
                     >
-                      <span>{loc(option.name)}</span>
-                      <small>{extra(option.priceModifierDzd)}</small>
+                      <span className="color-swatch-btn" style={{ backgroundColor: option.hex ?? undefined }} aria-hidden="true" />
+                      <span className="atelier-swatch-name">{loc(option.name)}</span>
                     </button>
                   ))}
                 </div>
-              </fieldset>
-            ))}
+              )}
 
-            <fieldset className="atelier-step">
-              <legend>
-                <span className="atelier-step-num">5</span>
-                {t('studio.groupMonogram')}
-                <span className="atelier-step-value">+{price(catalog.settings.monogramCostDzd)}</span>
-              </legend>
-              <div className="atelier-monogram-field">
-                <input
-                  type="text"
-                  className="monogram-input"
-                  maxLength={3}
-                  placeholder={t('studio.monogramPlaceholder')}
-                  aria-label={t('studio.groupMonogram')}
-                  value={selection.monogram}
-                  onChange={event => setSelection(current => ({ ...current, monogram: normalizeMonogram(event.target.value) }))}
-                />
-                <span>{t('studio.monogramHint')}</span>
+              {current.key === 'material' && (
+                <>
+                  <div className="atelier-tiles" role="radiogroup" aria-label={t('studio.groupMaterial')}>
+                    {catalog.options.material.map(option => (
+                      <button
+                        key={option.id}
+                        type="button"
+                        role="radio"
+                        aria-checked={selection.material === option.id}
+                        className={`atelier-tile${selection.material === option.id ? ' is-active' : ''}`}
+                        onClick={() => choose('material', option.id)}
+                      >
+                        <span className="atelier-tile-img">{option.imageUrl ? <img src={option.imageUrl} alt="" loading="lazy" /> : null}</span>
+                        <span className="atelier-tile-name">{loc(option.name)}</span>
+                        <span className="atelier-tile-price">{extra(option.priceModifierDzd)}</span>
+                      </button>
+                    ))}
+                  </div>
+                  {stitch?.description && <p className="atelier-hint">{loc(stitch.description)}</p>}
+                </>
+              )}
+
+              {(current.key === 'pearls' || current.key === 'chain') && (
+                <div className="atelier-list" role="radiogroup" aria-label={t(current.title)}>
+                  {catalog.options[current.key].map(option => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={selection[current.key] === option.id}
+                      className={`atelier-row${selection[current.key] === option.id ? ' is-active' : ''}`}
+                      onClick={() => choose(current.key, option.id)}
+                    >
+                      <span className="atelier-row-dot" aria-hidden="true" />
+                      <span className="atelier-row-text">
+                        <strong>{loc(option.name)}</strong>
+                        {option.description && <small>{loc(option.description)}</small>}
+                      </span>
+                      <span className="atelier-row-price">{extra(option.priceModifierDzd)}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {current.key === 'monogram' && (
+                <div className="atelier-monogram-field">
+                  <input
+                    type="text"
+                    className="monogram-input"
+                    maxLength={3}
+                    placeholder={t('studio.monogramPlaceholder')}
+                    aria-label={t('studio.groupMonogram')}
+                    value={selection.monogram}
+                    onChange={event => setSelection(current => ({ ...current, monogram: normalizeMonogram(event.target.value) }))}
+                  />
+                  <span>{t('studio.monogramHint')}</span>
+                </div>
+              )}
+
+              <div className="atelier-step-nav">
+                <button type="button" className="link-underline" disabled={step === 0} onClick={() => setStep(s => Math.max(0, s - 1))}>
+                  {t('studio.previous')}
+                </button>
+                {step < STEPS.length - 1 && (
+                  <button type="button" className="atelier-next" onClick={() => setStep(s => Math.min(STEPS.length - 1, s + 1))}>
+                    {t('studio.next', { step: t(STEPS[step + 1].title) })}
+                  </button>
+                )}
               </div>
-            </fieldset>
+            </div>
 
             <div className="customizer-pricing-box atelier-summary">
-              <div className="atelier-summary-head">
-                <span>{t('studio.selectedConfig')}</span>
-                <span className="atelier-summary-badge">{t('studio.atelierReady')}</span>
-              </div>
-              <dl className="atelier-summary-list">
-                {(
-                  [
-                    ['studio.labelColor', name('color')],
-                    ['studio.labelMaterial', name('material')],
-                    ['studio.labelPearls', name('pearls')],
-                    ['studio.labelChain', name('chain')],
-                    ['studio.labelMonogram', monogram ? t('studio.embossed', { mono: monogram }) : t('studio.none')]
-                  ] as const
-                ).map(([label, value]) => (
-                  <div key={label}>
-                    <dt>{t(label)}</dt>
-                    <dd>{value}</dd>
-                  </div>
+              <ul className="atelier-chips" aria-label={t('studio.selectedConfig')}>
+                {(['color', 'material', 'pearls', 'chain'] as const).map(kind => (
+                  <li key={kind}>{name(kind)}</li>
                 ))}
-              </dl>
-              <div className="atelier-summary-total">
-                <span className="pricing-label">{t('customizer.basePriceLabel')}</span>
-                <span className="pricing-amount" aria-live="polite">
-                  {total !== null ? price(total) : '—'}
-                </span>
+                {monogram && <li>{t('studio.embossed', { mono: monogram })}</li>}
+              </ul>
+              <div className="atelier-summary-row">
+                <div>
+                  <span className="pricing-label">{t('customizer.basePriceLabel')}</span>
+                  <span className="pricing-amount" aria-live="polite">
+                    {total !== null ? price(total) : '—'}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-primary atelier-cta"
+                  disabled={total === null || !cart.hydrated}
+                  onClick={() => cart.add({ type: 'bespoke', selection, quantity: 1 })}
+                >
+                  {t('customizer.btnCreate')}
+                </button>
               </div>
-              <button
-                type="button"
-                className="btn btn-primary btn-full atelier-cta"
-                disabled={total === null || !cart.hydrated}
-                onClick={() => cart.add({ type: 'bespoke', selection, quantity: 1 })}
-              >
-                {t('customizer.btnCreate')}
-              </button>
               <p className="atelier-summary-note">{t('studio.madeToOrder')}</p>
             </div>
           </div>

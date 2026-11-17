@@ -118,7 +118,10 @@
     "previewAlt": "Sac Zaphira fait main, coloris {color}",
     "shownModel": "Sur la photo : notre sac « {name} » dans ce coloris.",
     "seeModel": "Voir le modèle",
-    "madeToOrder": "Réalisé sur commande en 10 à 15 jours · Paiement à la livraison · Livraison offerte dans les 69 wilayas"
+    "madeToOrder": "Réalisé sur commande en 10 à 15 jours · Paiement à la livraison · Livraison offerte dans les 69 wilayas",
+    "previous": "Retour",
+    "next": "Suivant : {step}",
+    "views": "Photos"
   },
   "quickview": {
     "materials": "Matières :",
