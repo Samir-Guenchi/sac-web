@@ -2,9 +2,24 @@
 
 > **Project**: ZAPHIRA Maison de Haute Couture  
 > **Type**: Luxury E-Commerce Web Experience  
-> **Architecture**: Vanilla HTML5 + CSS3 + Modern ES6+ JavaScript (ES Modules)  
-> **Frameworks**: None (Zero build step, no Node runtime build, no transpiler)  
+> **Architecture**: Being rebuilt as a full-stack **Next.js** app in [`web/`](web/) (branch `feat/nextjs-rebuild`). The original static site (root `*.html`, `css/`, `js/`) stays live until `web/` reaches parity, then is retired.  
+> **Stack (`web/`)**: Next.js 16 (App Router, Cache Components) · TypeScript · Turso/libSQL via Drizzle ORM · Better Auth · Vercel  
+> **Legacy (root)**: Vanilla HTML5 + CSS3 + ES modules, no build step  
 > **Brand Concept**: Original luxury brand fusing handcrafted customizable handbags, Algerian cultural heritage, Parisian editorial discipline, and modernist geometric artistry.
+
+---
+
+## 0. The Next.js App (`web/`) — read first
+
+The owner decided (2026-11-17) to move to a framework with a real backend and an admin dashboard. **All new feature work goes into `web/`.** Only fix bugs in the legacy static site.
+
+- **Read [`web/AGENTS.md`](web/AGENTS.md) and [`web/README.md`](web/README.md)** before changing `web/`. Next.js 16 differs from older versions: Middleware is `proxy.ts`, Cache Components require `use cache` / `<Suspense>` around request data, and the bundled docs in `web/node_modules/next/dist/docs/` are the reference.
+- **Routing**: storefront under `app/[lang]/` (`fr` default, `en`, `ar` with RTL); back office under `app/admin/` (its own root layout, admin role checked in `requireAdmin()` on every page and Server Action).
+- **Data**: `src/db/schema.ts` (Drizzle). Customer-facing text is stored as `{ en, fr, ar }` JSON. Change the schema → `npm run db:generate` → commit the SQL in `web/drizzle/`. Never hand-edit applied migrations.
+- **Prices are server truth**: `src/lib/pricing.ts` is shared by browser and server, but `placeOrder()` re-prices every line from the database. Never trust a price from the client.
+- **Cache**: catalog/content reads are `use cache` with tags in `src/lib/catalog.ts`; every admin write must `updateTag()` the tag it affects.
+- **Translations**: UI strings in `src/messages/{fr,en,ar}.json` (same keys in all three). Catalog text is edited in the admin.
+- **Integrations**: CodPilot hand-off is a stub in `src/lib/codpilot.ts` until the owner provides API docs and a key. Email uses Resend (console in dev). Images use Vercel Blob (`public/uploads` in dev).
 
 ---
 
@@ -114,11 +129,11 @@ sac-web/
 
 ## 4. Architecture Preservation Rules
 
-Unless the user explicitly instructs otherwise, agents must strictly follow these rules:
+Rules 1–6 apply to the **legacy static site** (root `*.html`, `css/`, `js/`) only. In `web/`, follow section 0 and `web/AGENTS.md`; add dependencies only when they earn their place and pin exact versions.
 
-1. **Preserve Vanilla HTML/CSS/ES6**: Do not introduce frameworks (React, Vue, Angular, Svelte, Next.js, Nuxt, Vite, Astro). The project is intentionally built on web standards with zero compilation overhead.
-2. **Zero Unnecessary Dependencies**: Do not run `npm init` or introduce package managers, bundlers (Webpack, Rollup), or external libraries unless specifically asked.
-3. **Preserve ES Module Architecture**: All JavaScript code must use native ES modules (`import` / `export`) loaded via `<script type="module">`.
+1. **Preserve Vanilla HTML/CSS/ES6 (legacy site)**: Do not add frameworks to the root static site; framework work belongs in `web/`.
+2. **Zero Unnecessary Dependencies (legacy site)**: The root site has no package manager or bundler; keep it that way.
+3. **Preserve ES Module Architecture (legacy site)**: Root JavaScript uses native ES modules loaded via `<script type="module">`.
 4. **Preserve State & Storage Contracts**:
    - `zaphira_cart_v1` (array of cart item objects)
    - `zaphira_currency_v1` (`DZD`, `EUR`, `USD`)
@@ -219,10 +234,10 @@ Before writing a single line of code, answer:
 ## 7. Security Rules
 
 1. **Zero Secret Leaks**: Never hardcode, inspect, or commit API keys, authentication tokens, passwords, private keys, or `.env` files.
-2. **Prototype Authentication Disclosure**:
-   - The current authentication in `compte.html` and `compte.js` is a **client-side prototype/demo** utilizing `localStorage` and simulated verification codes (`123456`).
-   - Never misrepresent this prototype as a secure production authentication system.
-   - Do not store unencrypted sensitive personal data in `localStorage`.
+2. **Authentication**:
+   - `web/` uses real accounts (Better Auth: hashed passwords, 6-digit email verification, database-backed rate limits, admin role). Always re-check the session/role on the server (`getSessionUser()`, `requireAdmin()`); UI checks are not authorization.
+   - The legacy `compte.html` / `compte.js` is still a **client-side demo** (localStorage, on-screen code). Never present it as secure.
+   - Do not store sensitive personal data in `localStorage`; the `web/` cart stores product/option ids and quantities only.
 3. **Safe DOM Manipulation**:
    - Avoid `innerHTML` with unsanitized user inputs. When user input is rendered (such as custom monograms or customer names), sanitize or use `textContent`.
 4. **Third-Party Integrations**:
