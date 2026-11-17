@@ -29,6 +29,13 @@
       "when": 1794922846549,
       "tag": "0003_pages_and_text",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1794932901609,
+      "tag": "0004_journal_stories",
+      "breakpoints": true
     }
   ]
 }

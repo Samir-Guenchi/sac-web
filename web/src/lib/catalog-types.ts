@@ -76,6 +76,8 @@ export type JournalEntry = {
   title: Localized;
   excerpt: Localized;
   image: string;
+  body: Localized | null;
+  gallery: string[];
   readTime: Localized;
   date: Localized;
 };

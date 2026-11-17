@@ -89,6 +89,9 @@ export const journalEntries = sqliteTable('journal_entries', {
   title: localized('title'),
   excerpt: localized('excerpt'),
   image: text('image').notNull(),
+  /** Full story shown on /journal/[id]; paragraphs separated by blank lines (see RichText). */
+  body: text('body', { mode: 'json' }).$type<Localized>(),
+  gallery: text('gallery', { mode: 'json' }).$type<string[]>().notNull().default(sql`'[]'`),
   readTime: localized('read_time'),
   date: localized('date'),
   sortOrder: integer('sort_order').notNull().default(0),

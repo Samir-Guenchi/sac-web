@@ -297,6 +297,8 @@ export async function saveJournalEntry(_prev: ActionState, form: FormData): Prom
       tag: localized(form, 'tag'),
       title: localized(form, 'title'),
       excerpt: localized(form, 'excerpt'),
+      body: (body => (body.fr ? body : null))(localized(form, 'body', { required: false })),
+      gallery: mediaList(form, 'gallery'),
       readTime: localized(form, 'readTime'),
       date: localized(form, 'date'),
       image: mediaUrl(form, 'image', { required: true })!,
