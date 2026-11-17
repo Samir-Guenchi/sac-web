@@ -7,6 +7,7 @@ import { useStore } from '@/components/store/StoreProvider';
 import { describeLine } from '@/lib/cart-display';
 import { unitPriceDzd } from '@/lib/pricing';
 import { WILAYAS } from '@/lib/wilayas';
+import { CookieSettingsLink } from '@/components/site/CookieConsent';
 
 type Step = 1 | 2 | 3;
 type Confirmation = { orderId: string; recipient: string; email: string; phone: string; address: string; gift: string };
@@ -418,6 +419,7 @@ export function PanierView() {
             <Link href={`/${locale}/pages/confidentialite`}>{t('links.privacyCookies')}</Link>
             <Link href={`/${locale}/pages/mentions-legales`}>{t('links.legalNotice')}</Link>
             <Link href={`/${locale}/pages/accessibilite`}>{t('links.accessibility')}</Link>
+            <CookieSettingsLink label={t('consent.manage')} />
           </nav>
           <span>{t('compte.copyright')}</span>
         </div>

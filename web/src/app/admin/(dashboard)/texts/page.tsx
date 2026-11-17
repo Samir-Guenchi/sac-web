@@ -41,7 +41,9 @@ const SECTION_NAMES: Record<string, string> = {
   testimonials: 'Testimonials (accessibility)',
   story: 'Heritage story pop-up',
   media: 'Image descriptions',
-  notFound: 'Page not found'
+  notFound: 'Page not found',
+  about: 'About page (La Maison)',
+  consent: 'Cookie banner & settings'
 };
 
 // Back-office page behind a login: reads URL data and renders on demand (no instant-navigation shell)

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n/config';
 import { getCatalog } from '@/lib/catalog';
+import { CookieSettingsLink } from './CookieConsent';
 import type { TFunction } from '@/lib/i18n/translate';
 
 export async function SiteFooter({ t, locale }: { t: TFunction; locale: Locale }) {
@@ -71,6 +72,7 @@ export async function SiteFooter({ t, locale }: { t: TFunction; locale: Locale }
           <Link href={page('confidentialite')}>{t('links.privacyCookies')}</Link>
           <Link href={page('mentions-legales')}>{t('links.legalNotice')}</Link>
           <Link href={page('accessibilite')}>{t('links.accessibility')}</Link>
+          <CookieSettingsLink label={t('consent.manage')} />
         </nav>
         <div className="footer-bottom">
           <div className="footer-hallmark">{t('footer.hallmark')}</div>

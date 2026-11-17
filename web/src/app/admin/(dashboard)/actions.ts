@@ -256,6 +256,13 @@ export async function saveSettings(_prev: ActionState, form: FormData): Promise<
       if (value && !/^https:\/\//i.test(value)) throw new Error(`The ${name} link must start with https://`);
       return value;
     };
+    const tracking = () => {
+      const gaMeasurementId = str(form, 'tracking.ga').toUpperCase();
+      const metaPixelId = str(form, 'tracking.pixel');
+      if (gaMeasurementId && !/^G-[A-Z0-9]{4,20}$/.test(gaMeasurementId)) throw new Error('Google Analytics ID must look like G-XXXXXXXXXX.');
+      if (metaPixelId && !/^\d{10,20}$/.test(metaPixelId)) throw new Error('Meta Pixel ID must be digits only.');
+      return { gaMeasurementId, metaPixelId };
+    };
     const rows = [
       { key: 'basePriceDzd', value: int(form, 'basePriceDzd', { min: 1 }) },
       { key: 'monogramCostDzd', value: int(form, 'monogramCostDzd') },
@@ -270,7 +277,8 @@ export async function saveSettings(_prev: ActionState, form: FormData): Promise<
           heritageImage: mediaUrl(form, 'media.heritageImage', { required: true })
         }
       },
-      { key: 'social', value: { instagram: social('instagram'), facebook: social('facebook'), tiktok: social('tiktok') } }
+      { key: 'social', value: { instagram: social('instagram'), facebook: social('facebook'), tiktok: social('tiktok') } },
+      { key: 'tracking', value: tracking() }
     ];
     for (const row of rows) {
       await db.insert(settings).values(row).onConflictDoUpdate({ target: settings.key, set: { value: row.value } });

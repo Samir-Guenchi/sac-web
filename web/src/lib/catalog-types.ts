@@ -50,6 +50,9 @@ export type SiteMedia = {
 /** Social profile URLs; empty ones are hidden in the footer. */
 export type SocialLinks = { instagram: string; facebook: string; tiktok: string };
 
+/** Optional measurement IDs; scripts load only after the visitor's consent. */
+export type TrackingIds = { gaMeasurementId: string; metaPixelId: string };
+
 export type ShopSettings = {
   basePriceDzd: number;
   monogramCostDzd: number;
@@ -57,6 +60,7 @@ export type ShopSettings = {
   contact: { whatsapp: ContactNumber; phone: ContactNumber };
   media: SiteMedia;
   social: SocialLinks;
+  tracking: TrackingIds;
 };
 
 export type Catalog = {
@@ -99,5 +103,6 @@ export const DEFAULT_SETTINGS: ShopSettings = {
     craftImage: '/assets/images/editorial/craftsmanship-macro.jpg',
     heritageImage: '/assets/images/editorial/algeria-heritage.jpg'
   },
-  social: { instagram: '', facebook: '', tiktok: '' }
+  social: { instagram: '', facebook: '', tiktok: '' },
+  tracking: { gaMeasurementId: '', metaPixelId: '' }
 };

@@ -41,6 +41,19 @@ export default async function SettingsPage() {
           </Field>
         </div>
 
+        <h2>Audience & advertising</h2>
+        <p className="admin-muted">
+          Optional. These scripts load only for visitors who accept the matching cookies (Google Analytics → “audience measurement”, Meta Pixel → “marketing”). Leave empty to load nothing.
+        </p>
+        <div className="admin-grid-2">
+          <Field label="Google Analytics 4 — measurement ID" hint="e.g. G-ABC123XYZ9">
+            <input name="tracking.ga" defaultValue={settings.tracking.gaMeasurementId} dir="ltr" />
+          </Field>
+          <Field label="Meta Pixel — ID" hint="Digits only, from Meta Events Manager">
+            <input name="tracking.pixel" defaultValue={settings.tracking.metaPixelId} dir="ltr" inputMode="numeric" />
+          </Field>
+        </div>
+
         <h2>Home page media</h2>
         <div className="admin-grid-2">
           <MediaField name="media.heroVideo" label="Banner video" kind="video" defaultValue={settings.media.heroVideo} folder="media" hint="MP4 (H.264), ideally under 10 MB." />

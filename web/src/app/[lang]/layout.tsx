@@ -9,6 +9,8 @@ import { StoryModal } from '@/components/overlays/StoryModal';
 import { Toasts } from '@/components/overlays/Toasts';
 import { RevealOnScroll } from '@/components/site/RevealOnScroll';
 import { SiteWidgets } from '@/components/site/SiteWidgets';
+import { CookieConsent } from '@/components/site/CookieConsent';
+import { Trackers } from '@/components/site/Trackers';
 import { getCatalog } from '@/lib/catalog';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n/config';
 import { getDictionary, getT } from '@/lib/i18n/server';
@@ -72,6 +74,8 @@ export default async function StorefrontLayout({ children, params }: LayoutProps
           <Toasts />
           <RevealOnScroll />
           <SiteWidgets />
+          <CookieConsent />
+          <Trackers />
         </StoreProvider>
       </body>
     </html>

@@ -443,11 +443,7 @@
     "notFound": "Aucune commande ne correspond à ce numéro et cet e-mail."
   },
   "widgets": {
-    "whatsapp": "Discuter avec nous sur WhatsApp",
-    "cookieLabel": "Information cookies",
-    "cookieText": "Ce site utilise uniquement les cookies nécessaires à son fonctionnement (connexion, langue).",
-    "cookieMore": "En savoir plus",
-    "cookieOk": "J’AI COMPRIS"
+    "whatsapp": "Discuter avec nous sur WhatsApp"
   },
   "notFound": {
     "title": "Cette page est introuvable",
@@ -498,5 +494,24 @@
     "ctaText": "Choisissez couleur, matière, perles, chaîne et monogramme dans notre atelier sur-mesure, ou parlez à une conseillère.",
     "ctaBespoke": "CRÉER MON SAC",
     "ctaContact": "NOUS CONTACTER"
+  },
+  "consent": {
+    "title": "Vos préférences cookies",
+    "text": "Nous utilisons des cookies nécessaires au fonctionnement du site. Avec votre accord, nous utilisons aussi des cookies de mesure d’audience pour améliorer le site et des cookies marketing pour vous proposer des publicités pertinentes. Vous pouvez modifier votre choix à tout moment.",
+    "policy": "Politique de confidentialité & cookies",
+    "acceptAll": "TOUT ACCEPTER",
+    "rejectAll": "TOUT REFUSER",
+    "customize": "PERSONNALISER",
+    "save": "ENREGISTRER MES CHOIX",
+    "panelTitle": "Gestion des cookies",
+    "panelIntro": "Choisissez les cookies que vous autorisez. Les cookies nécessaires ne peuvent pas être désactivés car le site en a besoin.",
+    "necessaryTitle": "Nécessaires",
+    "necessaryText": "Session de connexion, langue choisie et vos choix de cookies. Votre panier est conservé dans votre navigateur.",
+    "alwaysOn": "Toujours actifs",
+    "analyticsTitle": "Mesure d’audience",
+    "analyticsText": "Statistiques anonymes (Google Analytics) qui nous aident à comprendre les pages consultées et à améliorer le site.",
+    "marketingTitle": "Marketing",
+    "marketingText": "Permet à Meta (Facebook, Instagram) de mesurer nos publicités et de vous en proposer de pertinentes.",
+    "manage": "Gestion des cookies"
   }
 }

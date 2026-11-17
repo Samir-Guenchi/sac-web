@@ -443,11 +443,7 @@
     "notFound": "No order matches this number and email."
   },
   "widgets": {
-    "whatsapp": "Chat with us on WhatsApp",
-    "cookieLabel": "Cookie notice",
-    "cookieText": "This site only uses cookies that are necessary for it to work (sign-in, language).",
-    "cookieMore": "Learn more",
-    "cookieOk": "OK"
+    "whatsapp": "Chat with us on WhatsApp"
   },
   "notFound": {
     "title": "This page could not be found",
@@ -498,5 +494,24 @@
     "ctaText": "Choose the colour, material, pearls, chain and monogram in our bespoke studio, or talk to an advisor.",
     "ctaBespoke": "CREATE MY BAG",
     "ctaContact": "CONTACT US"
+  },
+  "consent": {
+    "title": "Your privacy",
+    "text": "We use cookies that are necessary for the site to work. With your agreement, we also use audience-measurement cookies to improve the site and marketing cookies to show you relevant ads. You can change your choice at any time.",
+    "policy": "Privacy & cookies policy",
+    "acceptAll": "ACCEPT ALL",
+    "rejectAll": "REJECT ALL",
+    "customize": "CUSTOMISE",
+    "save": "SAVE MY CHOICES",
+    "panelTitle": "Cookie settings",
+    "panelIntro": "Choose which cookies you allow. Necessary cookies cannot be turned off because the site needs them.",
+    "necessaryTitle": "Necessary",
+    "necessaryText": "Sign-in session, chosen language and your cookie choices. Your bag is kept in your browser.",
+    "alwaysOn": "Always on",
+    "analyticsTitle": "Audience measurement",
+    "analyticsText": "Anonymous statistics (Google Analytics) that help us understand which pages are visited and improve the site.",
+    "marketingTitle": "Marketing",
+    "marketingText": "Lets Meta (Facebook, Instagram) measure our ads and show you relevant ones.",
+    "manage": "Cookie settings"
   }
 }
