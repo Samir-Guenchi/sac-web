@@ -11,7 +11,7 @@
     "searchPlaceholder": "Search...",
     "account": "Account",
     "bag": "Bag",
-    "catLeather": "LEATHER GOODS & BAGS",
+    "catLeather": "BAGS",
     "catCustom": "BESPOKE STUDIO",
     "catCraft": "CRAFTSMANSHIP",
     "catJournal": "JOURNAL",
@@ -26,7 +26,7 @@
   "hero": {
     "eyebrow": "Handcrafted Elegance",
     "title": "The art of bespoke, handcrafted to perfection.",
-    "desc": "Exceptional pearl & silk organza handbags, handcrafted in Algeria with timeless grace.",
+    "desc": "Bags crocheted and woven by hand in Algiers, in Mediterranean colours, with timeless grace.",
     "ctaPrimary": "CREATE YOUR BESPOKE BAG",
     "ctaSecondary": "EXPLORE COLLECTION",
     "badge": "Algerian Haute Couture",
@@ -38,7 +38,7 @@
     "handmade": "Handmade",
     "handmadeDesc": "Every piece is carefully crafted by hand.",
     "materials": "Premium Materials",
-    "materialsDesc": "Pearls, organza & fine details for exceptional quality.",
+    "materialsDesc": "Yarns, chenille and gilded clasps chosen for their touch and how they last.",
     "custom": "Made For You",
     "customDesc": "Customize every detail to match your style.",
     "timeless": "Timeless Elegance",
@@ -61,7 +61,7 @@
   "craft": {
     "eyebrow": "The Art of Handmade",
     "quote": "“Crafted with Passion, Loved for a Lifetime.”",
-    "text": "Each Zaphira bag is a result of meticulous craftsmanship and dedication to beauty in every detail. In our Algiers atelier, master artisans hand-stitch delicate organza layers and individually string lustrous freshwater pearls.",
+    "text": "Each Zaphira bag is the result of meticulous craftsmanship and a love of beauty in every detail. In our Algiers atelier, artisans crochet and weave every bag by hand, stitch after stitch, for up to thirty hours.",
     "cta": "Discover Our Story"
   },
   "heritage": {
@@ -134,7 +134,7 @@
   },
   "search": {
     "label": "Maison Zaphira Search",
-    "placeholder": "Search creations, pearls, organza, collections...",
+    "placeholder": "Search a bag, a colour, a collection...",
     "popular": "Popular Suggestions",
     "noResults": "No creations found matching “{query}”.",
     "close": "Close search",
@@ -242,7 +242,7 @@
     "imgHeritage": "Princess Zaphira haute couture",
     "imgAtelier": "Atelier needlework",
     "atelierTitle": "The Algiers Atelier",
-    "atelierText": "In our studio in the historic heart of Algiers, every single Zaphira piece begins with hand-selected materials: sheer translucent silk organza, natural freshwater pearls harvested for their iridescence, and rich structured calfskin leathers.",
+    "atelierText": "In our studio in the historic heart of Algiers, every Zaphira piece begins with hand-selected materials: woven cords, velvety chenille, cloud-soft bouclé and gilded clasps, crocheted stitch by stitch.",
     "personalTitle": "Personalized Exclusivity",
     "personalText": "We believe true luxury is personal. By inviting each patron to choose their palette, pearl size, hardware, and personalized hot-stamped monogram initials, every creation becomes an heirloom reflecting its owner’s unique identity.",
     "cta": "Create Your Custom Bag"
@@ -373,7 +373,7 @@
   },
   "meta": {
     "title": "Zaphira — Handcrafted Luxury Handbags Made in Algeria",
-    "description": "Modern feminine luxury handbags handcrafted in Algeria and personalized with pearls, organza and timeless details."
+    "description": "Feminine luxury bags crocheted and woven by hand in Algeria, inspired by Picasso and the Mediterranean, made to order."
   },
   "media": {
     "craftAlt": "Atelier artisan hand-stitching organza and pearls",
@@ -487,7 +487,7 @@
     "stepsEyebrow": "Savoir-faire",
     "stepsTitle": "From the first thread to your door",
     "step1Title": "Choosing the materials",
-    "step1Text": "Cords, chenille, bouclé, velvet, organza and pearls are selected for their touch, their colour and how they age.",
+    "step1Text": "Cords, chenille, bouclé, velvet and pearls are selected for their touch, their colour and how they age.",
     "step2Title": "Weaving & knitting",
     "step2Text": "The body of the bag is woven or knitted by hand, stitch by stitch, following the pattern of each model.",
     "step3Title": "Pearls & finishing",
