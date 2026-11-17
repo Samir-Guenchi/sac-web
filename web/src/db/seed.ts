@@ -8,11 +8,10 @@
 import 'dotenv/config';
 import { createClient } from '@libsql/client';
 import { hashPassword } from 'better-auth/crypto';
-import { and, eq, isNull } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/libsql';
 import { randomUUID } from 'node:crypto';
 import * as schema from './schema';
-import { PRODUCTS } from './seed-data/products';
 import { CUSTOMIZER_CONFIG } from './seed-data/customizer-options';
 import { JOURNAL_ENTRIES } from './seed-data/journal';
 import { TESTIMONIALS } from './seed-data/testimonials';
@@ -29,13 +28,21 @@ const db = drizzle(client, { schema });
 /** Original data used relative paths ("assets/…"); the app serves them from /assets. */
 const asset = (path: string) => (path.startsWith('/') || path.startsWith('http') ? path : `/${path}`);
 
-/** Collections of the original four bags (only set when they have none yet). */
-const ORIGINAL_CATEGORIES: Record<string, string> = {
-  'pearl-ivory': 'ceremonie',
-  'noir-prestige': 'luxe',
-  'blush-organza': 'printemps',
-  'taupe-elegance': 'luxe'
-};
+/** Placeholder bags from the first mock-up, replaced by the real 2026 line. */
+const SAMPLE_PRODUCT_IDS = ['pearl-ivory', 'noir-prestige', 'blush-organza', 'taupe-elegance'];
+
+/** Removes the placeholder bags; any that appear in an order are only hidden so order history stays intact. */
+async function retireSampleProducts() {
+  const ordered = await db
+    .selectDistinct({ id: schema.orderItems.productId })
+    .from(schema.orderItems)
+    .where(inArray(schema.orderItems.productId, SAMPLE_PRODUCT_IDS));
+  const keep = new Set(ordered.map(row => row.id));
+  for (const id of SAMPLE_PRODUCT_IDS) {
+    if (keep.has(id)) await db.update(schema.products).set({ active: false }).where(eq(schema.products.id, id));
+    else await db.delete(schema.products).where(eq(schema.products.id, id));
+  }
+}
 
 async function seedCollections() {
   await db
@@ -49,37 +56,9 @@ async function seedCollections() {
     .values(collection2026.products.map(p => ({ ...p, active: true })))
     .onConflictDoNothing();
 
-  for (const [productId, categoryId] of Object.entries(ORIGINAL_CATEGORIES)) {
-    await db
-      .update(schema.products)
-      .set({ categoryId })
-      .where(and(eq(schema.products.id, productId), isNull(schema.products.categoryId)));
-  }
 }
 
 async function seedCatalog() {
-  await db
-    .insert(schema.products)
-    .values(
-      PRODUCTS.map((p, i) => ({
-        id: p.id,
-        name: p.name,
-        collection: p.collection,
-        tag: p.tag,
-        badgeClass: p.badgeClass,
-        priceDzd: p.priceDZD,
-        shortDescription: p.shortDescription,
-        fullDescription: p.fullDescription,
-        materials: p.materials,
-        dimensions: p.dimensions,
-        hardware: p.hardware,
-        primaryImage: asset(p.images.primary),
-        gallery: p.images.gallery.map(asset),
-        sortOrder: i
-      }))
-    )
-    .onConflictDoNothing();
-
   const kinds = [
     ['color', CUSTOMIZER_CONFIG.colors],
     ['material', CUSTOMIZER_CONFIG.materials],
@@ -180,6 +159,7 @@ async function seedAdmin() {
 async function main() {
   await seedCatalog();
   await seedCollections();
+  await retireSampleProducts();
   await seedContent();
   await seedPages();
   await seedAdmin();
