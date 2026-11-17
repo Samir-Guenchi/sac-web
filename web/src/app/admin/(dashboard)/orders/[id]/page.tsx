@@ -8,6 +8,9 @@ import { Field, StatusBadge, dateTime, dzd } from '@/components/admin/Fields';
 import { WILAYAS } from '@/lib/wilayas';
 import { retryCodpilot, updateOrder } from '../../actions';
 
+// Back-office page behind a login: reads URL data and renders on demand (no instant-navigation shell)
+export const instant = false;
+
 export default async function OrderDetailPage({ params }: PageProps<'/admin/orders/[id]'>) {
   const { id } = await params;
   const order = await db.query.orders.findFirst({ where: eq(orders.id, id) });

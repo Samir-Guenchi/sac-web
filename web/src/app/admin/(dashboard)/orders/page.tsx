@@ -4,6 +4,9 @@ import { db } from '@/db';
 import { orders, ORDER_STATUSES, type OrderStatus } from '@/db/schema';
 import { StatusBadge, dateTime, dzd } from '@/components/admin/Fields';
 
+// Back-office page behind a login: reads URL data and renders on demand (no instant-navigation shell)
+export const instant = false;
+
 export default async function OrdersPage({ searchParams }: PageProps<'/admin/orders'>) {
   const params = await searchParams;
   const status = ORDER_STATUSES.includes(params.status as OrderStatus) ? (params.status as OrderStatus) : null;

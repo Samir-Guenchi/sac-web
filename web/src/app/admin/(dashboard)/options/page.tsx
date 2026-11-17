@@ -3,6 +3,7 @@ import { db } from '@/db';
 import { customizerOptions, OPTION_KINDS, type OptionKind } from '@/db/schema';
 import { ActionForm } from '@/components/admin/ActionForm';
 import { Field, LocalizedField } from '@/components/admin/Fields';
+import { MediaField } from '@/components/admin/MediaFields';
 import { saveOption } from '../actions';
 
 const TITLES: Record<OptionKind, string> = { color: 'Colours', material: 'Materials', pearls: 'Pearls', chain: 'Chains' };
@@ -53,7 +54,7 @@ function OptionForm({ kind, option }: { kind: OptionKind; option: OptionRow | nu
       <div className="admin-grid-3">
         {!option && (
           <Field label="Id" hint="Lowercase, e.g. emerald. Can't be changed later.">
-            <input name="id" pattern="[a-z0-9-]+" />
+            <input name="id" pattern="[a-z0-9\-]+" />
           </Field>
         )}
         <Field label="Price change (DZD)">
@@ -73,16 +74,7 @@ function OptionForm({ kind, option }: { kind: OptionKind; option: OptionRow | nu
       </div>
       <LocalizedField name="name" label="Name" value={option?.name} />
       {kind !== 'color' && <LocalizedField name="description" label="Description (tooltip)" value={option?.description} required={false} />}
-      {kind === 'color' && (
-        <div className="admin-grid-2">
-          <Field label="Preview image URL">
-            <input name="imageUrl" defaultValue={option?.imageUrl ?? ''} />
-          </Field>
-          <Field label="…or upload a preview image">
-            <input type="file" name="imageFile" accept="image/jpeg,image/png,image/webp,image/avif" />
-          </Field>
-        </div>
-      )}
+      {kind === 'color' && <MediaField name="imageUrl" label="Preview image in the bespoke studio" defaultValue={option?.imageUrl} folder="options" />}
     </ActionForm>
   );
 }

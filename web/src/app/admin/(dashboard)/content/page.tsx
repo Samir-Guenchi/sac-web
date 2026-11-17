@@ -3,6 +3,7 @@ import { db } from '@/db';
 import { journalEntries, testimonials } from '@/db/schema';
 import { ActionForm } from '@/components/admin/ActionForm';
 import { Field, LocalizedField } from '@/components/admin/Fields';
+import { MediaField } from '@/components/admin/MediaFields';
 import { saveJournalEntry, saveTestimonial } from '../actions';
 
 type Entry = typeof journalEntries.$inferSelect;
@@ -67,13 +68,8 @@ function JournalForm({ entry }: { entry: Entry | null }) {
       <LocalizedField name="excerpt" label="Excerpt" value={entry?.excerpt} multiline />
       <LocalizedField name="readTime" label="Reading time" value={entry?.readTime} />
       <LocalizedField name="date" label="Season / date" value={entry?.date} />
+      <MediaField name="image" label="Image" defaultValue={entry?.image} folder="journal" />
       <div className="admin-grid-3">
-        <Field label="Image URL">
-          <input name="image" defaultValue={entry?.image ?? ''} />
-        </Field>
-        <Field label="…or upload">
-          <input type="file" name="imageFile" accept="image/jpeg,image/png,image/webp,image/avif" />
-        </Field>
         <Field label="Display order">
           <input name="sortOrder" type="number" min={0} defaultValue={entry?.sortOrder ?? 99} />
         </Field>

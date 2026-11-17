@@ -1,23 +1,38 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { eq } from 'drizzle-orm';
+import { asc, eq } from 'drizzle-orm';
 import { db } from '@/db';
-import { products } from '@/db/schema';
+import { categories, products } from '@/db/schema';
 import { ActionForm } from '@/components/admin/ActionForm';
 import { Field, LocalizedField } from '@/components/admin/Fields';
-import { saveProduct } from '../../actions';
+import { GalleryField } from '@/components/admin/MediaFields';
+import { deleteProduct, saveProduct } from '../../actions';
 
 /** /admin/products/new creates a product; any other id edits it. */
+// Back-office page behind a login: reads URL data and renders on demand (no instant-navigation shell)
+export const instant = false;
+
 export default async function ProductEditPage({ params }: PageProps<'/admin/products/[id]'>) {
   const { id } = await params;
   const isNew = id === 'new';
-  const product = isNew ? null : await db.query.products.findFirst({ where: eq(products.id, id) });
+  const [product, cats] = await Promise.all([
+    isNew ? null : db.query.products.findFirst({ where: eq(products.id, id) }),
+    db.select().from(categories).orderBy(asc(categories.sortOrder))
+  ]);
   if (!isNew && !product) notFound();
 
   return (
     <div className="admin-page">
       <p>
         <Link href="/admin/products">← Products</Link>
+        {product && (
+          <>
+            {' · '}
+            <a href={`/fr/produits/${product.id}`} target="_blank" rel="noreferrer">
+              View in shop ↗
+            </a>
+          </>
+        )}
       </p>
       <h1>{product ? product.name : 'New product'}</h1>
 
@@ -29,9 +44,19 @@ export default async function ProductEditPage({ params }: PageProps<'/admin/prod
           </Field>
           {isNew && (
             <Field label="Id in URLs & orders" hint="Lowercase letters, numbers, dashes. Can't be changed later.">
-              <input name="id" pattern="[a-z0-9-]+" placeholder="e.g. pearl-ivory" />
+              <input name="id" pattern="[a-z0-9\-]+" placeholder="e.g. rose-de-blida" />
             </Field>
           )}
+          <Field label="Collection">
+            <select name="categoryId" defaultValue={product?.categoryId ?? ''}>
+              <option value="">— none —</option>
+              {cats.map(c => (
+                <option key={c.id} value={c.id}>
+                  {c.name.fr}
+                </option>
+              ))}
+            </select>
+          </Field>
           <Field label="Price (DZD)">
             <input name="priceDzd" type="number" min={1} step={1} defaultValue={product?.priceDzd ?? ''} required />
           </Field>
@@ -42,41 +67,34 @@ export default async function ProductEditPage({ params }: PageProps<'/admin/prod
               <option value="badge-rose">Rose</option>
             </select>
           </Field>
-          <Field label="Display order">
+          <Field label="Display order" hint="Lower numbers appear first.">
             <input name="sortOrder" type="number" min={0} step={1} defaultValue={product?.sortOrder ?? 0} />
           </Field>
           <label className="admin-check">
-            <input type="checkbox" name="active" defaultChecked={product?.active ?? true} /> Visible in the shop
+            <input type="checkbox" name="active" defaultChecked={product?.active ?? false} /> Visible in the shop
           </label>
         </div>
 
-        <LocalizedField name="collection" label="Collection" value={product?.collection} />
+        <GalleryField name="gallery" label="Photos (the first one is the main photo)" defaultValue={product?.gallery ?? []} folder="products" />
+
+        <LocalizedField name="collection" label="Collection line on the card" value={product?.collection} />
         <LocalizedField name="tag" label="Badge text" value={product?.tag} />
-        <LocalizedField name="shortDescription" label="Short description (search)" value={product?.shortDescription} multiline />
-        <LocalizedField name="fullDescription" label="Full description (quick view)" value={product?.fullDescription} multiline />
+        <LocalizedField name="shortDescription" label="Short description" value={product?.shortDescription} multiline />
+        <LocalizedField name="fullDescription" label="Full description" value={product?.fullDescription} multiline />
         <LocalizedField name="materials" label="Materials" value={product?.materials} />
         <LocalizedField name="dimensions" label="Dimensions" value={product?.dimensions} />
         <LocalizedField name="hardware" label="Hardware" value={product?.hardware} />
-
-        <fieldset className="admin-localized">
-          <legend>Images</legend>
-          {product?.primaryImage && <img src={product.primaryImage} alt="" className="admin-preview" />}
-          <div className="admin-grid-2">
-            <Field label="Upload a new main image" hint="JPEG, PNG, WebP or AVIF, up to 8 MB.">
-              <input type="file" name="primaryImageFile" accept="image/jpeg,image/png,image/webp,image/avif" />
-            </Field>
-            <Field label="…or main image URL">
-              <input name="primaryImage" defaultValue={product?.primaryImage ?? ''} />
-            </Field>
-            <Field label="Gallery (one image URL per line)">
-              <textarea name="gallery" rows={4} defaultValue={product?.gallery.join('\n') ?? ''} />
-            </Field>
-            <Field label="Add a gallery image">
-              <input type="file" name="galleryFile" accept="image/jpeg,image/png,image/webp,image/avif" />
-            </Field>
-          </div>
-        </fieldset>
       </ActionForm>
+
+      {product && (
+        <section className="admin-card admin-danger">
+          <h2>Delete product</h2>
+          <p className="admin-muted">Only possible if it was never ordered. To take it off the shop, untick “Visible in the shop” instead.</p>
+          <ActionForm action={deleteProduct} submitLabel="Delete permanently">
+            <input type="hidden" name="id" value={product.id} />
+          </ActionForm>
+        </section>
+      )}
     </div>
   );
 }

@@ -7,10 +7,13 @@ const NAV = [
   ['/admin', 'Overview'],
   ['/admin/orders', 'Orders'],
   ['/admin/products', 'Products'],
+  ['/admin/collections', 'Collections'],
   ['/admin/options', 'Bespoke options'],
   ['/admin/customers', 'Customers'],
+  ['/admin/texts', 'Site texts'],
+  ['/admin/pages', 'Pages'],
   ['/admin/content', 'Journal & testimonials'],
-  ['/admin/settings', 'Settings']
+  ['/admin/settings', 'Settings & media']
 ] as const;
 
 export default function DashboardLayout({ children }: LayoutProps<'/admin'>) {
