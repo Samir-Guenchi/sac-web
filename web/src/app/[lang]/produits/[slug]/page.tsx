@@ -61,7 +61,12 @@ async function ProductContent({ params }: Pick<PageProps<'/[lang]/produits/[slug
           { label: product.name }
         ]}
       />
-      <ProductDetail productId={product.id} />
+      <ProductDetail
+        key={product.id}
+        product={product}
+        category={category ?? null}
+        related={catalog.products.filter(p => p.id !== product.id && p.categoryId === product.categoryId).slice(0, 4)}
+      />
     </>
   );
 }

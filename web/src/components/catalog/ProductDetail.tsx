@@ -3,17 +3,19 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
+import type { Category, Product } from '@/lib/catalog-types';
 import { MAX_LINE_QUANTITY } from '@/lib/pricing';
 import { ProductCard } from './ProductCard';
 
-/** Product page body: gallery, purchase box, detail accordions, related bags. */
-export function ProductDetail({ productId }: { productId: string }) {
+/**
+ * Product page body: gallery, purchase box, detail accordions, related bags.
+ * Data comes from the page's server render, so it never depends on the
+ * layout's catalog copy being as recent as the page.
+ */
+export function ProductDetail({ product, category, related }: { product: Product; category: Category | null; related: Product[] }) {
   const { t, loc, locale, catalog, price, cart } = useStore();
-  const product = catalog.products.find(p => p.id === productId)!;
   const [image, setImage] = useState(product.primaryImage);
   const [quantity, setQuantity] = useState(1);
-  const category = catalog.categories.find(c => c.id === product.categoryId);
-  const related = catalog.products.filter(p => p.id !== product.id && p.categoryId === product.categoryId).slice(0, 4);
   const contact = catalog.settings.contact.whatsapp;
 
   const sections: Array<[string, string]> = [
