@@ -8,12 +8,12 @@ import { Newsletter } from '@/components/home/Newsletter';
 import { Testimonials } from '@/components/home/Testimonials';
 import { SiteFooter } from '@/components/site/SiteFooter';
 import { SiteHeader } from '@/components/site/SiteHeader';
-import { getJournal, getTestimonials } from '@/lib/catalog';
+import { getCatalog, getJournal, getTestimonials } from '@/lib/catalog';
 import { getLocale, getT } from '@/lib/i18n/server';
 
 export default async function HomePage() {
   const locale = await getLocale();
-  const [t, journal, testimonials] = await Promise.all([getT(locale), getJournal(), getTestimonials()]);
+  const [t, journal, testimonials, catalog] = await Promise.all([getT(locale), getJournal(), getTestimonials(), getCatalog()]);
 
   return (
     <>
@@ -26,7 +26,7 @@ export default async function HomePage() {
         <BrandPromise t={t} />
         <Customizer />
         <CollectionGrid />
-        <EditorialSections t={t} />
+        <EditorialSections t={t} media={catalog.settings.media} />
         <Testimonials items={testimonials} />
         <Journal entries={journal} />
         <Newsletter />

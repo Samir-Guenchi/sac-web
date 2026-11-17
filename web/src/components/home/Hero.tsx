@@ -4,7 +4,8 @@ import { useRef, useState } from 'react';
 import { useStore } from '@/components/store/StoreProvider';
 
 export function Hero() {
-  const { t } = useStore();
+  const { t, catalog } = useStore();
+  const { heroVideo, heroPoster } = catalog.settings.media;
   const video = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(true);
@@ -17,8 +18,9 @@ export function Hero() {
   return (
     <section className="hero-section hero-section-hermes" id="hero-section">
       <div className="hero-video-wrapper">
-        <video ref={video} className="hero-bg-video" autoPlay loop muted playsInline poster="/assets/images/branding/background-image.png">
-          <source src="/assets/video/video-back-ground.mp4" type="video/mp4" />
+        {/* key: a new video from the admin replaces the element instead of keeping the old source */}
+        <video key={heroVideo} ref={video} className="hero-bg-video" autoPlay loop muted playsInline preload="auto" poster={heroPoster}>
+          <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="hero-video-overlay-hermes"></div>
       </div>

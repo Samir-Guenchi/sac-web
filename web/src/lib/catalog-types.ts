@@ -31,11 +31,20 @@ export type CustomizerOption = {
 
 export type ContactNumber = { display: string; tel: string | null };
 
+/** Site imagery the admin can replace (Admin → Settings → Media). */
+export type SiteMedia = {
+  heroVideo: string;
+  heroPoster: string;
+  craftImage: string;
+  heritageImage: string;
+};
+
 export type ShopSettings = {
   basePriceDzd: number;
   monogramCostDzd: number;
   rates: ExchangeRates;
   contact: { whatsapp: ContactNumber; phone: ContactNumber };
+  media: SiteMedia;
 };
 
 export type Catalog = {
@@ -70,5 +79,11 @@ export const DEFAULT_SETTINGS: ShopSettings = {
   contact: {
     whatsapp: { display: '+213 (0) XX XX XX XX', tel: null },
     phone: { display: '+213 (0) XX XX XX XX', tel: null }
+  },
+  media: {
+    heroVideo: '/assets/video/zaphira-hero.mp4',
+    heroPoster: '/assets/images/branding/zaphira-hero-poster.jpg',
+    craftImage: '/assets/images/editorial/craftsmanship-macro.jpg',
+    heritageImage: '/assets/images/editorial/algeria-heritage.jpg'
   }
 };

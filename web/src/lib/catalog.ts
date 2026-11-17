@@ -15,7 +15,8 @@ async function readSettings(): Promise<ShopSettings> {
     ...DEFAULT_SETTINGS,
     ...stored,
     rates: { ...DEFAULT_SETTINGS.rates, ...(stored.rates ?? {}) },
-    contact: { ...DEFAULT_SETTINGS.contact, ...(stored.contact ?? {}) }
+    contact: { ...DEFAULT_SETTINGS.contact, ...(stored.contact ?? {}) },
+    media: { ...DEFAULT_SETTINGS.media, ...(stored.media ?? {}) }
   };
 }
 
